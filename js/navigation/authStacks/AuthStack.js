@@ -1,10 +1,10 @@
 import { createStackNavigator } from 'react-navigation-stack'
 
-import TempLogin from '../../screens/auth/login/login'
+import Login from '../../screens/auth/login/login'
 
 const AuthStack = createStackNavigator({
 	Login: {
-		screen: TempLogin,
+		screen: Login,
 		navigationOptions: () => ({
 			title: 'Login',
 			header: null,

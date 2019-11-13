@@ -10,7 +10,7 @@ const AppNavigator = createAppContainer(
 		Auth: AuthStack,
 		App: AppStack,
 	}, {
-		initialRouteName: 'AuthLoading'
+		initialRouteName: 'Auth'
 	})
 )
 
