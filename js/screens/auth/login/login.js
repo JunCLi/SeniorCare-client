@@ -35,7 +35,7 @@ const Login = props => {
 
 					<Button
 						title='get logged user'
-						onPress={() => {refetch(), console.log(data)}}
+						onPress={() => {console.log(data)}}
 					/>
 
 					<Button
@@ -50,7 +50,7 @@ const Login = props => {
 
 					<Button
 						title='check local user stuff'
-						onPress={() => {crefetch(), console.log('cdata: ', cdata)}}
+						onPress={() => {console.log('cdata: ', cdata)}}
 					/>
 				</View>
 			</SafeAreaView>

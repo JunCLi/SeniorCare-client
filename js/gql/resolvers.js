@@ -1,28 +1,38 @@
+import { CHECK_STUFF } from './authQueries'
+import { GET_LOGGED_USER } from './authQueries'
+
 export default {
 	Mutation: {
 		async updateUser(parent, input, { cache, getCacheKey }) {
-			console.log('parent: ', parent)
-			console.log('input: ', input)
-			console.log('cache: ', cache)
+			const test1 = cache.readQuery({ query: CHECK_STUFF })
+			console.log('test1: ', test1)
 
-			const id = getCacheKey({ id: input.id, __typename: 'dostuff'})
+			const test2 = cache.readQuery({ query: GET_LOGGED_USER })
+			console.log('test2: ', test2)
 
-			console.log('cachekeyid: ', id)
+			cache.writeData({
+				data: {
+					checkUser: {
+						stuff: 'I changed stuff',
+						__typename: 'User'
+					},
+					getLoggedUser: {
+						user_id: "IEvenChangedTheID",
+						__typename: 'User'
+					}
+				}
+			})
 
-			const data = {id: input.id, stuff: 'what is stuff?'}
-			cache.writeData({id, data})
-
-			return {
-				message: 'trying to do stuff to local stuff',
-				__typename: 'dostuff'
-			}
+			return { message: 'trying to do stuff to local stuff', __typename: 'User' }
 		},
 	},
-	Query: {
-		async checkUser(parent, input, { cache, getCacheKey }) {
-			console.log('parent: ', parent, 'input: ', input ) 
+	// Query: {
+	// 	async checkUser(parent, input, { cache, getCacheKey }) {
 
-			console.log(cache.readQuery())
-		}
-	},
+	// 	},
+
+	// 	async getLoggedUser(parent, input, {cache, getCacheKey }) {
+
+	// 	},
+	// },
 }
