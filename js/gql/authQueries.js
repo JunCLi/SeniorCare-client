@@ -3,7 +3,7 @@ import gql from 'graphql-tag'
 export const LOGIN = gql`
 	mutation loginCaregiver {
 		login(input: {
-			email: "nicknurse@basketball.com"
+			email: "taylorswift@music.com"
 			password: "12341234"
 			userType: caregiver
 		}) {
@@ -33,6 +33,22 @@ export const LOGOUT = gql`
 	mutation logout {
 		logout {
 			message
+		}
+	}
+`
+
+export const DOING_STUFF_TO_CACHE = gql`
+	mutation updateUser {
+		updateUser(id: "ca-tay-bYXQsXs0EJY4VZzsmJGM") @client {
+			message
+		}
+	}
+`
+
+export const CHECK_STUFF = gql`
+	query checkUser {
+		checkUser @client {
+			stuff
 		}
 	}
 `
