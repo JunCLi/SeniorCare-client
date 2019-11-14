@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { ApolloProvider } from '@apollo/react-hooks'
-import apolloclient from './gql/apolloclient'
+import apolloclient from './graphql/apolloclient'
 
 import AppNavigator from './navigation/AppNavigator'
 

@@ -1,14 +1,12 @@
-import { CHECK_STUFF } from './authQueries'
-import { GET_LOGGED_USER } from './authQueries'
+import { CHECK_STUFF } from '../queries/authQueries'
+import { GET_LOGGED_USER } from '../queries/authQueries'
 
 export default {
 	Mutation: {
 		async updateUser(parent, input, { cache, getCacheKey }) {
 			const test1 = cache.readQuery({ query: CHECK_STUFF })
-			console.log('test1: ', test1)
 
 			const test2 = cache.readQuery({ query: GET_LOGGED_USER })
-			console.log('test2: ', test2)
 
 			cache.writeData({
 				data: {

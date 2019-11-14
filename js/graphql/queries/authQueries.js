@@ -52,3 +52,12 @@ export const CHECK_STUFF = gql`
 		}
 	}
 `
+
+export const CHECK_THING = gql`
+	query checkStuff {
+		checkStuff @client {
+			thing
+			otherThing
+		}
+	}
+`

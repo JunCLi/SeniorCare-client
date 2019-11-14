@@ -9,8 +9,9 @@ import { WebSocketLink } from 'apollo-link-ws'
 // import { createUploadLink } from 'apollo-upload-client'
 // import { BatchHttpLink } from 'apollo-link-batch-http'
 
-import resolvers from './resolvers'
-import typeDefs from './localSchema'
+import resolvers from './resolvers/resolvers'
+import typeDefs from './schemas/typeDefs'
+import store from './store/configureStore'
 
 const wsLink = new WebSocketLink({
   uri: `ws://localhost:8080/graphql`,
@@ -25,20 +26,9 @@ const errorLink = onError(({ graphQLErrors }) => {
   if (graphQLErrors) graphQLErrors.map(({ message }) => console.log(message))
 })
 
-const defaults = {
-	getLoggedUser: {
-		stuff: "Still don't know",
-		__typename: 'User'
-	},
-	checkUser: {
-		stuff: "Testing testing I'm just suggesting",
-		__typename: 'User'
-	}
-}
-
 const stateLink = withClientState({
 	cache: cache,
-	defaults,
+	defaults: store,
 })
 
 const httpLink = createHttpLink({
@@ -57,17 +47,6 @@ const link = split(
   wsLink,
   httpLink
 )
-
-// cache.writeData({
-// 	data: {
-// 		checkUser: {
-// 			stuff: "Still don't know",
-// 			__typename: 'User'
-			
-// 		},
-// 		notSureStuff: "yeah I really do not know",
-// 	}
-// })
 
 const apolloclient = new ApolloClient({
   link: ApolloLink.from([errorLink, stateLink, link]),

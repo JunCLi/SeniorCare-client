@@ -1,6 +1,6 @@
 import gql from 'graphql-tag'
 
-export default typeDefs = gql`
+export default usersSchema = gql`
 	extend type Query {
 		checkUser: User
 	}

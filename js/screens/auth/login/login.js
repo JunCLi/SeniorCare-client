@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { useMutation, useQuery } from '@apollo/react-hooks'
-import { LOGIN, LOGOUT, GET_LOGGED_USER, DOING_STUFF_TO_CACHE, CHECK_STUFF } from '../../../gql/authQueries'
+import { LOGIN, LOGOUT, GET_LOGGED_USER, DOING_STUFF_TO_CACHE, CHECK_STUFF, CHECK_THING } from '../../../graphql/queries/authQueries'
 
 import { Platform, KeyboardAvoidingView, SafeAreaView, ScrollView, StatusBar, Text, View } from 'react-native'
 import { Button } from 'react-native-elements'
@@ -13,6 +13,7 @@ const Login = props => {
 	const [ updateUser ] = useMutation(DOING_STUFF_TO_CACHE) 
 	const { loading, error, data, refetch } = useQuery(GET_LOGGED_USER)
 	const { loading: cloading, error: cerror, data: cdata, refetch: crefetch} = useQuery(CHECK_STUFF)
+	const { loading: dloading, error: derror, data: ddata, refetch: drefetch} = useQuery(CHECK_THING)
 
 	const handleLogin = () => {
 		login()
@@ -51,6 +52,11 @@ const Login = props => {
 					<Button
 						title='check local user stuff'
 						onPress={() => {console.log('cdata: ', cdata)}}
+					/>
+
+					<Button
+						title='check other thing'
+						onPress={() => {console.log('ddata', ddata)}}
 					/>
 				</View>
 			</SafeAreaView>
