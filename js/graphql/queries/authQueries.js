@@ -20,6 +20,14 @@ export const LOGIN = gql`
 	}
 `
 
+export const CHECK_AUTHENTICATION = gql`
+	query getLoggedUser {
+		getLoggedUser {
+			user_id
+		}
+	}
+`
+
 
 export const GET_LOGGED_USER = gql`
 	query getLoggedUser {
