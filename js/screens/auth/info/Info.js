@@ -1,16 +1,24 @@
 import React from 'react'
 
-import { SafeAreaView, ScrollView, StatusBar, Text, View } from 'react-native'
+import { SafeAreaView, ScrollView, StatusBar, Text, TouchableOpacity, View } from 'react-native'
 import { Button, Image } from 'react-native-elements'
 import { styles } from './styles'
 
 import InfoScreeningIcon from '../../../assets/images/info-screening-3x.png'
+import GoogleIcon from '../../../assets/images/google-icon-3x.png'
 
 const Info = props => {
+	const goSignup = () => {
+		props.navigation.navigate('Signup')
+	}
+
+	const goLogin = () => {
+		props.navigation.navigate('Login')
+	}
+
 	return (
-		<>
 		<SafeAreaView style={styles.background}>
-			<StatusBar barStyle='dark-content' />
+			<StatusBar backgroundColor={styles.statusBar.backgroundColor} barStyle='dark-content' />
 			<ScrollView style={styles.mainContainer} contentContainerStyle={styles.scrollViewFix}>
 				<View style={styles.topContainer}>
 					<View style={styles.iconOuterContainer}>
@@ -39,23 +47,49 @@ const Info = props => {
 				</View>
 
 				<View style={styles.bottomContainer}>
-					<View style={styles.signupContainer}>
-						<Button
-							title='Sign Up'
-							buttonStyle={styles.button}
-							titleStyle={styles.buttonText}
-						/>	
-						<Button
-							title='Google'
-							buttonStyle={styles.button}
-							titleStyle={styles.buttonText}
-						/>
-					</View>					
+					<View style={styles.signupAndLoginContainer}>
+						<View style={styles.signupContainer}>
+							<Button
+								title='Sign Up'
+								buttonStyle={styles.signup}
+								titleStyle={styles.signupText}
+								onPress={goSignup}
+							/>	
+							<Button
+								title='Google'
+								icon={
+									<Image
+										source={GoogleIcon}
+										style={styles.googleIcon}
+									/>
+								}
+								buttonStyle={styles.googleSignup}
+								titleStyle={styles.googleSignupText}
+							/>
+						</View>
+
+						<View style={styles.loginContainer}>
+							<Text style={styles.loginMessage}>Already have an account? 
+								{/* <TouchableOpacity onPress={goLogin}>
+									<Text style={styles.login}>Log in.</Text>
+									
+								</TouchableOpacity> */}
+							</Text>
+							<Button
+								title='Log in.'
+								buttonStyle={styles.login}
+								titleStyle={styles.loginText}
+							/>
+						</View>
+					</View>
+
+					<View style={styles.termsContainer}>
+						<Text style={styles.terms}>By continuing you accept the <Text style={styles.termsConditions}>Terms of Service</Text> and <Text style={styles.termsConditions}>Privacy Policy</Text></Text>
+					</View>
 				</View>
 			
 			</ScrollView>
 		</SafeAreaView>
-		</>
 	)
 }
 

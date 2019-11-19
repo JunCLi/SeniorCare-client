@@ -5,8 +5,6 @@ import { backgroundColours, fontColours } from '../../../styleSettings/colours'
 
 import { generalStyles } from '../../../styleSettings/generalStyles'
 
-const topContainerHeight = screenHeight * 2 / 3
-
 const iconOuterWidth = screenWidth * 3 / 5
 
 const infoScreeningWidth = iconOuterWidth / 2
@@ -15,7 +13,7 @@ const infoScreeningHeight = infoScreeningWidth * 140.52 / 108.31
 const topContainer = {
 	topContainer: {
 		backgroundColor: backgroundColours.blueGrey,
-		flex: 1,
+		flex: 2,
 	},
 
 	iconOuterContainer: {
@@ -76,9 +74,113 @@ const info = {
 
 const bottomContainer = {
 	bottomContainer: {
-		flex: 2,
-		paddingVertical: margins.vertical * 3,
-		paddingHorizontal: margins.horizontal * 2,
+		flex: 1,
+		backgroundColor: backgroundColours.white,
+		borderTopColor: fontColours.grey, 
+		borderTopWidth: 1,
+		paddingTop: margins.vertical * 3,
+		paddingBottom: margins.vertical,
+		paddingHorizontal: margins.horizontal * 1.2,
+	},
+
+	signupAndLoginContainer: {
+		flex: 1,
+	}
+}
+
+const buttonStyles = {
+	button: {
+		alignSelf: 'center',
+		width: screenWidth / 2 - bottomContainer.bottomContainer.paddingHorizontal * 1.5,
+		height: baseFont * 2.3,
+		padding: 0,
+		borderRadius: 30,	
+	},
+
+	text: {
+		fontFamily: 'SFProText-Regular',
+		fontSize: baseFont,
+	}
+}
+
+const signup = {
+	signupContainer: {
+		flexDirection: 'row',
+		justifyContent: 'space-between',
+	},
+
+	signup: {
+		...buttonStyles.button,
+		backgroundColor: backgroundColours.blue
+	},
+
+	signupText: {
+		...buttonStyles.text,
+	},
+
+	googleSignup: {
+		...buttonStyles.button,
+		backgroundColor: backgroundColours.white,
+		borderWidth: 1,
+		borderColor: backgroundColours.blue,
+	},
+
+	googleSignupText: {
+		...buttonStyles.text,
+		color: fontColours.blue
+	},
+
+	googleIcon: {
+		marginRight: baseFont / 3,
+		width: baseFont,
+		height: baseFont,
+	},
+}
+
+const login = {
+	loginContainer: {
+		flexDirection: 'row',
+		justifyContent: 'center',
+		alignItems: 'center',
+		marginTop: screenHeight / 16,
+	},
+
+	loginMessage: {
+		color: fontColours.grey,
+		fontSize: baseFont,
+		fontWeight: '500',
+		textAlign: 'center',
+	},
+
+	login: {
+		backgroundColor: 'transparent',
+		marginLeft: baseFont / 4,
+		padding: 0,
+		borderBottomWidth: 1,
+		borderBottomColor: fontColours.yellow,
+	},
+
+	loginText: {
+		color: fontColours.yellow,
+		fontSize: baseFont,
+		fontWeight: '500',
+		// textDecorationLine: 'underline',
+	}
+}
+
+const terms = {
+	termsContainer: {
+		marginHorizontal: margins.horizontal * 1.5,
+	},
+
+	terms: {
+		color: fontColours.grey,
+		fontSize: baseFont * .8,
+		textAlign: 'center',
+	},
+
+	termsConditions: {
+		textDecorationLine: 'underline',
 	},
 }
 
@@ -88,21 +190,7 @@ export const styles = StyleSheet.create({
 	...infoScreening,
 	...info,
 	...bottomContainer,
-
-	signupContainer: {
-		flexDirection: 'row',
-	},
-
-	button: {
-		alignSelf: 'center',
-		width: '90%',
-		height: baseFont * 2.3,
-		padding: 0,
-		borderRadius: 30,
-	},
-
-	buttonText: {
-		fontSize: baseFont,
-	}
-
+	...signup,
+	...login,
+	...terms,
 })
