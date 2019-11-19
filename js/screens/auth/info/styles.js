@@ -1,7 +1,8 @@
 import { StyleSheet } from 'react-native'
 
-import { screenWidth, screenHeight, margins, baseFont } from '../../../styleSettings/screensizeSettings'
-import { backgroundColours, fontColours } from '../../../styleSettings/colours'
+import { screenWidth, screenHeight, margin, baseFont } from '../../../styleSettings/screensizeSettings'
+import { background, font } from '../../../styleSettings/colours'
+import { fontType } from '../../../styleSettings/fonts'
 
 import { generalStyles } from '../../../styleSettings/generalStyles'
 
@@ -12,7 +13,7 @@ const infoScreeningHeight = infoScreeningWidth * 140.52 / 108.31
 
 const topContainer = {
 	topContainer: {
-		backgroundColor: backgroundColours.blueGrey,
+		backgroundColor: background.blueGrey,
 		flex: 2,
 	},
 
@@ -20,12 +21,12 @@ const topContainer = {
 		flex: 1,
 		alignItems: 'center',
 		justifyContent: 'center',
-		marginTop: margins.vertical * 2,
+		marginTop: margin.vertical * 2,
 	},
 
 	iconInnerContainer: {
 		justifyContent: 'center',
-		backgroundColor: backgroundColours.white,
+		backgroundColor: background.white,
 		borderRadius: iconOuterWidth,
 		width: iconOuterWidth,
 		height: iconOuterWidth,
@@ -51,21 +52,21 @@ const info = {
 	},
 
 	textContainer: {
-		marginVertical: margins.vertical,
-		marginHorizontal: margins.horizontal * 2,
+		marginVertical: margin.vertical,
+		marginHorizontal: margin.horizontal * 2,
 	},
 
 	title: {
-		color: fontColours.blue,
-		fontFamily: 'GothamRounded-Bold',
+		color: font.blue,
+		fontFamily: fontType.gothamBold,
 		fontSize: baseFont * 2.4,
 		marginVertical: -4,
 		textAlign: 'center',
 	},
 
 	infoText: {
-		color: fontColours.blue,
-		fontFamily: 'SFProText-Regular',
+		color: font.blue,
+		fontFamily: fontType.sfpro,
 		fontSize: baseFont * 1.05,
 		lineHeight: baseFont * 1.5,
 		textAlign: 'center',
@@ -75,12 +76,12 @@ const info = {
 const bottomContainer = {
 	bottomContainer: {
 		flex: 1,
-		backgroundColor: backgroundColours.white,
-		borderTopColor: fontColours.grey, 
+		backgroundColor: background.white,
+		borderTopColor: font.grey, 
 		borderTopWidth: 1,
-		paddingTop: margins.vertical * 3,
-		paddingBottom: margins.vertical,
-		paddingHorizontal: margins.horizontal * 1.2,
+		paddingTop: margin.vertical * 3,
+		paddingBottom: margin.vertical,
+		paddingHorizontal: margin.horizontal * 1.2,
 	},
 
 	signupAndLoginContainer: {
@@ -98,7 +99,7 @@ const buttonStyles = {
 	},
 
 	text: {
-		fontFamily: 'SFProText-Regular',
+		fontFamily: fontType.sfpro,
 		fontSize: baseFont,
 	}
 }
@@ -111,7 +112,7 @@ const signup = {
 
 	signup: {
 		...buttonStyles.button,
-		backgroundColor: backgroundColours.blue
+		backgroundColor: background.blue
 	},
 
 	signupText: {
@@ -120,14 +121,14 @@ const signup = {
 
 	googleSignup: {
 		...buttonStyles.button,
-		backgroundColor: backgroundColours.white,
+		backgroundColor: background.white,
 		borderWidth: 1,
-		borderColor: backgroundColours.blue,
+		borderColor: background.blue,
 	},
 
 	googleSignupText: {
 		...buttonStyles.text,
-		color: fontColours.blue
+		color: font.blue
 	},
 
 	googleIcon: {
@@ -146,7 +147,7 @@ const login = {
 	},
 
 	loginMessage: {
-		color: fontColours.grey,
+		color: font.grey,
 		fontSize: baseFont,
 		fontWeight: '500',
 		textAlign: 'center',
@@ -157,24 +158,23 @@ const login = {
 		marginLeft: baseFont / 4,
 		padding: 0,
 		borderBottomWidth: 1,
-		borderBottomColor: fontColours.yellow,
+		borderBottomColor: font.yellow,
 	},
 
 	loginText: {
-		color: fontColours.yellow,
+		color: font.yellow,
 		fontSize: baseFont,
 		fontWeight: '500',
-		// textDecorationLine: 'underline',
 	}
 }
 
 const terms = {
 	termsContainer: {
-		marginHorizontal: margins.horizontal * 1.5,
+		marginHorizontal: margin.horizontal * 1.5,
 	},
 
 	terms: {
-		color: fontColours.grey,
+		color: font.grey,
 		fontSize: baseFont * .8,
 		textAlign: 'center',
 	},

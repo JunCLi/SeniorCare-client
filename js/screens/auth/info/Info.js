@@ -8,8 +8,12 @@ import InfoScreeningIcon from '../../../assets/images/info-screening-3x.png'
 import GoogleIcon from '../../../assets/images/google-icon-3x.png'
 
 const Info = props => {
+
+	// TODO remove autoLink
+	props.navigation.navigate('ChooseSignup')
+
 	const goSignup = () => {
-		props.navigation.navigate('Signup')
+		props.navigation.navigate('ChooseSignup')
 	}
 
 	const goLogin = () => {
@@ -69,16 +73,12 @@ const Info = props => {
 						</View>
 
 						<View style={styles.loginContainer}>
-							<Text style={styles.loginMessage}>Already have an account? 
-								{/* <TouchableOpacity onPress={goLogin}>
-									<Text style={styles.login}>Log in.</Text>
-									
-								</TouchableOpacity> */}
-							</Text>
+							<Text style={styles.loginMessage}>Already have an account? </Text>
 							<Button
 								title='Log in.'
 								buttonStyle={styles.login}
 								titleStyle={styles.loginText}
+								onPress={goLogin}
 							/>
 						</View>
 					</View>

@@ -1,15 +1,15 @@
 import { StyleSheet } from 'react-native'
 
-import { backgroundColours } from './colours'
+import { background } from './colours'
 
 export const generalStyles = StyleSheet.create({
 	background: {
-		backgroundColor: backgroundColours.white,
+		backgroundColor: background.white,
 		flex: 1,
 	},
 	
 	statusBar: {
-		backgroundColor: backgroundColours.grey,
+		backgroundColor: background.grey,
 	},
 
 	scrollViewFix: {

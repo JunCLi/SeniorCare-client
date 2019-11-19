@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native'
 
 import { screenWidth, screenHeight } from '../../styleSettings/screensizeSettings'
-import { backgroundColours } from '../../styleSettings/colours'
+import { background } from '../../styleSettings/colours'
 
 import { generalStyles } from '../../styleSettings/generalStyles'
 
@@ -13,7 +13,7 @@ const logoTextHeight = 59 / 250 * logoTextWidth
 
 export const styles = StyleSheet.create({
 	background: {
-		backgroundColor: backgroundColours.white,
+		backgroundColor: background.white,
 	},
 
 	logoContainer: {

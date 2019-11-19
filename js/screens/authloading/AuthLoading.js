@@ -10,8 +10,6 @@ import { styles } from './styles'
 import Logo from '../../assets/images/logo-3x.png'
 import LogoText from '../../assets/images/LogoText-3x.png'
 
-console.log('styles: ', styles)
-
 const AuthLoading = props => {
 	const { loading, error, data } = useQuery(CHECK_AUTHENTICATION, {
 		fetchPolicy: 'network-only'
