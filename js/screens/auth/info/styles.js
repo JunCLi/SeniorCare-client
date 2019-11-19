@@ -77,7 +77,7 @@ const bottomContainer = {
 	bottomContainer: {
 		flex: 1,
 		backgroundColor: background.white,
-		borderTopColor: font.grey, 
+		borderTopColor: font.lightGrey, 
 		borderTopWidth: 1,
 		paddingTop: margin.vertical * 3,
 		paddingBottom: margin.vertical,
@@ -147,7 +147,7 @@ const login = {
 	},
 
 	loginMessage: {
-		color: font.grey,
+		color: font.lightGrey,
 		fontSize: baseFont,
 		fontWeight: '500',
 		textAlign: 'center',
@@ -174,7 +174,7 @@ const terms = {
 	},
 
 	terms: {
-		color: font.grey,
+		color: font.lightGrey,
 		fontSize: baseFont * .8,
 		textAlign: 'center',
 	},

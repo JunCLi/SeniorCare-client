@@ -7,6 +7,11 @@ export const generalStyles = StyleSheet.create({
 		backgroundColor: background.white,
 		flex: 1,
 	},
+
+	backgroundBlue: {
+		backgroundColor: background.blueGrey,
+		flex: 1,
+	},
 	
 	statusBar: {
 		backgroundColor: background.grey,
@@ -16,6 +21,10 @@ export const generalStyles = StyleSheet.create({
 		flexGrow: 1,
 	},
 	
+	avoidKeyboard: {
+		flex: 1, 
+	},
+
 	mainContainer: {
 		flex: 1,
 	},
