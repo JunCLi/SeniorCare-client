@@ -28,13 +28,7 @@ const button = StyleSheet.create({
 		paddingVertical: margin.vertical * 1.2, 
 	},
 
-	extendButton: {
-		position: 'absolute',
-		bottom: -50,
-		backgroundColor: background.blue,
-		height: 100,
-		width: 100,
-	}
+
 })
 
 export const styles = StyleSheet.create({

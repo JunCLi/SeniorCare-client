@@ -1,26 +1,44 @@
 import React from 'react'
 
+import { useMutation } from '@apollo/react-hooks'
+import { SIGNUP } from '../../../graphql/queries/authQueries'
+
 import { View } from 'react-native'
 import { Button, Icon, Input, } from 'react-native-elements'
 import { Formik } from 'formik'
 import { styles } from './styles'
 
 const SignupForm = props => {
+	const { userType, navigate } = props
+	const [ signup ] = useMutation(SIGNUP)
+
 	const intialValues = {
 		email: '',
 		password: '',
 		confirmPassword: '',
 		firstName: '',
-		lastNamne: '',
-		phonenumber: '',
+		lastName: '',
+		phoneNumber: '905-111-1111',
 	}
 
 	return (
 		<Formik
 			initialValues={intialValues}
-			onSubmit={(values, { setSubmitting }) => {
+			onSubmit={ async (values, { setSubmitting }) => {
 				try {
-					console.log('submitting! ', values)
+					const result = await signup({
+						variables: {input: {
+							email: values.email,
+							password: values.password,
+							firstName: values.firstName,
+							lastName: values.lastName,
+							phoneNumber: values.phoneNumber,
+							userType: userType,
+						}}
+					})
+					if (result.data.signup.message === 'success') {
+						navigate('ConfirmSignup')
+					}
 				} catch(err) {
 					throw err
 				} finally {

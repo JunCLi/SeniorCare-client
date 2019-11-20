@@ -6,12 +6,11 @@ import { styles } from './styles'
 import SignupForm from '../../../components/forms/signupForm/SignupForm'
 
 const Signup = props => {
-	const { signupType } = props.navigation.state.params
-	console.log(props.navigation.state.params)
+	const { userType } = props.navigation.state.params
 
 	return (
 		<KeyboardAvoidingView
-			behavior={Platform.OS === "ios" ? "padding" : null}
+			behavior={Platform.OS === "ios" ? "height" : null}
 			keyboardVerticalOffset={88}
 			style={styles.avoidKeyboard}
 		>
@@ -19,10 +18,10 @@ const Signup = props => {
 				<StatusBar backgroundColor={styles.statusBar.backgroundColor} barStyle='dark-content' />
 				<ScrollView style={styles.mainContainer} contentContainerStyle={styles.scrollViewFix}>
 					<View style={styles.introContainer}>
-						<Text style={styles.introText}>Sign up as a {signupType}</Text>
+						<Text style={styles.introText}>Sign up as a {userType}</Text>
 					</View>
 
-					<SignupForm />
+					<SignupForm navigate={props.navigation.navigate} userType={userType} />
 				</ScrollView>
 			</SafeAreaView>
 		</KeyboardAvoidingView>

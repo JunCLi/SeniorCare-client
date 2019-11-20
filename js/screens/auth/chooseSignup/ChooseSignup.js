@@ -10,7 +10,7 @@ import FamilyImage from '../../../assets/images/family-3x.png'
 
 const ChooseSignup = props => {
 	const goSignup = signupType => {
-		props.navigation.navigate('Signup', { signupType: signupType })
+		props.navigation.navigate('Signup', { userType: signupType })
 	}
 	
 	return (

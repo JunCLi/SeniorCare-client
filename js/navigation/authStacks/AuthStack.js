@@ -5,6 +5,7 @@ import Info from '../../screens/auth/info/Info'
 // import SignupStack from './SignupStack'
 import Signup from '../../screens/auth/signup/Signup'
 import ChooseSignup from '../../screens/auth/chooseSignup/ChooseSignup'
+import ConfirmSignup from '../../screens/auth/confirmSignup/ConfirmSignup'
 
 const AuthStack = createStackNavigator({
 	Info: {
@@ -27,6 +28,13 @@ const AuthStack = createStackNavigator({
 		screen: ChooseSignup,
 		navigationOptions: () => ({
 			title: 'Signup'
+		})
+	},
+
+	ConfirmSignup: {
+		screen: ConfirmSignup,
+		navigationOptions: () => ({
+			title: 'Confirm Signup'
 		})
 	},
 

@@ -1,5 +1,13 @@
 import gql from 'graphql-tag'
 
+export const SIGNUP = gql`
+	mutation signup($input: SignupObject!) {
+		signup(input: $input) {
+			message
+		}
+	}
+`
+
 export const LOGIN = gql`
 	mutation loginCaregiver {
 		login(input: {
