@@ -10,7 +10,7 @@ import GoogleIcon from '../../../assets/images/google-icon-3x.png'
 const Info = props => {
 
 	// TODO remove autoLink
-	props.navigation.navigate('Login')
+	// props.navigation.navigate('Login')
 
 	const goSignup = () => {
 		props.navigation.navigate('ChooseSignup')

@@ -26,9 +26,9 @@ const Signup = props => {
 	return (
 		<Formik
 			initialValues={intialValues}
-			onSubmit={ async (values, { setSubmitting }) => {
+			onSubmit={ (values, { setSubmitting }) => {
 				try {
-					const result = await signup({
+					const result = signup({
 						variables: {input: {
 							email: values.email,
 							password: values.password,
@@ -38,13 +38,14 @@ const Signup = props => {
 							userType: userType,
 						}}
 					})
+
 					if (result.data.signup.message === 'success') {
 						props.navigation.navigate('ConfirmSignup')
 					}
 				} catch(err) {
 					throw err
 				} finally {
-					setSubmitting(false)
+					if (this.isMounted) setSubmitting(false)
 				}
 			}}
 		>

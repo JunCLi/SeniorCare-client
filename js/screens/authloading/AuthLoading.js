@@ -23,13 +23,18 @@ const AuthLoading = props => {
 		props.navigation.navigate('App')
 	}
 
+	checkNav = () => {
+		const navParams = props.navigation.state.params
+		const loggedOut = navParams && navParams.loggedOut
+		const loggedIn = navParams && navParams.loggedIn
+		
+		setTimeout(() => !error && !loggedOut || loggedIn ? handleGoApp() : handleGoAuthentication(), 300)
+		
+	}
+
 	useEffect(() => {
 		if (!loading) {
-			const navParams = props.navigation.state.params
-			const loggedOut = navParams && navParams.loggedOut
-			const signedUp = navParams && navParams.user
-
-			!error && !loggedOut || signedUp ? handleGoApp() : handleGoAuthentication()
+			checkNav()
 		}
 	}, [data, loading, error])
 

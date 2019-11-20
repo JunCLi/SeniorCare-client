@@ -1,5 +1,8 @@
 import React, { useState } from 'react'
 
+import { useMutation } from '@apollo/react-hooks'
+import { LOGIN } from '../../../graphql/queries/authQueries' 
+
 import { Platform, KeyboardAvoidingView, SafeAreaView, ScrollView, StatusBar, Text, View } from 'react-native'
 import { Button } from 'react-native-elements'
 import { Formik } from 'formik'
@@ -9,6 +12,7 @@ import LoginForm from '../../../components/forms/loginForm/LoginForm'
 
 const Login = props => {
 	const [ forgetPassword, setForgetPassword ] = useState(false)
+	const [ login ] = useMutation(LOGIN)
 
 	const intialValues = {
 		email: '',
@@ -24,11 +28,20 @@ const Login = props => {
 			initialValues={intialValues}
 			onSubmit={ async (values, { setSubmitting }) => {
 				try {
-					
+					const result = await login({
+						variables: {input: {
+							email: values.email,
+							password: values.password,
+						}}
+					})
+
+					if (result.data.login.message === 'success') {
+						props.navigation.navigate('AuthLoading', { loggedIn: true })
+					}
 				} catch(err) {
 					throw err
 				} finally {
-					setSubmitting(false)
+					if (this.isMounted) setSubmitting(false)
 				}
 			}}
 		>
@@ -60,6 +73,10 @@ const Login = props => {
 								</View>
 
 								<LoginForm {...formikProps} />
+									{/* <Button
+										title='press'
+										onPress={() => console.log('this press')}
+									/> */}
 
 								<View style={styles.forgetPasswordContainer}>
 									<Button
@@ -71,7 +88,6 @@ const Login = props => {
 									{forgetPassword && <Text>This feature is not yet implemented</Text>}
 								</View>
 
-								
 							</ScrollView>
 						</SafeAreaView>
 
