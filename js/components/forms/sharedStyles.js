@@ -14,31 +14,10 @@ const inputFont = StyleSheet.create({
 	}
 })
 
-const button = StyleSheet.create({
-	disabled: {
-		backgroundColor: background.disabledGrey,
-	},
-
-	disabledText: {
-		color: font.white,
-	},
-
-	button: {
-		backgroundColor: background.blue,
-		paddingVertical: margin.vertical * 1.2, 
-	},
-})
-
 export const sharedStyles = StyleSheet.create({
-	...button,
-
-	mainContainer: {
-		flex: 1,
+	formContainer: {
 		marginTop: screenHeight / 16,
 		marginHorizontal: margin.horizontal * 1.5,
-	},
-	
-	formContainer: {
 		backgroundColor: background.white,
 	},
 

@@ -4,33 +4,24 @@ import { screenHeight, screenWidth, baseFont, margin } from '../../../styleSetti
 import { font, background } from '../../../styleSettings/colours'
 import { fontType } from '../../../styleSettings/fonts'
 
-import { generalStyles } from '../../../styleSettings/generalStyles'
+import { generalStyles, submitButton } from '../../../styleSettings/generalStyles'
 
 export const styles = StyleSheet.create({
 	...generalStyles,
-
-	introContainer: {
-		marginTop: screenHeight / 16,
-		marginHorizontal: margin.horizontal * 1.5,
-	},
-
-	introText: {
-		color: font.blue,
-		fontFamily: fontType.gothamBold,
-		fontSize: baseFont * 2,
-		borderRadius: 0,
-	},
+	...submitButton,
 
 	forgetPasswordContainer: {
-
+		marginVertical: margin.vertical,
+		marginHorizontal: margin.horizontal * 1.5,
+		alignItems: 'center',
 	},
 
-	button: {
+	forgotButton: {
 		backgroundColor: 'transparent',
 		width: screenWidth / 3,
 	},
 
-	buttonText: {
+	forgotButtonText: {
 		color: font.lightBlue,
 		fontFamily: fontType.sfpro,
 		fontSize: baseFont * 0.9,
