@@ -1,64 +1,43 @@
-import React from 'react'
-
-import { useMutation, useQuery } from '@apollo/react-hooks'
-import { LOGIN, LOGOUT, GET_LOGGED_USER, DOING_STUFF_TO_CACHE, CHECK_STUFF, CHECK_THING } from '../../../graphql/queries/authQueries'
+import React, { useState } from 'react'
 
 import { Platform, KeyboardAvoidingView, SafeAreaView, ScrollView, StatusBar, Text, View } from 'react-native'
 import { Button } from 'react-native-elements'
+import { styles } from './styles'
 
+import LoginForm from '../../../components/forms/loginForm/LoginForm'
 
 const Login = props => {
-	const [ login ] = useMutation(LOGIN)
-	const [ logout ] = useMutation(LOGOUT)
-	const [ updateUser ] = useMutation(DOING_STUFF_TO_CACHE) 
-	const { loading, error, data, refetch } = useQuery(GET_LOGGED_USER)
-	const { loading: cloading, error: cerror, data: cdata, refetch: crefetch} = useQuery(CHECK_STUFF)
-	const { loading: dloading, error: derror, data: ddata, refetch: drefetch} = useQuery(CHECK_THING)
+	const [ forgetPassword, setForgetPassword ] = useState(false)
 
-	const handleLogin = () => {
-		login()
+	const handleForgotPassword = () => {
+		setForgetPassword(!forgetPassword)
 	}
 
 	return (
 		<KeyboardAvoidingView
-			behavior={Platform.OS === 'ios' ? 'padding' : null}
-			style={{flex: 1}}
+			behavior={Platform.OS === "ios" ? "height" : null}
+			keyboardVerticalOffset={88}
+			style={styles.avoidKeyboard}
 		>
-			<SafeAreaView>
-				<StatusBar barStyle='dark-content' />
-				<View>
-					<Text>Login</Text>
+			<SafeAreaView style={styles.backgroundBlue}>
+				<StatusBar backgroundColor={styles.statusBar.backgroundColor} barStyle='dark-content' />
+				<ScrollView style={styles.mainContainer} contentContainerStyle={styles.scrollViewFix}>
+					<View style={styles.introContainer}>
+						<Text style={styles.introText}>Welcome Back!</Text>
+					</View>
 
-					<Button
-						title='login'
-						onPress={handleLogin}
-					/>
+					<LoginForm navigate={props.navigation.navigate} />
 
-					<Button
-						title='get logged user'
-						onPress={() => {console.log(data)}}
-					/>
-
-					<Button
-						title='logout'
-						onPress={() => logout()}
-					/>
-
-					<Button
-						title='doing stuff to cache'
-						onPress={() => updateUser()}
-					/>
-
-					<Button
-						title='check local user stuff'
-						onPress={() => {console.log('cdata: ', cdata)}}
-					/>
-
-					<Button
-						title='check other thing'
-						onPress={() => {console.log('ddata', ddata)}}
-					/>
-				</View>
+					<View stlye={styles.forgetPasswordContainer}>
+						<Button
+							title='Forgot password?'
+							onPress={handleForgotPassword}
+							buttonStyle={styles.button}
+							titleStyle={styles.buttonText}
+						/>
+						{forgetPassword && <Text>This feature is not yet implemented</Text>}
+					</View>
+				</ScrollView>
 			</SafeAreaView>
 		</KeyboardAvoidingView>
 	)
