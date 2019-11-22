@@ -13,8 +13,10 @@ import CaregiverList from '../../../components/listItem/caregiversList/Caregiver
 const Find = props => {
 	const { loading, error, data } = useQuery(FIND_ALL_CAREGIVERS)
 	
-	// console.log('data?', data && data.getAllCaregivers)
 	const allCaregivers = data && data.getAllCaregivers
+
+	// TODO remove
+	props.navigation.navigate('Filter')
 
 	return (
 		<SafeAreaView style={styles.backgroundBlue}>
@@ -35,6 +37,7 @@ Find.navigationOptions = screenProps => ({
 		type='ionicon'
 		iconStyle={styles.filterIcon}
 		containerStyle={styles.filterIconContainer}
+		onPress={() => screenProps.navigation.navigate('Filter')}
 	/>
 })
 

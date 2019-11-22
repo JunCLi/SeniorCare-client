@@ -2,8 +2,8 @@ import React from 'react'
 import moment from 'moment'
 
 import { Text, View } from 'react-native'
-import { Icon, Image, ListItem } from 'react-native-elements'
-import { iconStyles, styles } from './styles'
+import { Icon, Image } from 'react-native-elements'
+import { styles } from './styles'
 
 import RatingStars from '../../ratings/ratingStars/RatingStars'
 import RatingNumber from '../../ratings/ratingNumber/RatingNumber'
