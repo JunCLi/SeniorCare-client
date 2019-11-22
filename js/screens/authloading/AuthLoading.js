@@ -27,8 +27,6 @@ const AuthLoading = props => {
 		const navParams = props.navigation.state.params
 		const loggingOut = navParams && navParams.loggingOut
 		const loggingIn = navParams && navParams.loggingIn
-		
-		console.log('nav params: ', navParams, 'loggingOut: ', loggingOut, 'loggingIn: ', loggingIn)
 
 		setTimeout(() => handleAppRouting(), 300)
 	}

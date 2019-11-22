@@ -1,62 +1,69 @@
 import React from 'react'
+import moment from 'moment'
 
 import { Text, View } from 'react-native'
 import { Icon, Image, ListItem } from 'react-native-elements'
-import { starStyles, styles } from './styles'
+import { iconStyles, styles } from './styles'
+
+import RatingStars from '../../ratings/ratingStars/RatingStars'
+import RatingNumber from '../../ratings/ratingNumber/RatingNumber'
 
 const CaregiverList = props => {
 	const { userDetails, caregiverDetails } = props
 
-	console.log('rating? ', caregiverDetails.average_rating)
-		
-	const mapRatingToStars = averageRating => {
-		const ratingArray = []
-		for (let i = 0; i < 5; i++) {
-			console.log('star?', averageRating - i)
-			if (averageRating - i < 0.25) ratingArray.push('star-o')
-			else if (averageRating - i < 0.75) ratingArray.push('star-half-empty')
-			else ratingArray.push('star')
-		}
-		return ratingArray
+	const calcAge = birthdate => {
+		return moment().diff(moment(birthdate, 'YYYYMMDD'), 'years')
 	}
-
+	
 	return (
 		<View style={styles.mainContainer}>
-			{/* <View style={styles.imageContainer}>
-
-			</View> */}
 			<Image
 				source={{uri: userDetails.avatar}}
 				style={styles.avatar}
 			/>
-			<View style={styles.detailsContainer}>
+			<View style={styles.infoContainer}>
 				<View style={styles.nameContainer}>
 					<Text style={styles.name}>{userDetails.first_name} {userDetails.last_name}</Text>
 				</View>
 
 				<View style={styles.ratingsLocationContainer}>
 					<View style={styles.ratingsContainer}>
-						{/* {caregiverDetails.averageRating} */}
-						{mapRatingToStars(caregiverDetails.average_rating).map((rating, index) => (
-							<Icon
-								key={index}
-								type='font-awesome'
-								name={rating}
-								color={starStyles.colour}
-								size={starStyles.size}
-							/>
-						))}
+						<RatingStars averageRating={caregiverDetails.average_rating} />
+						<RatingNumber averageRating={caregiverDetails.average_rating} />
+					</View>
+					<View style={styles.locationContainer}>
+						<Text style={styles.location}>{userDetails.location}</Text>
 					</View>
 				</View>
 				
-				<View style={styles.experienceRateContainer}> 
-					<Text></Text>
-
+				<View style={styles.outerDetailsContainer}> 
+					<View style={styles.experienceContainer}>
+						<Icon
+							name='suitcase'
+							type='font-awesome'
+							iconStyle={styles.icon}
+						/>
+						<Text style={styles.details}>{caregiverDetails.years_experience} years experience</Text>
+					</View>
+					<View style={styles.rateContainer}>
+						<Icon
+							name='ios-timer'
+							type='ionicon'
+							iconStyle={styles.rateIcon}
+						/>
+						<Text style={styles.details}>From ${caregiverDetails.hourly_rate}/hour</Text>
+					</View>
 				</View>
 
-				<View style={styles.ageAvailabilityContainer}>
-					
-
+				<View style={styles.outerDetailsContainer}>
+					<View style={styles.ageContainer}>
+						<Icon
+							name='cake'
+							type='material'
+							iconStyle={styles.ageIcon}
+						/>
+						<Text style={styles.details}>{calcAge(caregiverDetails.birthdate)} years old</Text>
+					</View>
 				</View>
 			</View>
 		</View>
