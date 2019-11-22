@@ -18,7 +18,7 @@ export const sharedStyles = StyleSheet.create({
 	formContainer: {
 		marginTop: screenHeight / 16,
 		marginHorizontal: margin.horizontal * 1.5,
-		backgroundColor: background.white,
+		backgroundColor: background.translucentWhite,
 	},
 
 	inputViewContainer: {

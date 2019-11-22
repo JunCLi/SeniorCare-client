@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native'
 
-import { screenHeight, margin, baseFont } from './screensizeSettings'
+import { screenHeight, margin, baseFont, screenWidth } from './screensizeSettings'
 import { background, font } from './colours'
 import { fontType } from './fonts'
 
@@ -19,7 +19,7 @@ export const generalStyles = StyleSheet.create({
 		backgroundColor: background.grey,
 	},
 
-	scrollViewFix: {
+	scrollViewContainer: {
 		flexGrow: 1,
 	},
 	
@@ -67,3 +67,4 @@ export const submitButton = StyleSheet.create({
 		color: font.white,
 	},
 })
+

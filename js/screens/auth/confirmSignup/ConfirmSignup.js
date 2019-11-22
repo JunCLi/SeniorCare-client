@@ -12,7 +12,7 @@ const ConfirmSignup = props => {
 	return (
 		<SafeAreaView style={styles.backgroundBlue}>
 			<StatusBar backgroundColor={styles.statusBar.backgroundColor} barStyle='dark-content' />
-			<ScrollView style={styles.mainContainer} contentContainerStyle={styles.scrollViewFix}>
+			<ScrollView style={styles.mainContainer} contentContainerStyle={styles.scrollViewContainer}>
 				<View style={styles.introContainer}>
 					<Text style={styles.introText}>Confirm Email</Text>
 				</View>

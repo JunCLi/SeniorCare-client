@@ -16,7 +16,7 @@ const ChooseSignup = props => {
 	return (
 		<SafeAreaView style={styles.background}>
 			<StatusBar backgroundColor={styles.statusBar.backgroundColor} barStyle='dark-content' />
-			<ScrollView style={styles.mainContainer} contentContainerStyle={styles.scrollViewFix}>
+			<ScrollView style={styles.mainContainer} contentContainerStyle={styles.scrollViewContainer}>
 				<View style={styles.introContainer}>
 					<View style={styles.welcomeContainer}>
 						<Image

@@ -36,7 +36,7 @@ const Login = props => {
 					})
 
 					if (result.data.login.message === 'success') {
-						props.navigation.navigate('AuthLoading', { loggedIn: true })
+						props.navigation.navigate('AuthLoading', { loggingIn: true })
 					}
 				} catch(err) {
 					throw err
@@ -67,7 +67,7 @@ const Login = props => {
 					>
 						<SafeAreaView style={styles.backgroundBlue}>
 							<StatusBar backgroundColor={styles.statusBar.backgroundColor} barStyle='dark-content' />
-							<ScrollView style={styles.mainContainer} contentContainerStyle={styles.scrollViewFix}>
+							<ScrollView style={styles.mainContainer} contentContainerStyle={styles.scrollViewContainer}>
 								<View style={styles.introContainer}>
 									<Text style={styles.introText}>Welcome Back!</Text>
 								</View>

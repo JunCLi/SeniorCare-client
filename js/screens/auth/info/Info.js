@@ -4,13 +4,10 @@ import { SafeAreaView, ScrollView, StatusBar, Text, TouchableOpacity, View } fro
 import { Button, Image } from 'react-native-elements'
 import { styles } from './styles'
 
-import InfoScreeningIcon from '../../../assets/images/info-screening-3x.png'
 import GoogleIcon from '../../../assets/images/google-icon-3x.png'
+import InfoSlides from './infoSlides/InfoSlides'
 
 const Info = props => {
-
-	// TODO remove autoLink
-	// props.navigation.navigate('Login')
 
 	const goSignup = () => {
 		props.navigation.navigate('ChooseSignup')
@@ -23,32 +20,9 @@ const Info = props => {
 	return (
 		<SafeAreaView style={styles.background}>
 			<StatusBar backgroundColor={styles.statusBar.backgroundColor} barStyle='dark-content' />
-			<ScrollView style={styles.mainContainer} contentContainerStyle={styles.scrollViewFix}>
-				<View style={styles.topContainer}>
-					<View style={styles.iconOuterContainer}>
-						<View style={styles.iconInnerContainer}>
+			<ScrollView style={styles.mainContainer} contentContainerStyle={styles.scrollViewContainer}>
 
-							<View style={styles.infoScreeningContainer}>
-								<Image
-									source={InfoScreeningIcon}
-									style={styles.infoScreeningLogo}
-								/>
-							</View>
-
-						</View>
-					</View>
-
-					<View style={styles.infoContainer}>
-						<View style={styles.textContainer}>
-							<Text style={styles.title}>Pre-Screened</Text>
-							<Text style={styles.title}>Caregivers</Text>
-						</View>
-						<View style={styles.textContainer}>
-							<Text style={styles.infoText}>No caregiver is listed on our marketplace until proof of qualifications and background checks are verified</Text>
-						</View>
-					</View>
-
-				</View>
+				<InfoSlides />
 
 				<View style={styles.bottomContainer}>
 					<View style={styles.signupAndLoginContainer}>

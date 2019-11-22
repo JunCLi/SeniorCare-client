@@ -26,9 +26,9 @@ const Signup = props => {
 	return (
 		<Formik
 			initialValues={intialValues}
-			onSubmit={ (values, { setSubmitting }) => {
+			onSubmit={ async (values, { setSubmitting }) => {
 				try {
-					const result = signup({
+					const result = await signup({
 						variables: {input: {
 							email: values.email,
 							password: values.password,
@@ -71,7 +71,7 @@ const Signup = props => {
 					>
 						<SafeAreaView style={styles.backgroundBlue}>
 							<StatusBar backgroundColor={styles.statusBar.backgroundColor} barStyle='dark-content' />
-							<ScrollView style={styles.mainContainer} contentContainerStyle={styles.scrollViewFix}>
+							<ScrollView style={styles.mainContainer} contentContainerStyle={styles.scrollViewContainer}>
 								<View style={styles.introContainer}>
 									<Text style={styles.introText}>Sign up as a {userType}</Text>
 								</View>

@@ -41,13 +41,13 @@ export const CHECK_AUTHENTICATION = gql`
 // 	}
 // `
 
-// export const LOGOUT = gql`
-// 	mutation logout {
-// 		logout {
-// 			message
-// 		}
-// 	}
-// `
+export const LOGOUT = gql`
+	mutation logout {
+		logout {
+			message
+		}
+	}
+`
 
 // export const DOING_STUFF_TO_CACHE = gql`
 // 	mutation updateUser {
