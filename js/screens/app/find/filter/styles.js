@@ -41,18 +41,7 @@ const buttonStyles = StyleSheet.create({
 	}
 })
 
-export const styles = StyleSheet.create({
-	...generalStyles,
-	...submitButton,
-	...buttonStyles,
-	...clearAll,
-
-	mainContainer: {
-		...generalStyles.mainContainer,
-		marginHorizontal: margin.horizontal,
-		paddingVertical: margin.vertical * 2,
-	},
-
+export const sharedFilterFindStyles = StyleSheet.create({
 	optionsContainer: {
 		marginTop: margin.vertical * 2,
 		marginBottom: margin.vertical * 1.5,
@@ -63,5 +52,19 @@ export const styles = StyleSheet.create({
 		fontFamily: fontType.sfpro,
 		fontSize: baseFont * 1.1,
 		fontWeight: '500',
-	}
+	},
+})
+
+export const styles = StyleSheet.create({
+	...generalStyles,
+	...submitButton,
+	...buttonStyles,
+	...clearAll,
+	...sharedFilterFindStyles,
+
+	mainContainer: {
+		...generalStyles.mainContainer,
+		marginHorizontal: margin.horizontal,
+		paddingVertical: margin.vertical * 2,
+	},
 })

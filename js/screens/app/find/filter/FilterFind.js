@@ -1,8 +1,11 @@
 import React, { useState } from 'react'
 
 import { SafeAreaView, StatusBar, ScrollView, View, Text } from 'react-native'
-import { Button } from 'react-native-elements'
+import { Button, Slider } from 'react-native-elements'
 import { styles } from './styles'
+
+import HourlyRate from './hourlyRate/HourlyRate'
+import YearsExperience from './yearsExperience/YearsExperience'
 
 const FilterFind = props => {
 	const { clearSelection = false } = props
@@ -62,12 +65,8 @@ const FilterFind = props => {
 							/>
 						</View>
 					</View>
-					<View style={styles.optionsContainer}>
-						<Text style={styles.title}>Maximum hourly rate</Text>
-					</View>
-					<View style={styles.optionsContainer}>
-						<Text style={styles.title}>Minimum years of experience</Text>
-					</View>
+					<HourlyRate />
+					<YearsExperience />
 
 				</ScrollView>
 			</SafeAreaView>
