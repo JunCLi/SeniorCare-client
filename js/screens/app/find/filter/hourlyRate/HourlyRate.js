@@ -6,11 +6,7 @@ import { styles } from './styles'
 import FilterSlider from '../../../../../components/sliders/filterSlider/FilterSlider'
 
 const HourlyRate = props => {
-	const [ hourlyRate, setHourlyRate ] = useState({
-		value: 20,
-		max: 75,
-		min: 14,
-	})
+	const { hourlyRate, setHourlyRate } = props 
 
 	const handleHourlyRate = value => {
 		setHourlyRate({
@@ -19,7 +15,6 @@ const HourlyRate = props => {
 		})
 	}
 
-	// const { hourlyRate, handleHourlyRate } = props 
 
 	const handleDisplayValue = value => {
 		return `$${Math.round(value)}`

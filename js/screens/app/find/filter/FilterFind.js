@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 import { SafeAreaView, StatusBar, ScrollView, View, Text } from 'react-native'
 import { Button, Slider } from 'react-native-elements'
@@ -6,67 +6,70 @@ import { styles } from './styles'
 
 import HourlyRate from './hourlyRate/HourlyRate'
 import YearsExperience from './yearsExperience/YearsExperience'
+import Gender from './gender/Gender'
+import Availability from './availability/Availability'
 
 const FilterFind = props => {
-	const { clearSelection = false } = props
+	const clear =  props.navigation.getParam('clear')
 
-	console.log('clear selection? ', clearSelection)
+	const [ gender, setGender ] = useState('')
+	const [ availability, setAvailability ] = useState('')
+	const [ hourlyRate, setHourlyRate ] = useState({
+		value: 20,
+		max: 75,
+		min: 14,
+	})
+	const [ yearsExperience, setYearsExperience ] = useState({
+		value: 5,
+		max: 20,
+		min: 0,
+	})
 
-	const [ clear, setClear ] = useState(clearSelection)
+	const resetDefault = () => {
+		setGender('')
+		setAvailability('')
+		setHourlyRate({
+			value: 20,
+			max: 75,
+			min: 14,
+		})
+		setYearsExperience({
+			value: 5,
+			max: 20,
+			min: 0,
+		})
+	}
 
-	// const handleClear = () => {
-	// 	console.log('clearing all!!!!')
-	// 	setClear(true)
-	// }
+	useEffect(() => {
+		if (clear) {
+			resetDefault()
+			props.navigation.setParams({clear: false})
+		}
+	}, [clear])
 
 	return (
 		<>
 			<SafeAreaView style={styles.backgroundBlue}>
 				<StatusBar backgroundColor={styles.statusBar.backgroundColor} barStyle='dark-content' />
 				<ScrollView style={styles.mainContainer} contentContainerStyle={styles.scrollViewContainer}>
-					<View style={styles.optionsContainer}>
-						<Text style={styles.title}>Gender</Text>
-						<View style={styles.buttonsContainer}>
-							<Button
-								title='Female'
-								buttonStyle={styles.button}
-								titleStyle={styles.buttonTitle}
-								onPress={() => console.log('clear selection? ', clearSelection)}
-							/>
-							<Button
-								title='Male'
-								buttonStyle={styles.button}
-								titleStyle={styles.buttonTitle}
-							/>
-							<Button
-								title='Other'
-								buttonStyle={styles.button}
-								titleStyle={styles.buttonTitle}
-							/>
-							<Button
-								title='No Preference'
-								buttonStyle={styles.button}
-								titleStyle={styles.buttonTitle}
-							/>
-						</View>
-					</View>
-					<View style={styles.optionsContainer}>
-						<Text style={styles.title}>Availabiltiy</Text>
-						<View style={styles.buttonsContainer}>
-							<Button
-								title='Live in'
-								buttonStyle={styles.button}
-								titleStyle={styles.buttonTitle}
-							/>
-							<Button
-								title='Live out'
-								buttonStyle={styles.button}
-								titleStyle={styles.buttonTitle}
-							/>
-						</View>
-					</View>
-					<HourlyRate />
-					<YearsExperience />
+					<Gender
+						gender={gender}
+						setGender={setGender}
+					/>
+					
+					<Availability
+						availability={availability}
+						setAvailability={setAvailability}
+					/>
+
+					<HourlyRate
+						hourlyRate={hourlyRate}
+						setHourlyRate={setHourlyRate}
+					/>
+					<YearsExperience
+						yearsExperience={yearsExperience}
+						setYearsExperience={setYearsExperience}
+					/>
 
 				</ScrollView>
 			</SafeAreaView>
@@ -86,14 +89,16 @@ const FilterFind = props => {
 }
 
 FilterFind.navigationOptions = screenProps => {
-	// const [ clear, setClear ] = useState(clearSelection)
-	
+	const handleChangeClear = () => {
+		screenProps.navigation.setParams({clear: true})
+	}
+
 	return {
 		headerRight: <Button
 			title='Clear All'
 			buttonStyle={styles.clearAllButton}
 			titleStyle={styles.clearAllTitle}
-			onPress={() => screenProps.clearSelection = !screenProps.clearSelection}
+			onPress={handleChangeClear}
 		/>
 	}
 }

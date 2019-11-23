@@ -18,13 +18,7 @@ const clearAll = StyleSheet.create({
 	},
 })
 
-const buttonStyles = StyleSheet.create({
-	buttonsContainer: {
-		flexDirection: 'row',
-		flexWrap: 'wrap',
-		justifyContent: 'space-between',
-	},
-
+const sharedButtonStyles = {
 	button: {
 		backgroundColor: background.white,
 		borderRadius: 30,
@@ -35,10 +29,36 @@ const buttonStyles = StyleSheet.create({
 		width: screenWidth / 2 - margin.horizontal * 1.5,
 	},
 
-	buttonTitle: {
+	title: {
 		color: font.blue,
 		fontFamily: fontType.sfpro,
 	}
+}
+
+export const buttonStyles = StyleSheet.create({
+	buttonsContainer: {
+		flexDirection: 'row',
+		flexWrap: 'wrap',
+		justifyContent: 'space-between',
+	},
+
+	button: {
+		...sharedButtonStyles.button,
+	},
+
+	buttonTitle: {
+		...sharedButtonStyles.title
+	},
+
+	selectedButton: {
+		...sharedButtonStyles.button,
+		backgroundColor: background.blue,
+	},
+
+	selectedButtonTitle: {
+		...sharedButtonStyles.title,
+		color: font.white,
+	},
 })
 
 export const sharedFilterFindStyles = StyleSheet.create({

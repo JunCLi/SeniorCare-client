@@ -6,11 +6,7 @@ import { styles } from './styles'
 import FilterSlider from '../../../../../components/sliders/filterSlider/FilterSlider'
 
 const YearsExperience = props => {
-	const [ yearsExperience, setYearsExperience ] = useState({
-		value: 5,
-		max: 20,
-		min: 0,
-	})
+	const { yearsExperience, setYearsExperience } = props
 
 	const handleYearsExperience = value => {
 		setYearsExperience({

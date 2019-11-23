@@ -26,3 +26,11 @@ export const FIND_ALL_CAREGIVERS = gql`
 		}
 	}
 `
+
+// export const FILTER_FIND_CAREGIVERS = gql`
+// 	mutation filterFindCaregivers {
+// 		filterFindCaregivers @client {
+
+// 		}
+// 	}
+// `
