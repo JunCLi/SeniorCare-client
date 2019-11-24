@@ -14,11 +14,11 @@ const Availability = props => {
 	const buttonArray = [
 		{
 			title: 'Live in',
-			value: 'liveIn',
+			value: 'livein',
 		},
 		{
 			title: 'Live out',
-			value: 'liveOut',
+			value: 'liveout',
 		},
 	]
 

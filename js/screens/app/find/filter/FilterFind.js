@@ -15,13 +15,25 @@ const FilterFind = props => {
 	const [ gender, setGender ] = useState('')
 	const [ availability, setAvailability ] = useState('')
 	const [ hourlyRate, setHourlyRate ] = useState(20)
-	const [ yearsExperience, setYearsExperience ] = useState(5)
+	const [ yearsExperience, setYearsExperience ] = useState(0)
+
+	const handleSubmit = () => {
+		const filterCaregivers = {}
+		if (gender) filterCaregivers.gender = gender
+		if (availability) filterCaregivers.availability = availability
+		if (hourlyRate) filterCaregivers.hourlyRate = Math.round(hourlyRate)
+		if (yearsExperience) filterCaregivers.yearsExperience = Math.round(yearsExperience)
+
+		props.navigation.navigate('Find', {
+			filterCaregivers,
+		})
+	}
 
 	const resetDefault = () => {
 		setGender('')
 		setAvailability('')
 		setHourlyRate(20)
-		setYearsExperience(5)
+		setYearsExperience(0)
 	}
 
 	useEffect(() => {
@@ -62,7 +74,7 @@ const FilterFind = props => {
 				<Button
 					title='See Results'
 					buttonStyle={styles.submitButton}
-					// onPress={handleSubmit}
+					onPress={handleSubmit}
 					// disabled={isSubmitting}
 					// disabledStyle={styles.submitDisabled}
 					// disabledTitleStyle={styles.submitDisabledText}

@@ -6,7 +6,7 @@ import { styles } from './styles'
 import FilterSlider from '../../../../../components/sliders/filterSlider/FilterSlider'
 
 const YearsExperience = props => {
-	const { yearsExperience, setYearsExperience } = props
+	const { yearsExperience = 5, setYearsExperience } = props
 
 	const sliderProps = {
 		max: 20,

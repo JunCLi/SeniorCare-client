@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { useQuery } from '@apollo/react-hooks'
-import { FIND_ALL_CAREGIVERS } from '../../../graphql/queries/caregiverQueries'
+import { TEST_FIND_ALL_CAREGIVERS, FIND_ALL_CAREGIVERS } from '../../../graphql/queries/caregiverQueries'
 
 import { SafeAreaView, ScrollView, StatusBar, Text, TouchableOpacity, View } from 'react-native'
 import { Button, Icon, Image } from 'react-native-elements'
@@ -11,12 +11,23 @@ import OrangeArc from '../../../components/images/orangeArc/OrangeArc'
 import CaregiverList from '../../../components/listItem/caregiversList/CaregiversList'
 
 const Find = props => {
-	const { loading, error, data } = useQuery(FIND_ALL_CAREGIVERS)
+	const navParams = props.navigation.state.params
+	const { filterCaregivers } = navParams ? navParams : {}
+
+	const { loading, error, data, refetch } = useQuery(FIND_ALL_CAREGIVERS, {
+		variables: {input: {
+			...filterCaregivers
+		}}
+	})
 	
 	const allCaregivers = data && data.getAllCaregivers
 
-	// TODO remove
-	props.navigation.navigate('Filter')
+	// const test = () => {
+	// 	refetch()
+
+	// }
+
+
 
 	return (
 		<SafeAreaView style={styles.backgroundBlue}>
@@ -27,6 +38,11 @@ const Find = props => {
 					<CaregiverList key={caregiver.user_id} {...caregiver} />
 				))}
 			</ScrollView>
+
+			{/* <Button
+				title='test'
+				onPress={test}
+			/> */}
 		</SafeAreaView>
 	)
 }
