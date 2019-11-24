@@ -4,8 +4,8 @@ import { screenWidth, margin, baseFont } from '../../../styleSettings/screensize
 import { font } from '../../../styleSettings/colours'
 import { fontType } from '../../../styleSettings/fonts'
 
-export const dynamicStyles = sliderProps => {
-	const { value, max, min, valueWidth = 37 } = sliderProps
+export const dynamicStyles = (sliderProps, value) => {
+	const { max, min, valueWidth = 37 } = sliderProps
 
 	const position = value - min
 	const range = max - min

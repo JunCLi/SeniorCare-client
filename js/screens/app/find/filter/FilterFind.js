@@ -14,30 +14,14 @@ const FilterFind = props => {
 
 	const [ gender, setGender ] = useState('')
 	const [ availability, setAvailability ] = useState('')
-	const [ hourlyRate, setHourlyRate ] = useState({
-		value: 20,
-		max: 75,
-		min: 14,
-	})
-	const [ yearsExperience, setYearsExperience ] = useState({
-		value: 5,
-		max: 20,
-		min: 0,
-	})
+	const [ hourlyRate, setHourlyRate ] = useState(20)
+	const [ yearsExperience, setYearsExperience ] = useState(5)
 
 	const resetDefault = () => {
 		setGender('')
 		setAvailability('')
-		setHourlyRate({
-			value: 20,
-			max: 75,
-			min: 14,
-		})
-		setYearsExperience({
-			value: 5,
-			max: 20,
-			min: 0,
-		})
+		setHourlyRate(20)
+		setYearsExperience(5)
 	}
 
 	useEffect(() => {

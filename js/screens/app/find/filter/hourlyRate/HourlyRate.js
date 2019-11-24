@@ -8,13 +8,14 @@ import FilterSlider from '../../../../../components/sliders/filterSlider/FilterS
 const HourlyRate = props => {
 	const { hourlyRate, setHourlyRate } = props 
 
-	const handleHourlyRate = value => {
-		setHourlyRate({
-			...hourlyRate,
-			value: value,
-		})
+	const sliderProps = {
+		max: 75,
+		min: 14,
 	}
 
+	const handleHourlyRate = value => {
+		setHourlyRate(value)
+	}
 
 	const handleDisplayValue = value => {
 		return `$${Math.round(value)}`
@@ -25,8 +26,9 @@ const HourlyRate = props => {
 			<Text style={styles.title}>Maximum hourly rate</Text>
 			<Text style={styles.hourlyRateWarning}>*Minimum wage varies per province/territory in Canada</Text>
 			<FilterSlider
-				sliderProps={hourlyRate}
-				handleOnChange={handleHourlyRate}
+				initialValue={hourlyRate}
+				sliderProps={sliderProps}
+				handleFinalValue={handleHourlyRate}
 				handleDisplayValue={handleDisplayValue}
 				displayMin={true}
 			/>

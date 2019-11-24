@@ -8,11 +8,13 @@ import FilterSlider from '../../../../../components/sliders/filterSlider/FilterS
 const YearsExperience = props => {
 	const { yearsExperience, setYearsExperience } = props
 
+	const sliderProps = {
+		max: 20,
+		min: 0,
+	}
+
 	const handleYearsExperience = value => {
-		setYearsExperience({
-			...yearsExperience,
-			value: value,
-		})
+		setYearsExperience(value)
 	}
 
 	const handleDisplayValue = value => {
@@ -23,9 +25,12 @@ const YearsExperience = props => {
 		<View style={styles.optionsContainer}>
 			<Text style={styles.title}>Minimum years of experience</Text>
 			<FilterSlider
-				sliderProps={yearsExperience}
-				handleOnChange={handleYearsExperience}
+				initialValue={yearsExperience}
+				sliderProps={sliderProps}
+				handleFinalValue={handleYearsExperience}
 				handleDisplayValue={handleDisplayValue}
+				// sliderProps={yearsExperience}
+				// handleChangeValue={handleYearsExperience}
 				displayMin={false}
 			/>
 		</View>
