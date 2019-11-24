@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { useQuery } from '@apollo/react-hooks'
-import { TEST_FIND_ALL_CAREGIVERS, FIND_ALL_CAREGIVERS } from '../../../graphql/queries/caregiverQueries'
+import { GET_CAREGIVER_FILTER, FIND_ALL_CAREGIVERS } from '../../../graphql/queries/caregiverQueries'
 
 import { SafeAreaView, ScrollView, StatusBar, Text, TouchableOpacity, View } from 'react-native'
 import { Button, Icon, Image } from 'react-native-elements'
@@ -11,23 +11,24 @@ import OrangeArc from '../../../components/images/orangeArc/OrangeArc'
 import CaregiverList from '../../../components/listItem/caregiversList/CaregiversList'
 
 const Find = props => {
-	const navParams = props.navigation.state.params
-	const { filterCaregivers } = navParams ? navParams : {}
+	const { data: testData } = useQuery(GET_CAREGIVER_FILTER)
+	const { __typename, ...filterProperties} = testData ? testData.getCaregiverFilter : {}
+	
+	const filterObjectContructor = filterParam => {
+		const filter = {}
+		if (filterParam.gender) filter.gender = filterParam.gender
+		if (filterParam.availability) filter.availability = filterParam.availability
+		if (filterParam.hourlyRate) filter.hourlyRate = Math.round(filterParam.hourlyRate)
+		if (filterParam.yearsExperience) filter.yearsExperience = Math.round(filterParam.yearsExperience)
+
+		return filter
+	}
 
 	const { loading, error, data, refetch } = useQuery(FIND_ALL_CAREGIVERS, {
-		variables: {input: {
-			...filterCaregivers
-		}}
+		variables: {input: filterObjectContructor(filterProperties)}
 	})
-	
+
 	const allCaregivers = data && data.getAllCaregivers
-
-	// const test = () => {
-	// 	refetch()
-
-	// }
-
-
 
 	return (
 		<SafeAreaView style={styles.backgroundBlue}>
@@ -38,11 +39,6 @@ const Find = props => {
 					<CaregiverList key={caregiver.user_id} {...caregiver} />
 				))}
 			</ScrollView>
-
-			{/* <Button
-				title='test'
-				onPress={test}
-			/> */}
 		</SafeAreaView>
 	)
 }

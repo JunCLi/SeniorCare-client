@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react'
 
+import { useMutation, useQuery } from '@apollo/react-hooks'
+import { SAVE_CAREGIVER_FILTER, GET_CAREGIVER_FILTER } from '../../../../graphql/queries/caregiverQueries'
+
 import { SafeAreaView, StatusBar, ScrollView, View, Text } from 'react-native'
 import { Button, Slider } from 'react-native-elements'
 import { styles } from './styles'
@@ -11,28 +14,32 @@ import Availability from './availability/Availability'
 
 const FilterFind = props => {
 	const clear =  props.navigation.getParam('clear')
+	const [ saveCaregiverFilter ] = useMutation(SAVE_CAREGIVER_FILTER)
+	const { data } = useQuery(GET_CAREGIVER_FILTER)
+	const defaultCaregiverFilter = data.getCaregiverFilter
 
-	const [ gender, setGender ] = useState('')
-	const [ availability, setAvailability ] = useState('')
-	const [ hourlyRate, setHourlyRate ] = useState(20)
-	const [ yearsExperience, setYearsExperience ] = useState(0)
+	const [ gender, setGender ] = useState(defaultCaregiverFilter.gender)
+	const [ availability, setAvailability ] = useState(defaultCaregiverFilter.availability)
+	const [ hourlyRate, setHourlyRate ] = useState(defaultCaregiverFilter.hourlyRate)
+	const [ yearsExperience, setYearsExperience ] = useState(defaultCaregiverFilter.yearsExperience)
 
 	const handleSubmit = () => {
-		const filterCaregivers = {}
-		if (gender) filterCaregivers.gender = gender
-		if (availability) filterCaregivers.availability = availability
-		if (hourlyRate) filterCaregivers.hourlyRate = Math.round(hourlyRate)
-		if (yearsExperience) filterCaregivers.yearsExperience = Math.round(yearsExperience)
-
-		props.navigation.navigate('Find', {
-			filterCaregivers,
+		saveCaregiverFilter({
+			variables: {input: {
+				gender: gender,
+				availability: availability,
+				hourlyRate: Math.round(hourlyRate),
+				yearsExperience: Math.round(yearsExperience),
+			}}
 		})
+
+		props.navigation.navigate('Find')
 	}
 
 	const resetDefault = () => {
 		setGender('')
 		setAvailability('')
-		setHourlyRate(20)
+		setHourlyRate(75)
 		setYearsExperience(0)
 	}
 

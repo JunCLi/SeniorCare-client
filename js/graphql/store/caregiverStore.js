@@ -1,9 +1,9 @@
 export default caregiversStore = {
-	filterFindCaregivers: {
-		gender: '',
-		availability: '',
-		hourlyRate: 20,
-		yearsExperience: 5,
-		__typename: 'FilterCaregivers'
+	getCaregiverFilter: {
+		gender: null,
+		availability: null,
+		hourlyRate: 75,
+		yearsExperience: 0,
+		__typename: 'CaregiverFilters'
 	}
 }
