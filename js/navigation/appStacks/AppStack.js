@@ -70,7 +70,10 @@ const AppStack = createBottomTabNavigator({
 	defaultNavigationOptions: ({ navigation }) => {
 		const { state } = navigation
 		if (state.routeName === 'FindStack') {
-			const isFilter = state.routes.filter(route => route.routeName === 'Filter')
+			const isFilter = state.routes.filter(route => (
+				route.routeName === 'Filter'
+				|| route.routeName === 'ViewCaregiver'
+			))
 			return {
 				tabBarVisible: isFilter.length ? false : true
 			}

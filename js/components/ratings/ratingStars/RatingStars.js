@@ -2,10 +2,10 @@ import React from 'react'
 
 import { View } from 'react-native'
 import { Icon } from 'react-native-elements'
-import { styles, starStyles } from './styles'
+import { styles, starStyles, dynamicStyles } from './styles'
 
 const RatingStars = props => {
-	const { averageRating } = props
+	const { averageRating, iconStyle = {} } = props
 
 	const mapRatingToStars = rating => {
 		const ratingArray = []
@@ -26,6 +26,7 @@ const RatingStars = props => {
 					name={rating}
 					color={starStyles.colour}
 					size={starStyles.size}
+					iconStyle={dynamicStyles(iconStyle).icon}
 				/>
 			))}
 		</View>

@@ -8,7 +8,8 @@ const Gender = props => {
 	const { gender, setGender } = props
 
 	const handleSelectGender = selection => {
-		setGender(selection)
+		const newValue = selection === gender ? '' : selection
+		setGender(newValue)
 	}
 
 	const buttonArray = [

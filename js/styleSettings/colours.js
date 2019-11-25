@@ -8,6 +8,7 @@ const backgroundBlueGrey = '#EEF5FB'
 
 const fontLightGrey = '#A3A3A3'
 const fontGrey = '#CCC'
+const fontDullGrey = '#6F6F6F'
 const fontDarkerGrey = '#525252'
 const fontBlack = '#151515'
 const fontYellow = '#FFAC03'
@@ -30,6 +31,7 @@ export const font = {
 	grey: fontGrey,
 	lightGrey: fontLightGrey,
 	darkerGrey: fontDarkerGrey,
+	dullGrey: fontDullGrey,
 
 	black: fontBlack,
 	yellow: fontYellow,

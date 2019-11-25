@@ -14,3 +14,13 @@ export const starStyles = {
 	size: baseFont,
 }
 
+export const dynamicStyles = (input) => {
+	const { marginHorizontal = 1 } = input 
+
+	return StyleSheet.create({
+		icon: {
+			marginHorizontal: marginHorizontal
+		}
+	})
+}
+

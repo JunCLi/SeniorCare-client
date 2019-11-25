@@ -8,7 +8,8 @@ const Availability = props => {
 	const { availability, setAvailability } = props
 
 	const handleSelectAvailability = selection => {
-		setAvailability(selection)
+		const newValue = selection === availability ? '' : selection
+		setAvailability(newValue)
 	}
 
 	const buttonArray = [
