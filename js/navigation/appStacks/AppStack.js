@@ -4,6 +4,7 @@ import { createBottomTabNavigator } from 'react-navigation-tabs'
 import { Icon } from 'react-native-elements'
 
 import FindStack from './FindStack'
+import JobsStack from './JobsStack'
 import Home from '../../screens/app/home/Home'
 import Profile from '../../screens/app/profile/Profile'
 
@@ -23,8 +24,8 @@ const AppStack = createBottomTabNavigator({
 		})
 	},
 
-	Jobs: {
-		screen: Home,
+	JobsStack: {
+		screen: JobsStack,
 		navigationOptions: () => ({
 			title: 'Jobs',
 			tabBarIcon: ({ tintColor }) => (
@@ -66,7 +67,7 @@ const AppStack = createBottomTabNavigator({
 		})
 	},
 }, {
-	initialRouteName: 'FindStack',
+	initialRouteName: 'JobsStack',
 	defaultNavigationOptions: ({ navigation }) => {
 		const { state } = navigation
 		if (state.routeName === 'FindStack') {

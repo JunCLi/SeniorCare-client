@@ -22,13 +22,6 @@ const CaregiverList = props => {
 			caregiverDetails: caregiverDetails,
 		})
 	}
-
-	//TODO remove
-	props.navigation.navigate('ViewCaregiver', {
-		user_id: user_id,
-		userDetails: userDetails,
-		caregiverDetails: caregiverDetails,
-	})
 	
 	return (
 		<TouchableOpacity

@@ -13,6 +13,7 @@ export const OrangeArc = () => {
 				source={OrangeArcImage}
 				style={styles.orangeArc}
 				placeholderStyle={styles.placeholder}
+				// resizeMethod='resize'
 			/>
 		</View>
 	)

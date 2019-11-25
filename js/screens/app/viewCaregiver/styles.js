@@ -4,7 +4,7 @@ import { screenWidth, screenHeight, baseFont, margin } from '../../../styleSetti
 import { background, font } from '../../../styleSettings/colours'
 import { fontType } from '../../../styleSettings/fonts'
 
-import { generalStyles } from '../../../styleSettings/generalStyles'
+import { generalStyles, submitButton } from '../../../styleSettings/generalStyles'
 
 
 const sharedButtonStyles = StyleSheet.create({
@@ -23,6 +23,7 @@ const sharedButtonStyles = StyleSheet.create({
 
 export const styles = StyleSheet.create({
 	...generalStyles,
+	...submitButton,
 
 	avatar: {
 		width: screenWidth,
@@ -53,4 +54,6 @@ export const styles = StyleSheet.create({
 		...sharedButtonStyles.text,
 		color: font.blue,
 	},
+
+
 })

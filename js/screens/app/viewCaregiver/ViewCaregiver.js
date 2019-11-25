@@ -5,6 +5,8 @@ import { Button, ButtonGroup, Image } from 'react-native-elements'
 import { styles } from './styles'
 
 import About from './about/About'
+import Experience from './experience/Experience'
+import Reviews from './reviews/Reviews'
 
 const ViewCaregiver = props => {
 	const navParams = props.navigation.state.params
@@ -33,10 +35,15 @@ const ViewCaregiver = props => {
 
 	const displaySelectedSection = () => {
 		const selectedSection = buttonArray.filter(section => section.value === selectedButton)
-		if (selectedButton === 'experience') return <Text>experience</Text> 
-		else if (selectedButton === 'reviews') return <Text>review</Text> 
+		if (selectedButton === 'experience') return <Experience {...navParams}>experience</Experience> 
+		else if (selectedButton === 'reviews') return <Reviews {...navParams}>review</Reviews> 
 		
 		return <About {...navParams} /> 
+	}
+
+	const handleContactCaregiver = () => {
+		// TODO
+		console.log('to be implemented')
 	}
 
 	return (
@@ -69,10 +76,13 @@ const ViewCaregiver = props => {
 					{
 						displaySelectedSection()
 					}
-					
-					
 				</ScrollView>
 			</SafeAreaView>
+			<Button
+				title='Contact Caregiver'
+				buttonStyle={styles.submitButton}
+				onPress={handleContactCaregiver}
+			/>
 		</>
 	)
 }
