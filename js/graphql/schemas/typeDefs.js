@@ -1,6 +1,5 @@
-import testSchema from './testSchema'
-
 import usersSchema from './usersSchema'
 import caregiverSchema from './caregiverSchema'
+import jobSchema from './jobSchema'
 
-export default [testSchema, usersSchema, caregiverSchema]
+export default [usersSchema, caregiverSchema, jobSchema]

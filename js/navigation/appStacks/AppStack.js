@@ -83,19 +83,33 @@ const AppStack = createBottomTabNavigator({
   }
 })
 
+const checkHideTabBar = (hideRouteArray, state) => {
+	const isHide = state.routes.filter(route => (
+		hideRouteArray.filter(hideRoute => (
+			route.routeName === hideRoute
+		)).length
+	))
+	return isHide.length ? false : true
+}
+
 const handleTabBarVisible = state => {
 	let visible = true
+
+	const hideTabRoutes = {
+		findStack: [
+			'Filter',
+			'ViewCaregiver',
+		],
+		jobsStack: [
+			'CreateJobOverview',
+			'BasicInformation',
+		]
+	}
+
 	if (state.routeName === 'FindStack') {
-		const isFilter = state.routes.filter(route => (
-			route.routeName === 'Filter'
-			|| route.routeName === 'ViewCaregiver'
-		))
-		visible = isFilter.length ? false : true
+		visible = checkHideTabBar(hideTabRoutes.findStack, state)
 	} else if (state.routeName === 'JobsStack') {
-		const isFilter = state.routes.filter(route => (
-			route.routeName === 'CreateJobOverview'
-		))
-		visible = isFilter.length ? false : true
+		visible = checkHideTabBar(hideTabRoutes.jobsStack, state)
 	}
 
 	return visible

@@ -50,6 +50,11 @@ export const generalStyles = StyleSheet.create({
 		fontSize: baseFont * 2,
 		borderRadius: 0,
 	},
+
+	flexRowCenter: {
+		flexDirection: 'row',
+		alignItems: 'center',
+	}
 })
 
 export const submitButton = StyleSheet.create({
