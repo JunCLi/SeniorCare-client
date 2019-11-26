@@ -7,10 +7,7 @@ import { styles } from './styles'
 import NoJobsImg from '../../../../assets/images/noJobs-jobsDashboard-3x.png'
 
 const NoJobs = props => {
-	const handleButton = () => {
-		console.log('to be implemented')
-		// props.navigation.navigate('')
-	}
+	const { handleGoJobCreate } = props
 
 	return (
 		<>
@@ -24,7 +21,7 @@ const NoJobs = props => {
 				<Text style={styles.CTAmessage}>There are no jobs created under your account yet.</Text>
 				<Button
 					title='Create job post'
-					onPress={handleButton}
+					onPress={handleGoJobCreate}
 					buttonStyle={styles.button}
 					titleStyle={styles.buttonText}
 					/>

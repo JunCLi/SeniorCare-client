@@ -68,18 +68,9 @@ const AppStack = createBottomTabNavigator({
 	},
 }, {
 	initialRouteName: 'JobsStack',
-	defaultNavigationOptions: ({ navigation }) => {
-		const { state } = navigation
-		if (state.routeName === 'FindStack') {
-			const isFilter = state.routes.filter(route => (
-				route.routeName === 'Filter'
-				|| route.routeName === 'ViewCaregiver'
-			))
-			return {
-				tabBarVisible: isFilter.length ? false : true
-			}
-		}
-	},
+	defaultNavigationOptions: ({ navigation }) => ({
+		tabBarVisible: handleTabBarVisible(navigation.state)
+	}),
 	tabBarOptions: {
     showLabel: true,
     activeTintColor: '#3F7DFB',
@@ -91,5 +82,23 @@ const AppStack = createBottomTabNavigator({
     },
   }
 })
+
+const handleTabBarVisible = state => {
+	let visible = true
+	if (state.routeName === 'FindStack') {
+		const isFilter = state.routes.filter(route => (
+			route.routeName === 'Filter'
+			|| route.routeName === 'ViewCaregiver'
+		))
+		visible = isFilter.length ? false : true
+	} else if (state.routeName === 'JobsStack') {
+		const isFilter = state.routes.filter(route => (
+			route.routeName === 'CreateJobOverview'
+		))
+		visible = isFilter.length ? false : true
+	}
+
+	return visible
+}
 
 export default AppStack
