@@ -23,7 +23,7 @@ const SignupForm = props => {
 					inputStyle={styles.input}
 					containerStyle={styles.inputContainer}
 					leftIconContainerStyle={styles.leftIconContainer}
-					/>
+				/>
 			</View>
 			<View style={styles.inputViewContainer}>
 				<Input

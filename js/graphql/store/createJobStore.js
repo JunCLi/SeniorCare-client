@@ -4,6 +4,7 @@ export default createjobStore = {
 			position: {
 				completed: false,
 				step: 1,
+				totalSteps: 4,
 				__typename: 'JobPosition',
 			},
 			title: '',
@@ -24,6 +25,7 @@ export default createjobStore = {
 			position: {
 				completed: false,
 				step: 1,
+				totalSteps: 2,
 				__typename: 'JobPosition',
 			},
 			services: '',
@@ -35,6 +37,7 @@ export default createjobStore = {
 			position: {
 				completed: false,
 				step: 1,
+				totalSteps: 8,
 				__typename: 'JobPosition',
 			},
 			name: '',
@@ -52,6 +55,7 @@ export default createjobStore = {
 			position: {
 				completed: false,
 				step: 1,
+				totalSteps: 1,
 				__typename: 'JobPosition',
 			},
 			cigarette: null,
@@ -64,15 +68,15 @@ export default createjobStore = {
 			position: {
 				completed: false,
 				step: 1,
+				totalSteps: 2,
 				__typename: 'JobPosition',
 			},
 			availability: '',
 			gender: null,
 			driversLicense: null,
-			additionalInformation: '',
 			__typename: 'CaregiverPreferences',
 		},
-		
+		additionalInformation: '',
 		__typename: 'JobForm'
 	}
 }

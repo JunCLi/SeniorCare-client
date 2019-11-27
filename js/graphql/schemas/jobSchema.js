@@ -2,6 +2,19 @@ import gql from 'graphql-tag'
 
 export default jobSchema = gql`
 
+	enum FormDirection {
+		next
+		back
+	}
+
+	enum Section {
+		basicInformation
+		serviceDetails
+		seniorDetails
+		houseDetails
+		caregiverPreferences
+	}
+
 	enum Services {
 		bathing
 		dressing
@@ -31,11 +44,13 @@ export default jobSchema = gql`
 		seniorDetails: SeniorDetails
 		houseDetails: HouseDetails
 		caregiverPreferences: CaregiverPreferences
+		additionalInformation: String
 	}
 
 	type Position {
 		completed: Boolean
 		step: Int
+		totalSteps: Int
 	}
 
 	type BasicInformation {
@@ -85,5 +100,19 @@ export default jobSchema = gql`
 		gender: Gender
 		driversLicense: Boolean
 		additionalInformation: String
+	}
+
+	extend type Mutaion {
+		changeFormPosition(input: ChangeFormPositionObject): Placeholder
+	}
+
+	input ChangeFormPositionObject {
+		section: Section
+		direction: FormDirection!
+		completed: Boolean
+	}
+	
+	type Placeholder {
+		Message: String
 	}
 `

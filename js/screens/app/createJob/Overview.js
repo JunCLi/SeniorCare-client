@@ -1,14 +1,14 @@
 import React from 'react'
 
 import { useQuery } from '@apollo/react-hooks'
-import { GET_JOB_FORM } from '../../../graphql/queries/jobQueries'
+import { GET_JOB_FORM, GET_JOB_FORM_POSITION } from '../../../graphql/queries/jobQueries'
 
 import { SafeAreaView, ScrollView, StatusBar, Text, TouchableOpacity, View } from 'react-native'
 import { Avatar, Button, Image, ListItem } from 'react-native-elements'
 import { styles } from './styles'
 
 const Overview = props => {
-	const { data } = useQuery(GET_JOB_FORM)
+	const { data } = useQuery(GET_JOB_FORM_POSITION)
 
 	const handleTest = props => {
 		console.log(data)
@@ -50,6 +50,11 @@ const Overview = props => {
 			path: 'CaregiverPreferences',
 		},
 	]
+
+	// TODO Remove
+	props.navigation.navigate(steps[0].path)
+
+	console.log('refresh')
 
 	return (
 		<>

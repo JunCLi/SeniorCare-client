@@ -4,6 +4,7 @@ const white = '#FFF'
 
 const backgroundWhite = 'rgba(255, 255, 255, 0.92)'
 const backgroundGrey = 'rgba(248, 248, 248, 0.92)'
+const backgroundLightGrey = '#F0F0F0'
 const backgroundBlueGrey = '#EEF5FB'
 const backgroundYellow = '#FFAD05'
 
@@ -19,6 +20,7 @@ export const background = {
 	white: white,
 	translucentWhite: backgroundWhite,
 	grey: backgroundGrey,
+	lightGrey: backgroundLightGrey,
 	blueGrey: backgroundBlueGrey,
 	disabledGrey: fontGrey,
 	blue: blue,

@@ -8,7 +8,6 @@ import { generalStyles } from '../../../../styleSettings/generalStyles'
 
 export const styles = StyleSheet.create({
 	mainContainer: {
-		marginHorizontal: margin.horizontal * 1.5,
 		marginVertical: screenHeight / 24,
 	},
 

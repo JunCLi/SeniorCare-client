@@ -1,12 +1,71 @@
 import gql from 'graphql-tag'
 
-export const TEST_JOB_FORM = gql`
+export const GET_JOB_FORM_POSITION = gql`
 	query getJobForm {
 		getJobForm @client {
-			
+			basicInformation {
+				position {
+					completed
+					step
+					totalSteps
+				}
+			}
+			serviceDetails {
+				position {
+					completed
+					step
+					totalSteps
+				}
+			}
+			seniorDetails {
+				position {
+					completed
+					step
+					totalSteps
+				}
+			}
+			houseDetails {
+				position {
+					completed
+					step
+					totalSteps
+				}
+			}
+			caregiverPreferences {
+				position {
+					completed
+					step
+					totalSteps
+				}
+			}
 		}
 	}
 `
+
+export const GET_JOB_FORM_BASIC_INFORMATION = gql`
+	query getJobForm {
+		getJobForm @client {
+			basicInformation {
+				position {
+					completed
+					step
+					totalSteps
+				}
+				title
+				startDate
+				endDate
+				location {
+					address
+					city
+					province
+					postalCode
+				}
+				hourlyRate
+			}
+		}
+	}
+`
+
 
 export const GET_JOB_FORM = gql`
 	query getJobForm {
@@ -15,6 +74,7 @@ export const GET_JOB_FORM = gql`
 				position {
 					completed
 					step
+					totalSteps
 				}
 				title
 				startDate
@@ -31,6 +91,7 @@ export const GET_JOB_FORM = gql`
 				position {
 					completed
 					step
+					totalSteps
 				}
 				services
 				householdNeeds
@@ -39,6 +100,7 @@ export const GET_JOB_FORM = gql`
 				position {
 					completed
 					step
+					totalSteps
 				}
 				name
 				gender
@@ -53,6 +115,7 @@ export const GET_JOB_FORM = gql`
 				position {
 					completed
 					step
+					totalSteps
 				}
 				cigarette
 				pets
@@ -62,11 +125,24 @@ export const GET_JOB_FORM = gql`
 				position {
 					completed
 					step
+					totalSteps
 				}
 				availability
 				gender
 				driversLicense
-				additionalInformation
+			}
+			additionalInformation
+		}
+	}
+`
+
+export const CHANGE_FORM_POSITION = gql`
+	mutation changeFormPosition($input: ChangeFormPositionObject) {
+		changeFormPosition(input: $input) @client {
+			position {
+				completed
+				step
+				totalSteps
 			}
 		}
 	}
