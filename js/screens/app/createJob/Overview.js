@@ -9,6 +9,7 @@ import { styles } from './styles'
 
 const Overview = props => {
 	const { data, refetch } = useQuery(GET_JOB_FORM_POSITION)
+	const { data: jobFormData} = useQuery(GET_JOB_FORM)
 	const { getJobForm } = data
 	const navParams = props.navigation.state.params
 	const [refresh, setRefresh ] = useState(false)
@@ -42,8 +43,7 @@ const Overview = props => {
 	]
 
 	const handleTest = props => {
-		console.log(getJobForm)
-		console.log('nav params', navParams)
+		console.log('job form data:', jobFormData)
 	}
 
 	const handleNextSection = () => {

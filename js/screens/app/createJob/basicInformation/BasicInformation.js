@@ -3,7 +3,7 @@ import React from 'react'
 import { useQuery } from '@apollo/react-hooks'
 import { GET_JOB_FORM_BASIC_INFORMATION } from '../../../../graphql/queries/jobQueries'
 
-import { SafeAreaView, ScrollView, StatusBar, Text, View } from 'react-native'
+import { KeyboardAvoidingView, SafeAreaView, ScrollView, StatusBar, Text, View } from 'react-native'
 import { Avatar, Button, Image, ListItem } from 'react-native-elements'
 import { Formik } from 'formik'
 import { styles } from './styles'
@@ -12,6 +12,8 @@ import StepCounter from '../formPosition/FormPosition'
 import BottomButtons from '../bottomButtons/BottomButtons'
 import Title from './title/Title'
 import Date from './date/Date'
+import Location from './location/Location'
+import HourlyRate from './hourlyRate/HourlyRate'
 
 const BasicInformation = props => {
 	const { data } = useQuery(GET_JOB_FORM_BASIC_INFORMATION)
@@ -26,9 +28,9 @@ const BasicInformation = props => {
 			case 2 :
 				return <Date formikProps={formikProps} />
 			case 3 :
-				return <Title formikProps={formikProps} />
+				return <Location formikProps={formikProps} />
 			case 4 :
-				return <Title formikProps={formikProps} />
+				return <HourlyRate formikProps={formikProps} />
 			default:
 			break;
 		}
@@ -63,24 +65,30 @@ const BasicInformation = props => {
 
 				return (
 					<>
-						<SafeAreaView style={styles.backgroundBlue}>
-							<StatusBar backgroundColor={styles.statusBar.backgroundColor} barStyle='dark-content' />
-							<ScrollView style={styles.mainContainer} contentContainerStyle={styles.scrollViewContainer}>
-								<StepCounter
-									title='Basic Information'
-									totalSteps={position.totalSteps}
-									currentStep={position.step}
-								/>
+						<KeyboardAvoidingView
+							behavior={Platform.OS === "ios" ? "padding" : null}
+							keyboardVerticalOffset={styles.keyboardOffset.margin}
+							style={styles.avoidKeyboard}
+						>
+							<SafeAreaView style={styles.backgroundBlue}>
+								<StatusBar backgroundColor={styles.statusBar.backgroundColor} barStyle='dark-content' />
+								<ScrollView style={styles.mainContainer} contentContainerStyle={styles.scrollViewContainer}>
+									<StepCounter
+										title='Basic Information'
+										totalSteps={position.totalSteps}
+										currentStep={position.step}
+									/>
 
-								{ chooseRoute(formikProps)	}
-							</ScrollView>
-						</SafeAreaView>
-						<BottomButtons
-							section='basicInformation'
-							payload={payload}
-							currentPosition={position}
-							navigation={props.navigation}
-						/>
+									{ chooseRoute(formikProps)	}
+								</ScrollView>
+							</SafeAreaView>
+							<BottomButtons
+								section='basicInformation'
+								payload={payload}
+								currentPosition={position}
+								navigation={props.navigation}
+							/>
+						</KeyboardAvoidingView>
 					</>
 				)
 			}}

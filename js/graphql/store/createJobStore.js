@@ -18,7 +18,7 @@ export default createjobStore = {
 				postalCode: '',
 				__typename: 'Location',
 			},
-			hourlyRate: '',
+			hourlyRate: 14,
 			__typename: 'BasicInformation',
 		},
 

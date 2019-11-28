@@ -29,6 +29,11 @@ export const sharedStyles = StyleSheet.create({
 		...fontStyles.question
 	},
 
+	inputViewContainer: {
+		marginTop: margin.vertical * 1.5,
+		marginBottom: margin.vertical * 3,
+	},
+
 	inputContainer: {
 		paddingHorizontal: 0,
 	},

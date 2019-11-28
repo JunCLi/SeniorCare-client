@@ -68,6 +68,23 @@ export const GET_JOB_FORM_BASIC_INFORMATION = gql`
 `
 
 
+export const GET_JOB_FORM_SERVICE_DETAILS = gql`
+	query getJobForm {
+		getJobForm @client {
+			serviceDetails {
+				position {
+					completed
+					step
+					totalSteps
+				}
+				services
+				householdNeeds
+			}
+		}
+	}
+`
+
+
 export const GET_JOB_FORM = gql`
 	query getJobForm {
 		getJobForm @client {
