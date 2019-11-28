@@ -6,28 +6,39 @@ export default {
 	Mutation: {
 		async changeFormPosition(parent, { input }, { cache }) {
 			try {
-				const { section, direction } = input
+				const { section, direction, payload } = input
 				const formPositionData = cache.readQuery({ query: GET_JOB_FORM_POSITION })
 
-				const currentSection = formPositionData.getJobForm[section].position
+				const currentSection = formPositionData.getJobForm[section]
 
 				if (direction === 'next') {
-					if (currentSection.step === currentSection.totalSteps) {
-						currentSection.completed = true
-						currentSection.step = 1
+					if (currentSection.position.step === currentSection.position.totalSteps) {
+						currentSection.position.completed = true
+						currentSection.position.step = 1
 					} else {
-						currentSection.step++
+						currentSection.position.step++
 					}
 				} else if (direction === 'back') {
-					if (currentSection.step !== 1) {
-						currentSection.step--
+					if (currentSection.position.step !== 1) {
+						currentSection.position.step--
 					}
 				}
 
 				const newPositionData = {
 					data: {
-						...formPositionData,
+						getJobForm: {
+							...formPositionData.getJobForm,
+							formStarted: true,
+							[section]: {
+								...currentSection,
+								...payload,
+							}
+						}
 					}
+				}
+
+				if (!formPositionData.getJobForm.formStarted) {
+					newPositionData.data.getJobForm.formStarted = true
 				}
 
 				cache.writeData(newPositionData)

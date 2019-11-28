@@ -48,10 +48,20 @@ export const styles = StyleSheet.create({
 		backgroundColor: background.yellow
 	},
 
+	stepCompletedCircle: {
+		backgroundColor: background.blue
+	},
+
 	stepText: {
 		color: font.black,
 		fontFamily: fontType.sfpro,
 		fontSize: baseFont * 1.25,
 		paddingLeft: margin.horizontal * 2,
-	}
+	},
+
+	nextSectionTitle: {
+		color: font.white,
+		fontFamily: fontType.sfpro,
+		fontWeight: '500',
+	},
 })

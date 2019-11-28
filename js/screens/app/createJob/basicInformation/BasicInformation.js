@@ -57,6 +57,10 @@ const BasicInformation = props => {
 					setFieldValue,
 				} = formikProps
 
+				const payload = {
+					...values
+				}
+
 				return (
 					<>
 						<SafeAreaView style={styles.backgroundBlue}>
@@ -73,6 +77,7 @@ const BasicInformation = props => {
 						</SafeAreaView>
 						<BottomButtons
 							section='basicInformation'
+							payload={payload}
 							currentPosition={position}
 							navigation={props.navigation}
 						/>

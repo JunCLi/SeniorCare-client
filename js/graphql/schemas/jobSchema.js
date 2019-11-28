@@ -38,7 +38,13 @@ export default jobSchema = gql`
 		getJobForm: JobForm
 	}
 
+	type NextStep {
+		section: Section,
+		step: Int,
+	}
+
 	type JobForm {
+		nextStep: NextStep
 		basicInformation: BasicInformation
 		serviceDetails: ServiceDetails
 		seniorDetails: SeniorDetails
@@ -109,7 +115,7 @@ export default jobSchema = gql`
 	input ChangeFormPositionObject {
 		section: Section
 		direction: FormDirection!
-		completed: Boolean
+		payload: JobForm
 	}
 	
 	type Placeholder {

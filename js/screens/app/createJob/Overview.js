@@ -1,29 +1,19 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 
 import { useQuery } from '@apollo/react-hooks'
 import { GET_JOB_FORM, GET_JOB_FORM_POSITION } from '../../../graphql/queries/jobQueries'
 
 import { SafeAreaView, ScrollView, StatusBar, Text, TouchableOpacity, View } from 'react-native'
-import { Avatar, Button, Image, ListItem } from 'react-native-elements'
+import { Avatar, Button, Icon, Image, ListItem } from 'react-native-elements'
 import { styles } from './styles'
 
 const Overview = props => {
-	const { data } = useQuery(GET_JOB_FORM_POSITION)
-
-	const handleTest = props => {
-		console.log(data)
-	}
-
-	const handleNextStep = () => {
-		// TODO SELECT NEXT STEP AS APPROPRIATE
-		console.log('to be implemented')
-	}
-
-	const goToStep = destination => {
-		props.navigation.navigate(destination)
-	}
-
-	const steps = [
+	const { data, refetch } = useQuery(GET_JOB_FORM_POSITION)
+	const { getJobForm } = data
+	const navParams = props.navigation.state.params
+	const [refresh, setRefresh ] = useState(false)
+	
+	const sections = [
 		{
 			title: 'Basic Information',
 			value: 'basicInformation',
@@ -51,10 +41,28 @@ const Overview = props => {
 		},
 	]
 
-	// TODO Remove
-	props.navigation.navigate(steps[0].path)
+	const handleTest = props => {
+		console.log(getJobForm)
+		console.log('nav params', navParams)
+	}
 
-	console.log('refresh')
+	const handleNextSection = () => {
+		const uncompletedSections = sections.filter(section => !getJobForm[section.value].position.completed)
+		goToStep(uncompletedSections[0].path)
+	}
+
+	const goToStep = destination => {
+		props.navigation.navigate(destination)
+	}
+
+	useEffect(() => {
+		if (navParams && navParams.refetch) {
+			setRefresh(!refresh)
+		}
+	}, [navParams])
+
+	// TODO Remove
+	// props.navigation.navigate(sections[0].path)
 
 	return (
 		<>
@@ -67,17 +75,25 @@ const Overview = props => {
 					</View>
 
 					<View style={styles.stepsContainer}>
-						{steps.map((step, index) => (
-							<TouchableOpacity key={index} onPress={() => goToStep(step.path)}>
+						{sections.map((section, index) => (
+							<TouchableOpacity key={index} onPress={() => goToStep(section.path)}>
 								<View style={styles.stepContainer}>
-									<Avatar
-										size={35}
-										title={`${index + 1}`}
-										overlayContainerStyle={styles.stepNumberCircle}
-										titleStyle={styles.stepNumber}
-										rounded
-									/>
-									<Text style={styles.stepText}>{step.title}</Text>
+									{getJobForm[section.value].position.completed 
+										? <Avatar
+												size={35}
+												icon={{ type:'font-awesome-5', name:'check', size: 25}}
+												overlayContainerStyle={styles.stepCompletedCircle}
+												rounded
+											/>
+										: <Avatar
+												size={35}
+												title={`${index + 1}`}
+												overlayContainerStyle={styles.stepNumberCircle}
+												titleStyle={styles.stepNumber}
+												rounded
+											/>
+									}
+									<Text style={styles.stepText}>{section.title}</Text>
 								</View>
 							</TouchableOpacity>
 						))}
@@ -90,9 +106,10 @@ const Overview = props => {
 				</ScrollView>
 			</SafeAreaView>
 			<Button
-				title='Get started'
+				title={getJobForm.formStarted ? 'Continue' : 'Get started'}
+				onPress={handleNextSection}
 				buttonStyle={styles.submitButton}
-				onPress={handleNextStep}
+				titleStyle={styles.nextSectionTitle}
 			/>
 		</>
 	)

@@ -8,20 +8,19 @@ import { Button } from 'react-native-elements'
 import { styles } from './styles'
 
 const BottomButtons = props => {
-	const { section, currentPosition } = props
+	const { section, payload, currentPosition } = props
 	const { step, totalSteps } = currentPosition
 	const [ changeFormPosition ] = useMutation(CHANGE_FORM_POSITION)
 
 	const handleGoBack = input => {
 		step === 1 
-			? props.navigation.navigate('CreateJobOverview')
+			? props.navigation.navigate('CreateJobOverview', { refetch: true })
 			: changeFormPosition({
 					variables: {input: {
 						section: section,
 						direction: 'back',
-						totalSteps: totalSteps,
 					}}
-		})
+				})
 	}
 
 	const handleGoNext = input => {
@@ -29,9 +28,10 @@ const BottomButtons = props => {
 			variables: {input: {
 				section: section,
 				direction: 'next',
-				totalSteps: totalSteps,
+				payload: payload
 			}}
 		})
+		step === totalSteps && props.navigation.navigate('CreateJobOverview', { refetch: true })
 	}
 
 	return (

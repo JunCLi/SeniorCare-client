@@ -3,6 +3,7 @@ import gql from 'graphql-tag'
 export const GET_JOB_FORM_POSITION = gql`
 	query getJobForm {
 		getJobForm @client {
+			formStarted
 			basicInformation {
 				position {
 					completed
@@ -70,6 +71,7 @@ export const GET_JOB_FORM_BASIC_INFORMATION = gql`
 export const GET_JOB_FORM = gql`
 	query getJobForm {
 		getJobForm @client {
+			formStarted
 			basicInformation {
 				position {
 					completed
@@ -139,10 +141,10 @@ export const GET_JOB_FORM = gql`
 export const CHANGE_FORM_POSITION = gql`
 	mutation changeFormPosition($input: ChangeFormPositionObject) {
 		changeFormPosition(input: $input) @client {
+			formStarted
 			position {
 				completed
 				step
-				totalSteps
 			}
 		}
 	}

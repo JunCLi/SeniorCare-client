@@ -1,5 +1,6 @@
 export default createjobStore = {
 	getJobForm: {
+		formStarted: false,
 		basicInformation: {
 			position: {
 				completed: false,
