@@ -9,8 +9,9 @@ import { generalStyles, submitButton } from '../../../styleSettings/generalStyle
 const fontStyles = StyleSheet.create({
 	question: {
 		color: font.blue,
-		fontFamily: fontType.gothamBold,
+		fontFamily: fontType.gotham,
 		fontSize: baseFont * 1.25,
+		fontWeight: '500',
 	},
 
 	input: {
@@ -46,5 +47,19 @@ export const sharedStyles = StyleSheet.create({
 
 	input: {
 		...fontStyles.input,
+	},
+
+	iconContainer: {
+		position: 'absolute',
+		left: margin.horizontal * 1.25,
+	},
+
+	icon: {
+		width: 20,
+		height: 20
+	},
+
+	placeholderIcon: {
+		backgroundColor: 'transparent',
 	}
 })

@@ -84,6 +84,28 @@ export const GET_JOB_FORM_SERVICE_DETAILS = gql`
 	}
 `
 
+export const GET_JOB_FORM_SENIOR_DETAILS = gql`
+	query getJobForm {
+		getJobForm @client {
+			seniorDetails {
+				position {
+					completed
+					step
+					totalSteps
+				}
+				name
+				gender
+				birthdate
+				relation
+				bio
+				medicalConditions
+				language
+				picture
+			}
+		}
+	}
+`
+
 
 export const GET_JOB_FORM = gql`
 	query getJobForm {

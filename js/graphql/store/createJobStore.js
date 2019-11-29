@@ -43,7 +43,7 @@ export default createjobStore = {
 			},
 			name: '',
 			gender: '',
-			birthdate: '',
+			birthdate: new Date('1960-01-01T23:35:16.000Z').toISOString(),
 			relation: '',
 			bio: '',
 			medicalConditions: '',

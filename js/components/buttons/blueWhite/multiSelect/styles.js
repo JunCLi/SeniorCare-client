@@ -6,20 +6,31 @@ import { fontType } from '../../../../styleSettings/fonts'
 
 import { sharedStyles } from '../sharedStyles'
 
+export const dynamicStyles = charOverCutoff => StyleSheet.create({
+	...sharedStyles,
+	buttonTitle: {
+		...sharedStyles.buttonTitle,
+		fontSize: baseFont * 0.95,
+		marginLeft: charOverCutoff * baseFont * 0.75,
+	},
+
+	selectedButtonTitle: {
+		...sharedStyles.selectedButtonTitle,
+		fontSize: baseFont * 0.95,
+		marginLeft: charOverCutoff * baseFont * 0.75,
+	}
+})
+
 export const styles = StyleSheet.create({
 	...sharedStyles,
 
-	// // buttonsContainer: {
-	// // 	width: '40%',
-	// // },
+	buttonTitle: {
+		...sharedStyles.buttonTitle,
+		fontSize: baseFont * 0.95
+	},
 
-	// button: {
-	// 	...sharedStyles.button,
-	// 	// width: screenWidth / 2 - margin.horizontal * 2
-	// },
-
-	// selectedButton: {
-	// 	...sharedStyles.button,
-	// 	// width: screenWidth / 2 - margin.horizontal * 2
-	// }
+	selectedButtonTitle: {
+		...sharedStyles.selectedButtonTitle,
+		fontSize: baseFont * 0.95
+	}
 })

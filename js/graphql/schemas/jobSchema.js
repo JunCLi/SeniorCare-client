@@ -2,6 +2,8 @@ import gql from 'graphql-tag'
 
 export default jobSchema = gql`
 
+	scalar Date
+
 	enum FormDirection {
 		next
 		back
