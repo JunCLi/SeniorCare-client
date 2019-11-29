@@ -29,6 +29,12 @@ export const sharedStyles = StyleSheet.create({
 		...fontStyles.question
 	},
 
+	questionSubheader: {
+		color: font.blue,
+		fontFamily: fontType.sfpro,
+		fontSize: baseFont * 0.7,
+	},
+
 	inputViewContainer: {
 		marginTop: margin.vertical * 1.5,
 		marginBottom: margin.vertical * 3,

@@ -4,6 +4,8 @@ import { Text, View } from 'react-native'
 import { Button } from 'react-native-elements'
 import { styles } from './styles'
 
+import BlueWhiteButtons from '../../../../../components/buttons/blueWhite/singleSelect/BlueWhiteButtons'
+
 const Availability = props => {
 	const { availability, setAvailability } = props
 
@@ -26,17 +28,11 @@ const Availability = props => {
 	return (
 		<View style={styles.optionsContainer}>
 			<Text style={styles.title}>Availabiltiy</Text>
-			<View style={styles.buttonsContainer}>
-				{buttonArray.map(availabilityButton => (
-					<Button
-						key={availabilityButton.value}
-						title={availabilityButton.title}
-						buttonStyle={availability === availabilityButton.value ? styles.selectedButton : styles.button}
-						titleStyle={availability === availabilityButton.value ? styles.selectedButtonTitle :styles.buttonTitle}
-						onPress={() => handleSelectAvailability(availabilityButton.value)}
-					/>
-				))}
-			</View>
+			<BlueWhiteButtons
+				selected={availability}
+				buttonArray={buttonArray}
+				handleSelect={handleSelectAvailability}
+			/>
 		</View>
 	)
 }

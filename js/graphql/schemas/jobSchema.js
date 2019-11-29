@@ -17,21 +17,21 @@ export default jobSchema = gql`
 
 	enum Services {
 		bathing
-		dressing
-		companionship
-		appointments
 		grooming
+		dressing
 		feeding
+		companionship
 		driving
+		appointments
 		mobility
 	}
 
 	enum HouseholdNeeds {
 		errands
-		housekeeping
-		shoppping
 		mealPrep
+		housekeeping
 		laundry
+		shoppping
 	}
 
 	extend type Query {
@@ -77,8 +77,8 @@ export default jobSchema = gql`
 
 	type ServiceDetails {
 		position: Position
-		services: Services
-		householdNeeds: HouseholdNeeds
+		services: [Services]
+		householdNeeds: [HouseholdNeeds]
 	}
 
 	type SeniorDetails {

@@ -29,8 +29,8 @@ export default createjobStore = {
 				totalSteps: 2,
 				__typename: 'JobPosition',
 			},
-			services: '',
-			householdNeeds: '',
+			services: [],
+			householdNeeds: [],
 			__typename: 'ServiceDetails',
 		},
 

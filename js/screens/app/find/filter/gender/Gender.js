@@ -1,8 +1,8 @@
 import React from 'react'
 
 import { View, Text } from 'react-native'
-import { Button } from 'react-native-elements'
 import { styles } from './styles'
+import BlueWhiteButtons from '../../../../../components/buttons/blueWhite/singleSelect/BlueWhiteButtons'
 
 const Gender = props => {
 	const { gender, setGender } = props
@@ -34,17 +34,11 @@ const Gender = props => {
 	return (
 		<View style={styles.optionsContainer}>
 			<Text style={styles.title}>Gender</Text>
-			<View style={styles.buttonsContainer}>
-				{buttonArray.map(genderButton => (
-					<Button
-						key={genderButton.value}
-						title={genderButton.title}
-						buttonStyle={gender === genderButton.value ? styles.selectedButton : styles.button}
-						titleStyle={gender === genderButton.value ? styles.selectedButtonTitle :styles.buttonTitle}
-						onPress={() => handleSelectGender(genderButton.value)}
-					/>
-				))}
-			</View>
+			<BlueWhiteButtons
+				selected={gender}
+				buttonArray={buttonArray}
+				handleSelect={handleSelectGender}
+			/>
 		</View>
 	)
 }

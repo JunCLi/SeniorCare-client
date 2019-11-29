@@ -24,7 +24,7 @@ const HourlyRate = props => {
 	return (
 		<View>
 			<View style={styles.questionContainer}>
-				<Text style={styles.question}>What is the title of this job?</Text>
+				<Text style={styles.question}>What will the hourly rate be?</Text>
 				<Text style={styles.questionSubheader}>*Minimum wage varies per province/territory in Canada</Text>
 			</View>
 			<FilterSlider

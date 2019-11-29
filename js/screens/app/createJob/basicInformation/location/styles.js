@@ -9,12 +9,6 @@ import { sharedStyles } from '../../sharedStyles'
 export const styles = StyleSheet.create({
 	...sharedStyles,
 
-	questionSubheeader: {
-		color: font.blue,
-		fontFamily: fontType.sfpro,
-		fontSize: baseFont * 0.8,
-	},
-
 	label: {
 		color: font.black,
 		fontFamily: fontType.sfpro,

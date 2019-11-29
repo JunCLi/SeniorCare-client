@@ -3,6 +3,7 @@ import { createStackNavigator } from 'react-navigation-stack'
 import JobBoard from '../../screens/app/jobBoard/JobBoard'
 import Overview from '../../screens/app/createJob/Overview'
 import BasicInformation from '../../screens/app/createJob/basicInformation/BasicInformation'
+import ServiceDetails from '../../screens/app/createJob/serviceDetails/ServiceDetails'
 
 const FindStack = createStackNavigator({
 	JobBoard: {
@@ -25,6 +26,13 @@ const FindStack = createStackNavigator({
 			title: 'Post a job'
 		})
 	},
+
+	ServiceDetails: {
+		screen: ServiceDetails,
+		navigationOptions: () => ({
+			title: 'Post a job'
+		})
+	}
 }, {
 	initialRouteName: 'JobBoard',
 })
