@@ -47,7 +47,7 @@ export default createjobStore = {
 			relation: '',
 			bio: '',
 			medicalConditions: '',
-			language: '',
+			language: ['English'],
 			picture: '',
 			__typename: 'SeniorDetails',
 		},

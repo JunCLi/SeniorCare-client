@@ -91,7 +91,7 @@ export default jobSchema = gql`
 		relation: String
 		bio: String
 		medicalConditions: String
-		language: String
+		language: [String]
 		picture: String
 	}
 

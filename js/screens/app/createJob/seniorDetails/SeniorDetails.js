@@ -12,6 +12,11 @@ import BottomButtons from '../bottomButtons/BottomButtons'
 import Name from './name/Name'
 import Gender from './gender/Gender'
 import Birthdate from './birthdate/Birthdate'
+import Relation from './relation/Relation'
+import Bio from './bio/Bio'
+import MedicalConditions from './medicalConditions/MedicalConditions'
+import Language from './language/Language'
+import Photo from './photo/Photo'
 
 const SeniorDetails = props => {
 	const { data } = useQuery(GET_JOB_FORM_SENIOR_DETAILS)
@@ -25,8 +30,16 @@ const SeniorDetails = props => {
 				return <Gender formikProps={formikProps} />
 			case 3 :
 				return <Birthdate formikProps={formikProps} />
-			// case 4 :
-			// 	return <HourlyRate formikProps={formikProps} />
+			case 4 :
+				return <Relation formikProps={formikProps} />
+			case 5 :
+				return <Bio formikProps={formikProps} />
+			case 6 :
+				return <MedicalConditions formikProps={formikProps} />
+			case 7 :
+				return <Language formikProps={formikProps} />
+			case 8 :
+				return <Photo formikProps={formikProps} />
 			default:
 			break;
 		}
