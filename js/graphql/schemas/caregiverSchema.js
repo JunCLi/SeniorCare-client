@@ -6,7 +6,7 @@ export default caregiverSchema = gql`
 	}
 
 	type CaregiverFilter {
-		gender: String
+		gender: Gender
 		availability: String
 		hourlyRate: Int
 		yearsExperience: Int

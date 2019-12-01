@@ -106,6 +106,40 @@ export const GET_JOB_FORM_SENIOR_DETAILS = gql`
 	}
 `
 
+export const GET_JOB_FORM_HOUSE_DETAILS = gql`
+	query getJobForm {
+		getJobForm @client {
+			houseDetails {
+				position {
+					completed
+					step
+					totalSteps
+				}
+				cigarette
+				pets
+				cannabis
+			}
+		}
+	}
+`
+
+export const GET_JOB_FORM_CAREGIVER_PREFERENCE = gql`
+	query getJobForm {
+		getJobForm @client {
+			caregiverPreferences {
+				position {
+					completed
+					step
+					totalSteps
+				}
+				availability
+				gender
+				driversLicense
+			}
+		}
+	}
+`
+
 
 export const GET_JOB_FORM = gql`
 	query getJobForm {

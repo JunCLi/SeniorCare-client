@@ -72,7 +72,7 @@ export default createjobStore = {
 				totalSteps: 2,
 				__typename: 'JobPosition',
 			},
-			availability: '',
+			availability: null,
 			gender: null,
 			driversLicense: null,
 			__typename: 'CaregiverPreferences',
