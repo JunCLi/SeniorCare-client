@@ -30,13 +30,25 @@ const BlueWhiteButtons = props => {
 		}
 	}
 
+	handleDisplayIcon = button => {
+		if (button.icon) {
+			if (button.selectedIcon) {
+				return handleIsSelected(button.value) ? button.selectedIcon : button.icon
+			} else {
+				return button.icon
+			}
+		} else {
+			return false
+		}
+	}
+
 	return (
 		<View style={styles.buttonsViewContainer}>
 			{buttonArray.map(button => (
 				<Button
 					key={button.value}
 					title={button.title}
-					icon={button.icon}
+					icon={handleDisplayIcon(button)}
 					iconContainerStyle={styles.iconContainer}
 					containerStyle={styles.buttonsContainer}
 					buttonStyle={handleButtonStyle(button.value)}

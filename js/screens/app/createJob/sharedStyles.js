@@ -55,8 +55,8 @@ export const sharedStyles = StyleSheet.create({
 	},
 
 	icon: {
-		width: 20,
-		height: 20
+		width: 22,
+		height: 22,
 	},
 
 	placeholderIcon: {

@@ -7,71 +7,60 @@ import { styles } from './styles'
 import BlueWhiteButtons from '../../../../../components/buttons/blueWhite/multiSelect/BlueWhiteButtons'
 
 import ErrandIcon from '../../../../../assets/images/household-needs-icons/errand-icon-3x.png'
+import ErrandWhiteIcon from '../../../../../assets/images/household-needs-icons/errand-white-icon-3x.png'
 import MealprepIcon from '../../../../../assets/images/household-needs-icons/mealprep-icon-3x.png'
+import MealprepWhiteIcon from '../../../../../assets/images/household-needs-icons/mealprep-white-icon-3x.png'
 import HousekeepingIcon from '../../../../../assets/images/household-needs-icons/housekeeping-icon-3x.png'
+import HousekeepingWhiteIcon from '../../../../../assets/images/household-needs-icons/housekeeping-white-icon-3x.png'
 import LaundryIcon from '../../../../../assets/images/household-needs-icons/laundry-icon-3x.png'
+import LaundryWhiteIcon from '../../../../../assets/images/household-needs-icons/laundry-white-icon-3x.png'
 import ShoppingIcon from '../../../../../assets/images/household-needs-icons/shopping-icon-3x.png'
+import ShoppingWhiteIcon from '../../../../../assets/images/household-needs-icons/shopping-white-icon-3x.png'
 
 const HouseholdNeeds = props => {
 	const { values, setFieldValue } = props.formikProps
 
-	// TODO alternative white icon for selected images
+	const buttonIcon = icon => (
+		<View style={styles.iconContainer}>
+			<Image
+				source={icon}
+				resizeMode='contain'
+				style={styles.icon}
+				placeholderStyle={styles.placeholderIcon}
+			/>
+		</View>
+	)
 
 	const householdNeeds = [
 		{
 			title: 'Errands',
 			value: 'errands',
-			icon: <View style={styles.iconContainer}>
-					<Image
-						source={ErrandIcon}
-						style={styles.icon}
-						placeholderStyle={styles.placeholderIcon}
-					/>
-				</View>,
+			icon: buttonIcon(ErrandIcon),
+			selectedIcon: buttonIcon(ErrandWhiteIcon),
 		},
 		{
 			title: 'Meal Prep',
 			value: 'mealPrep',
-			icon: <View style={styles.iconContainer}>
-					<Image
-						source={MealprepIcon}
-						style={styles.icon}
-						placeholderStyle={styles.placeholderIcon}
-					/>
-				</View>
+			icon: buttonIcon(MealprepIcon),
+			selectedIcon: buttonIcon(MealprepWhiteIcon),
 		},
 		{
 			title: 'Housekeeping',
 			value: 'housekeeping',
-			icon: <View style={styles.iconContainer}>
-					<Image
-						source={HousekeepingIcon}
-						style={styles.icon}
-						placeholderStyle={styles.placeholderIcon}
-					/>
-				</View>
+			icon: buttonIcon(HousekeepingIcon),
+			selectedIcon: buttonIcon(HousekeepingWhiteIcon),
 		},
 		{
 			title: 'Laundry',
 			value: 'laundry',
-			icon: <View style={styles.iconContainer}>
-					<Image
-						source={LaundryIcon}
-						style={styles.icon}
-						placeholderStyle={styles.placeholderIcon}
-					/>
-				</View>
+			icon: buttonIcon(LaundryIcon),
+			selectedIcon: buttonIcon(LaundryWhiteIcon),
 		},
 		{
 			title: 'Shopping',
 			value: 'shopping',
-			icon: <View style={styles.iconContainer}>
-					<Image
-						source={ShoppingIcon}
-						style={styles.icon}
-						placeholderStyle={styles.placeholderIcon}
-					/>
-				</View>
+			icon: buttonIcon(ShoppingIcon),
+			selectedIcon: buttonIcon(ShoppingWhiteIcon),
 		},
 	]
 
