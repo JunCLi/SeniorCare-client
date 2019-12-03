@@ -140,17 +140,22 @@ export const GET_JOB_FORM_CAREGIVER_PREFERENCE = gql`
 	}
 `
 
+export const GET_JOB_FORM_TITLE = gql`
+	query getJobForm {
+		getJobForm @client {
+			basicInformation {
+				title
+			}
+		}
+	}
+`
+
 
 export const GET_JOB_FORM = gql`
 	query getJobForm {
 		getJobForm @client {
 			formStarted
 			basicInformation {
-				position {
-					completed
-					step
-					totalSteps
-				}
 				title
 				startDate
 				endDate
@@ -163,20 +168,10 @@ export const GET_JOB_FORM = gql`
 				hourlyRate
 			}
 			serviceDetails {
-				position {
-					completed
-					step
-					totalSteps
-				}
 				services
 				householdNeeds
 			}
 			seniorDetails {
-				position {
-					completed
-					step
-					totalSteps
-				}
 				name
 				gender
 				birthdate
@@ -187,21 +182,11 @@ export const GET_JOB_FORM = gql`
 				picture
 			}
 			houseDetails {
-				position {
-					completed
-					step
-					totalSteps
-				}
 				cigarette
 				pets
 				cannabis
 			}
 			caregiverPreferences {
-				position {
-					completed
-					step
-					totalSteps
-				}
 				availability
 				gender
 				driversLicense

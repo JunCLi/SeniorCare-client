@@ -5,15 +5,13 @@ import { Text, TouchableOpacity, View } from 'react-native'
 import { Icon, Image } from 'react-native-elements'
 import { styles } from './styles'
 
+import { calcAge } from '../../../util/helperFunctions/calc'
+
 import RatingStars from '../../ratings/ratingStars/RatingStars'
 import RatingNumber from '../../ratings/ratingNumber/RatingNumber'
 
 const CaregiverList = props => {
 	const { user_id, userDetails, caregiverDetails } = props
-
-	const calcAge = birthdate => {
-		return moment().diff(moment(birthdate, 'YYYYMMDD'), 'years')
-	}
 
 	const goViewCaregiver = caregiver => {
 		props.navigation.navigate('ViewCaregiver', {

@@ -24,8 +24,6 @@ export default {
 					}
 				}
 
-				console.log('payload: ', payload)
-
 				const newPositionData = {
 					data: {
 						getJobForm: {

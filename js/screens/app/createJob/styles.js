@@ -58,10 +58,4 @@ export const styles = StyleSheet.create({
 		fontSize: baseFont * 1.25,
 		paddingLeft: margin.horizontal * 2,
 	},
-
-	nextSectionTitle: {
-		color: font.white,
-		fontFamily: fontType.sfpro,
-		fontWeight: '500',
-	},
 })

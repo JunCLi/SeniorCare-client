@@ -54,6 +54,20 @@ export const generalStyles = StyleSheet.create({
 	flexRowCenter: {
 		flexDirection: 'row',
 		alignItems: 'center',
+	},
+
+	basicFont: {
+		color: 'black',
+		fontFamily: fontType.sfpro,
+		fontSize: baseFont,
+		fontWeight: '400',
+	},
+
+	weightedBasicFont: {
+		color: 'black',
+		fontFamily: fontType.sfpro,
+		fontSize: baseFont,
+		fontWeight: '400',
 	}
 })
 
@@ -62,6 +76,12 @@ export const submitButton = StyleSheet.create({
 		backgroundColor: background.blue,
 		paddingVertical: margin.vertical * 1.5, 
 		borderRadius: 0,
+	},
+
+	submitButtonText: {
+		color: font.white,
+		fontFamily: fontType.sfpro,
+		fontWeight: '500',
 	},
 
 	submitDisabled: {

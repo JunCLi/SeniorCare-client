@@ -73,10 +73,6 @@ const Login = props => {
 								</View>
 
 								<LoginForm {...formikProps} />
-									{/* <Button
-										title='press'
-										onPress={() => console.log('this press')}
-									/> */}
 
 								<View style={styles.forgetPasswordContainer}>
 									<Button

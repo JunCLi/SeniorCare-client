@@ -18,7 +18,6 @@ const BlueWhiteButtons = props => {
 
 	const handleTitleStyle = (title, value) => {
 		const cutoff = 11
-		console.log('title length', title.length)
 		if (title.length > cutoff) {
 			return handleIsSelected(value)
 				? dynamicStyles(title.length - cutoff).selectedButtonTitle

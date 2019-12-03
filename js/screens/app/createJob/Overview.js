@@ -1,17 +1,19 @@
 import React, { useState, useEffect } from 'react'
 
 import { useQuery } from '@apollo/react-hooks'
-import { GET_JOB_FORM, GET_JOB_FORM_POSITION } from '../../../graphql/queries/jobQueries'
+import { GET_JOB_FORM_TITLE, GET_JOB_FORM_POSITION } from '../../../graphql/queries/jobQueries'
 
 import { SafeAreaView, ScrollView, StatusBar, Text, TouchableOpacity, View } from 'react-native'
 import { Avatar, Button, Icon, Image, ListItem } from 'react-native-elements'
 import { styles } from './styles'
 
 const Overview = props => {
-	const { data, refetch } = useQuery(GET_JOB_FORM_POSITION)
-	const { data: jobFormData} = useQuery(GET_JOB_FORM)
+	const { data } = useQuery(GET_JOB_FORM_POSITION)
+	const { data: jobTitleData } = useQuery(GET_JOB_FORM_TITLE)
+	const { title } = jobTitleData.getJobForm.basicInformation
 	const { getJobForm } = data
 	const navParams = props.navigation.state.params
+
 	const [refresh, setRefresh ] = useState(false)
 	
 	const sections = [
@@ -42,17 +44,16 @@ const Overview = props => {
 		},
 	]
 
-	const handleTest = props => {
-		console.log('job form data:', jobFormData)
-	}
-
 	const handleNextSection = () => {
 		const uncompletedSections = sections.filter(section => !getJobForm[section.value].position.completed)
-		goToStep(uncompletedSections[0].path)
+
+		uncompletedSections.length
+			? goToStep(uncompletedSections[0].path)
+			: goToStep('SubmitJobOverview', { title: title })
 	}
 
-	const goToStep = destination => {
-		props.navigation.navigate(destination)
+	const goToStep = (destination, stateParams) => {
+		props.navigation.navigate(destination, stateParams)
 	}
 
 	useEffect(() => {
@@ -60,9 +61,6 @@ const Overview = props => {
 			setRefresh(!refresh)
 		}
 	}, [navParams])
-
-	// TODO Remove
-	// props.navigation.navigate(sections[0].path)
 
 	return (
 		<>
@@ -98,18 +96,13 @@ const Overview = props => {
 							</TouchableOpacity>
 						))}
 					</View>
-
-					<Button
-						title='test'
-						onPress={handleTest}
-					/>
 				</ScrollView>
 			</SafeAreaView>
 			<Button
 				title={getJobForm.formStarted ? 'Continue' : 'Get started'}
 				onPress={handleNextSection}
 				buttonStyle={styles.submitButton}
-				titleStyle={styles.nextSectionTitle}
+				titleStyle={styles.submitButtonText}
 			/>
 		</>
 	)

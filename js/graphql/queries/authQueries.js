@@ -33,13 +33,24 @@ export const CHECK_AUTHENTICATION = gql`
 `
 
 
-// export const GET_LOGGED_USER = gql`
-// 	query getLoggedUser {
-// 		getLoggedUser {
-// 			user_id
-// 		}
-// 	}
-// `
+export const GET_LOGGED_USER = gql`
+	query getLoggedUser {
+		getLoggedUser {
+			user_id
+		}
+	}
+`
+
+export const GET_LOGGED_USER_BASIC_WITH_AVATAR = gql`
+	query getLoggedUser {
+		getLoggedUser {
+			user_id
+			first_name
+			last_name
+			avatar
+		}
+	}
+`
 
 export const LOGOUT = gql`
 	mutation logout {
