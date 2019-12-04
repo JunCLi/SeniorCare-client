@@ -6,7 +6,6 @@ import { styles } from './styles'
 import { serviceConversions } from '../../../util/conversionTables/services'
 
 const ServiceDetails = props => {
-	console.log('service details props', props)
 
 	const servicesArray = [
 		...props.services,

@@ -93,6 +93,7 @@ export const GET_JOB_FORM_SENIOR_DETAILS = gql`
 					step
 					totalSteps
 				}
+				id
 				name
 				gender
 				birthdate
@@ -133,7 +134,7 @@ export const GET_JOB_FORM_CAREGIVER_PREFERENCE = gql`
 					totalSteps
 				}
 				availability
-				gender
+				genderPref
 				driversLicense
 			}
 		}
@@ -172,6 +173,7 @@ export const GET_JOB_FORM = gql`
 				householdNeeds
 			}
 			seniorDetails {
+				id
 				name
 				gender
 				birthdate
@@ -188,7 +190,7 @@ export const GET_JOB_FORM = gql`
 			}
 			caregiverPreferences {
 				availability
-				gender
+				genderPref
 				driversLicense
 			}
 			additionalInformation
@@ -204,6 +206,14 @@ export const CHANGE_FORM_POSITION = gql`
 				completed
 				step
 			}
+		}
+	}
+`
+
+export const SUBMIT_JOB_POST = gql`
+	mutation submitJobPost($input: JobFormInput) {
+		submitJobPost(input: $input) {
+			message
 		}
 	}
 `

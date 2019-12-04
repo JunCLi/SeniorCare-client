@@ -11,7 +11,7 @@ export const availabilityConv = {
 
 export const genderConv = {
 	female: {
-		title: 'female',
+		title: 'Female',
 		value: 'female',
 	},
 	male: {

@@ -5,6 +5,8 @@ import { styles } from './styles'
 
 import { booleanToYesNo } from '../../../util/conversionTables/boolean'
 
+import SimpleLabelValue from '../../labelValue/simple/SimpleLabelValue'
+
 const HouseDetails = props => {
 
 	return (
@@ -14,32 +16,12 @@ const HouseDetails = props => {
 			</View>
 
 			<View style={styles.mainContainer}>
-				<View style={styles.labelValueContainer}>
-					<View style={styles.labelContainer}>
-						<Text style={styles.label}>Smoking</Text>
-					</View>
-					<View style={styles.valueContainer}>
-						<Text style={styles.value}>{booleanToYesNo(props.cigarette)}</Text>
-					</View>
-				</View>
 
-				<View style={styles.labelValueContainer}>
-					<View style={styles.labelContainer}>
-						<Text style={styles.label}>Pets</Text>
-					</View>
-					<View style={styles.valueContainer}>
-						<Text style={styles.value}>{booleanToYesNo(props.pets)}</Text>
-					</View>
-				</View>
+				<SimpleLabelValue label={'Smoking'} value={booleanToYesNo(props.cigarette)} />
 
-				<View style={styles.labelValueContainer}>
-					<View style={styles.labelContainer}>
-						<Text style={styles.label}>Cannabis</Text>
-					</View>
-					<View style={styles.valueContainer}>
-						<Text style={styles.value}>{booleanToYesNo(props.cannabis)}</Text>
-					</View>
-				</View>
+				<SimpleLabelValue label={'Pets'} value={booleanToYesNo(props.pets)} />
+
+				<SimpleLabelValue label={'Cannabis'} value={booleanToYesNo(props.cannabis)} />
 				
 			</View>
 		</View>

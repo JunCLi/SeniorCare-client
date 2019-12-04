@@ -3,6 +3,7 @@ import React from 'react'
 import { Text, View } from 'react-native'
 import { styles } from './styles'
 
+import SimpleLabelValue from '../../labelValue/simple/SimpleLabelValue'
 
 const BasicInformation = props => {
 	return (
@@ -12,32 +13,11 @@ const BasicInformation = props => {
 			</View>
 
 			<View style={styles.mainContainer}>
-				<View style={styles.labelValueContainer}>
-					<View style={styles.labelContainer}>
-						<Text style={styles.label}>Start date</Text>
-					</View>
-					<View style={styles.valueContainer}>
-						<Text style={styles.value}>{props.startDate}</Text>
-					</View>
-				</View>
+				<SimpleLabelValue label={'Start date'} value={props.startDate} />
 
-				<View style={styles.labelValueContainer}>
-					<View style={styles.labelContainer}>
-						<Text style={styles.label}>End date</Text>
-					</View>
-					<View style={styles.valueContainer}>
-						<Text style={styles.value}>{props.endDate}</Text>
-					</View>
-				</View>
-
-				<View style={styles.labelValueContainer}>
-					<View style={styles.labelContainer}>
-						<Text style={styles.label}>Hourly rate</Text>
-					</View>
-					<View style={styles.valueContainer}>
-						<Text style={styles.value}>${props.hourlyRate}/hr</Text>
-					</View>
-				</View>
+				<SimpleLabelValue label={'End date'} value={props.endDate} />
+				
+				<SimpleLabelValue label={'Hourly rate'} value={`$${props.hourlyRate}/hr`} />
 
 				<View style={styles.labelValueContainer}>
 					<View style={styles.labelContainer}>

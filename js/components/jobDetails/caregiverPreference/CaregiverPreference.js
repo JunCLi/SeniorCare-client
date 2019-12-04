@@ -6,6 +6,8 @@ import { styles } from './styles'
 import { booleanToYesNo } from '../../../util/conversionTables/boolean'
 import { availabilityConv, genderConv } from '../../../util/conversionTables/simpleEnums'
 
+import SimpleLabelValue from '../../labelValue/simple/SimpleLabelValue'
+
 const CaregiverPreference = props => {
 
 	return (
@@ -15,32 +17,12 @@ const CaregiverPreference = props => {
 			</View>
 
 			<View style={styles.mainContainer}>
-				<View style={styles.labelValueContainer}>
-					<View style={styles.labelContainer}>
-						<Text style={styles.label}>Availabilty</Text>
-					</View>
-					<View style={styles.valueContainer}>
-						<Text style={styles.value}>{availabilityConv[props.availability].title}</Text>
-					</View>
-				</View>
 
-				<View style={styles.labelValueContainer}>
-					<View style={styles.labelContainer}>
-						<Text style={styles.label}>Gender</Text>
-					</View>
-					<View style={styles.valueContainer}>
-						<Text style={styles.value}>{genderConv[props.gender].title}</Text>
-					</View>
-				</View>
+				<SimpleLabelValue label={'Availabilty'} value={availabilityConv[props.availability].title} />
 
-				<View style={styles.labelValueContainer}>
-					<View style={styles.labelContainer}>
-						<Text style={styles.label}>Driving license</Text>
-					</View>
-					<View style={styles.valueContainer}>
-						<Text style={styles.value}>{booleanToYesNo(props.drivingLicense)}</Text>
-					</View>
-				</View>
+				<SimpleLabelValue label={'Gender'} value={genderConv[props.genderPref].title} />
+
+				<SimpleLabelValue label={'Driving license'} value={booleanToYesNo(props.drivingLicense)} />
 				
 			</View>
 		</View>

@@ -1,52 +1,11 @@
 import gql from 'graphql-tag'
 
 export default jobSchema = gql`
-
-	scalar Date
-
-	enum FormDirection {
-		next
-		back
-	}
-
-	enum Section {
-		basicInformation
-		serviceDetails
-		seniorDetails
-		houseDetails
-		caregiverPreferences
-	}
-
-	enum Services {
-		bathing
-		grooming
-		dressing
-		feeding
-		companionship
-		driving
-		appointments
-		mobility
-	}
-
-	enum HouseholdNeeds {
-		errands
-		mealPrep
-		housekeeping
-		laundry
-		shoppping
-	}
-
 	extend type Query {
 		getJobForm: JobForm
 	}
-
-	type NextStep {
-		section: Section,
-		step: Int,
-	}
-
+	
 	type JobForm {
-		nextStep: NextStep
 		basicInformation: BasicInformation
 		serviceDetails: ServiceDetails
 		seniorDetails: SeniorDetails
@@ -85,6 +44,7 @@ export default jobSchema = gql`
 
 	type SeniorDetails {
 		position: Position
+		id: ID
 		name: String
 		gender: Gender
 		birthdate: Date
@@ -105,12 +65,12 @@ export default jobSchema = gql`
 	type CaregiverPreferences {
 		position: Position
 		availability: Availability
-		gender: Gender
+		genderPref: Gender
 		driversLicense: Boolean
 		additionalInformation: String
 	}
 
-	extend type Mutaion {
+	extend type Mutation {
 		changeFormPosition(input: ChangeFormPositionObject): Placeholder
 	}
 

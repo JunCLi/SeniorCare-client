@@ -43,7 +43,7 @@ const Page1 = props => {
 	}
 
 	const handlePrefGender = value => {
-		setFieldValue('gender', value)
+		setFieldValue('genderPref', value)
 	}
 
 	return (
@@ -65,7 +65,7 @@ const Page1 = props => {
 				</View>
 				<BlueWhiteButtons
 					buttonArray={gender}
-					selected={values.gender}
+					selected={values.genderPref}
 					handleSelect={handlePrefGender}
 					/>
 			</View>

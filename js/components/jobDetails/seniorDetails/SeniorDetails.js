@@ -4,6 +4,9 @@ import { Text, View } from 'react-native'
 import { styles } from './styles'
 
 import { calcAge } from '../../../util/helperFunctions/calc'
+import { genderConv } from '../../../util/conversionTables/simpleEnums'
+
+import SimpleLabelValue from '../../labelValue/simple/SimpleLabelValue'
 
 const SeniorDetails = props => {
 	return (
@@ -13,41 +16,14 @@ const SeniorDetails = props => {
 			</View>
 
 			<View style={styles.mainContainer}>
-				<View style={styles.labelValueContainer}>
-					<View style={styles.labelContainer}>
-						<Text style={styles.label}>Gender</Text>
-					</View>
-					<View style={styles.valueContainer}>
-						<Text style={styles.value}>{props.gender}</Text>
-					</View>
-				</View>
 
-				<View style={styles.labelValueContainer}>
-					<View style={styles.labelContainer}>
-						<Text style={styles.label}>Age</Text>
-					</View>
-					<View style={styles.valueContainer}>
-						<Text style={styles.value}>{calcAge(props.birthdate)} years old</Text>
-					</View>
-				</View>
+				<SimpleLabelValue label={'Gender'} value={genderConv[props.gender].title} />
 
-				<View style={styles.labelValueContainer}>
-					<View style={styles.labelContainer}>
-						<Text style={styles.label}>Relationship</Text>
-					</View>
-					<View style={styles.valueContainer}>
-						<Text style={styles.value}>{props.relation}</Text>
-					</View>
-				</View>
+				<SimpleLabelValue label={'Age'} value={`${calcAge(props.birthdate)} years old`} />
 
-				<View style={styles.labelValueContainer}>
-					<View style={styles.labelContainer}>
-						<Text style={styles.label}>Language</Text>
-					</View>
-					<View style={styles.valueContainer}>
-						 <Text style={styles.value}>{props.language.join(', ')}</Text>
-					</View>
-				</View>
+				<SimpleLabelValue label={'Relationship'} value={props.relation} />
+
+				<SimpleLabelValue label={'Language'} value={props.language.join(', ')} />
 
 				<View style={styles.stackedContainer}>
 					<View style={styles.labelContainer}>
