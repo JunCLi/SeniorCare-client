@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 
 import { useQuery } from '@apollo/react-hooks'
-import { GET_JOB_FORM_TITLE, GET_JOB_FORM_POSITION } from '../../../graphql/queries/jobQueries'
+import { GET_JOB_FORM_TITLE, GET_JOB_FORM_POSITION, GET_JOB_FORM } from '../../../graphql/queries/jobQueries'
 
 import { SafeAreaView, ScrollView, StatusBar, Text, TouchableOpacity, View } from 'react-native'
 import { Avatar, Button, Icon, Image, ListItem } from 'react-native-elements'
@@ -9,6 +9,7 @@ import { styles } from './styles'
 
 const Overview = props => {
 	const { data } = useQuery(GET_JOB_FORM_POSITION)
+	const { data: testData } = useQuery(GET_JOB_FORM)
 	const { data: jobTitleData } = useQuery(GET_JOB_FORM_TITLE)
 	const { title } = jobTitleData.getJobForm.basicInformation
 	const { getJobForm } = data
@@ -30,7 +31,7 @@ const Overview = props => {
 		{
 			title: 'Senior Details',
 			value: 'seniorDetails',
-			path: 'SeniorDetails',
+			path: 'SelectSeniorProfile',
 		},
 		{
 			title: 'House Details',
@@ -96,6 +97,11 @@ const Overview = props => {
 							</TouchableOpacity>
 						))}
 					</View>
+
+					<Button
+						title='test'
+						onPress={() => console.log(testData)}
+					/>
 				</ScrollView>
 			</SafeAreaView>
 			<Button

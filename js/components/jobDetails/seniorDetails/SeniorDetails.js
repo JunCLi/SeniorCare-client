@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { Text, View } from 'react-native'
+import { Avatar, ListItem } from 'react-native-elements'
 import { styles } from './styles'
 
 import { calcAge } from '../../../util/helperFunctions/calc'
@@ -9,6 +10,8 @@ import { genderConv } from '../../../util/conversionTables/simpleEnums'
 import SimpleLabelValue from '../../labelValue/simple/SimpleLabelValue'
 
 const SeniorDetails = props => {
+	console.log('props', props)
+
 	return (
 		<View>
 			<View style={styles.headerContainer}>
@@ -16,6 +19,20 @@ const SeniorDetails = props => {
 			</View>
 
 			<View style={styles.mainContainer}>
+
+				<ListItem
+					leftAvatar={
+						<Avatar
+							source={props.picture ? { uri: props.picture } : null}
+							title={props.name.substring(0, 3)}
+							placeholderStyle={styles.placeholderAvatar}
+							rounded
+						/>
+					}
+					title={props.name}
+					titleStyle={styles.name}
+					containerStyle={styles.listItemContainer}
+				/>
 
 				<SimpleLabelValue label={'Gender'} value={genderConv[props.gender].title} />
 

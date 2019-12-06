@@ -46,10 +46,7 @@ const SubmitOverview = props => {
 				caregiverPreferences: caregiverPreferencesInput,
 			}}
 		})
-
-		console.log('result', result.data.submitJobPost)
 	}
-
 
 	return (
 		<>
@@ -66,7 +63,7 @@ const SubmitOverview = props => {
 
 				<HouseDetails {...houseDetails} />
 
-				<CaregiverPreference {...caregiverPreferences} />
+				<CaregiverPreference {...caregiverPreferences} /> 
 			</ScrollView>
 		</SafeAreaView>
 		<Button

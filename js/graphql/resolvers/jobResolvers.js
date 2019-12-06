@@ -1,4 +1,4 @@
-import { GET_JOB_FORM, GET_JOB_FORM_POSITION } from '../queries/jobQueries'
+import { GET_JOB_FORM, GET_JOB_FORM_POSITION, GET_JOB_FORM_SENIOR_DETAILS } from '../queries/jobQueries'
 
 // import gql from 
 
@@ -46,7 +46,31 @@ export default {
 			} catch(err) {
 				throw err
 			}
-		}
+		},
+
+		async addSeniorToForm(parent, { input }, { cache }) {
+			try {
+				const seniorDetailsData = cache.readQuery({ query: GET_JOB_FORM_SENIOR_DETAILS })
+
+				const seniorData = {
+					data: {
+						getJobForm: {
+							...seniorDetailsData.getJobForm,
+							seniorDetails: {
+								position: {
+									...seniorDetailsData.getJobForm.seniorDetails.position,
+									completed: true,
+								},
+								...input,
+							}
+						}
+					}
+				}
+				cache.writeData(seniorData)
+			} catch(err) {
+				throw err
+			}
+		},
 	},
 	Query: {
 		// async getJobForm(parent, input, { cache }) {

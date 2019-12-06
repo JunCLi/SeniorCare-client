@@ -210,6 +210,14 @@ export const CHANGE_FORM_POSITION = gql`
 	}
 `
 
+export const SELECT_SENIOR_JOB_FORM = gql`
+	mutation addSeniorToForm($input: seniorDetailsInput) {
+		addSeniorToForm(input: $input) @client {
+			message
+		}
+	}
+`
+
 export const SUBMIT_JOB_POST = gql`
 	mutation submitJobPost($input: JobFormInput) {
 		submitJobPost(input: $input) {

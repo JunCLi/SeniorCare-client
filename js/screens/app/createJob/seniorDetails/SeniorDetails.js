@@ -81,6 +81,7 @@ const SeniorDetails = props => {
 							<SafeAreaView style={styles.backgroundBlue}>
 								<StatusBar backgroundColor={styles.statusBar.backgroundColor} barStyle='dark-content' />
 								<ScrollView style={styles.mainContainer} contentContainerStyle={styles.scrollViewContainer}>
+
 									<StepCounter
 										title='Senior Details'
 										totalSteps={position.totalSteps}

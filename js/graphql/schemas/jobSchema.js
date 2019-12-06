@@ -72,7 +72,21 @@ export default jobSchema = gql`
 
 	extend type Mutation {
 		changeFormPosition(input: ChangeFormPositionObject): Placeholder
+		# addSeniorToForm(input: seniorDetailsInput): Placeholder
 	}
+
+	# input seniorDetailsInput {
+	# 	position: Position
+	# 	id: ID
+	# 	name: String
+	# 	gender: Gender
+	# 	birthdate: Date
+	# 	relation: String
+	# 	bio: String
+	# 	medicalConditions: String
+	# 	language: [String]
+	# 	picture: String
+	# }
 
 	input ChangeFormPositionObject {
 		section: Section

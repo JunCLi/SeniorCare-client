@@ -12,7 +12,8 @@ const PosterInfo = props => {
 		<ListItem
 			leftAvatar={
 				<Avatar
-					source={{ uri: userInfo.avatar }}
+					source={userInfo.avatar ? { uri: userInfo.avatar } : null}
+					title={userInfo.first_name.substring(0,3)}
 					placeholderStyle={styles.placeholderAvatar}
 					rounded
 				/>

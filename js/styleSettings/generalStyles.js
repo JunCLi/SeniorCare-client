@@ -63,12 +63,19 @@ export const generalStyles = StyleSheet.create({
 		fontWeight: '400',
 	},
 
+	basicFontBolder: {
+		color: 'black',
+		fontFamily: fontType.sfpro,
+		fontSize: baseFont,
+		fontWeight: '500',
+	},
+
 	weightedBasicFont: {
 		color: 'black',
 		fontFamily: fontType.sfpro,
 		fontSize: baseFont,
 		fontWeight: '400',
-	}
+	},
 })
 
 export const submitButton = StyleSheet.create({
