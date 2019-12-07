@@ -10,7 +10,6 @@ const Date = props => {
 	const [ selectType, setSelectType ] = useState('startDate')
 	const [ markedDates, setMarkedDates ] = useState({})
 
-	
 	const handleSwitchSelectType = type => {
 		setSelectType(type)
 	}
@@ -20,26 +19,31 @@ const Date = props => {
 	}
 
 	const handleDateClick = date => {
-		// console.log('date', date)
 		setFieldValue(selectType, date.dateString)
 	}
 
-	const convertValues = (startDate, endDate) => {
-		console.log('startDate:', startDate, 'endDate:', endDate )
-		const dateArray = startDate.split('-')
-		console.log('dateArray: ', dateArray)
+	const getDateRange = (startDate, endDate) => {
+		const periodStyle = {selected: true, color: '#244492', textColor: 'white' }
+
+		const dateRange = {
+			[startDate]: { ...periodStyle, startingDay: true },
+			[endDate]: { ...periodStyle, endingDay: true },
+		}
+
+		if (startDate && endDate) {
+			let start = moment(startDate).startOf('day').add(1, 'days')
+			const end = moment(endDate).startOf('day')
+			while (end.isAfter(start)) {
+				Object.assign(dateRange, { [start.format('YYYY-MM-DD')]: periodStyle })
+				start = start.add(1, 'days')
+			}
+		}
+
+		return dateRange
 	}
 
 	useEffect(() => {
-		// console.log('values start:', values.startDate)
-		convertValues(values.startDate, values.endDate)
-
-		// console.log('values end:', typeof values.endDate)
-		setMarkedDates({
-			// ...markedDates,
-			[values.startDate]: { startingDay: true, color: '#244492', textColor: 'white'},
-			[values.endDate]: { endingDay: true, color: '#244492', textColor: 'white'},
-		})
+		setMarkedDates(getDateRange(values.startDate, values.endDate))
 	}, [values.startDate, values.endDate])
 
 	return (
@@ -79,6 +83,7 @@ const Date = props => {
 			<Calendar
 				onDayPress={day => handleDateClick(day)}
 				markedDates={markedDates}
+				// markedDates={getDateRange(values.startDate, values.endDate)}
 				// markedDates={{
 					
 				// 	'2019-12-04': { startingDay: true, color: 'green'},

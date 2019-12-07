@@ -25,6 +25,7 @@ export const styles = StyleSheet.create({
 
 	valueContainer: {
 		marginHorizontal: margin.horizontal,
+		width: screenWidth / 2 - margin.horizontal
 	},
 
 	value: {

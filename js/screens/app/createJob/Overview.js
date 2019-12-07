@@ -57,10 +57,6 @@ const Overview = props => {
 		props.navigation.navigate(destination, stateParams)
 	}
 
-	const handleTest = () => {
-		console.log('handleTest', testData)
-	}
-
 	useEffect(() => {
 		if (navParams && navParams.refetch) {
 			setRefresh(!refresh)
@@ -101,11 +97,6 @@ const Overview = props => {
 							</TouchableOpacity>
 						))}
 					</View>
-
-					<Button
-						title='test'
-						onPress={handleTest}
-					/>
 				</ScrollView>
 			</SafeAreaView>
 			<Button

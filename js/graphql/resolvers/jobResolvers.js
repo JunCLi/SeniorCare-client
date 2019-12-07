@@ -41,8 +41,6 @@ export default {
 					newPositionData.data.getJobForm.formStarted = true
 				}
 
-				console.log('newPositionData', newPositionData)
-
 				cache.writeData(newPositionData)
 
 			} catch(err) {
@@ -79,7 +77,6 @@ export default {
 			// const readData = cache.readQuery({
 			// 	query:
 			// })
-			// console.log('test')
 		// }
 	},
 }

@@ -1,4 +1,5 @@
 import React from 'react'
+import moment from 'moment'
 
 import { Text, View } from 'react-native'
 import { styles } from './styles'
@@ -6,6 +7,10 @@ import { styles } from './styles'
 import SimpleLabelValue from '../../labelValue/simple/SimpleLabelValue'
 
 const BasicInformation = props => {
+	const formatDate = date => {
+		return date ? moment(date).format('YYYY-MM-DD') : ''
+	}
+
 	return (
 		<View>
 			<View style={styles.headerContainer}>
@@ -13,9 +18,9 @@ const BasicInformation = props => {
 			</View>
 
 			<View style={styles.mainContainer}>
-				<SimpleLabelValue label={'Start date'} value={props.startDate} />
+				<SimpleLabelValue label={'Start date'} value={formatDate(props.startDate)} />
 
-				<SimpleLabelValue label={'End date'} value={props.endDate} />
+				<SimpleLabelValue label={'End date'} value={formatDate(props.endDate)} />
 				
 				<SimpleLabelValue label={'Hourly rate'} value={`$${props.hourlyRate}/hr`} />
 
