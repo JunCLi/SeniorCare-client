@@ -1,100 +1,103 @@
-import gql from 'graphql-tag'
+// import gql from 'graphql-tag'
 
-export default jobSchema = gql`
-	extend type Query {
-		getJobForm: JobForm
-	}
+// export default jobSchema = gql`
+// 	extend type Query {
+// 		# getJobForm: JobForm
+// 		test: Test
+// 	}
 	
-	type JobForm {
-		basicInformation: BasicInformation
-		serviceDetails: ServiceDetails
-		seniorDetails: SeniorDetails
-		houseDetails: HouseDetails
-		caregiverPreferences: CaregiverPreferences
-		additionalInformation: String
-	}
+// 	type Test
 
-	type Position {
-		completed: Boolean
-		step: Int
-		totalSteps: Int
-	}
+// 	type JobForm {
+// 		basicInformation: BasicInformation
+// 		serviceDetails: ServiceDetails
+// 		seniorDetails: SeniorDetails
+// 		houseDetails: HouseDetails
+// 		caregiverPreferences: CaregiverPreferences
+// 		additionalInformation: String
+// 	}
 
-	type BasicInformation {
-		position: Position
-		title: String
-		startDate: Date
-		endDate: Date,
-		location: Location
-		hourlyRate: Int
-	}
+// 	type Position {
+// 		completed: Boolean
+// 		step: Int
+// 		totalSteps: Int
+// 	}
 
-	type Location {
-		address: String
-		city: String
-		province: String
-		postalCode: String
-	}
+// 	type BasicInformation {
+// 		position: Position
+// 		title: String
+// 		startDate: Date
+// 		endDate: Date,
+// 		location: Location
+// 		hourlyRate: Int
+// 	}
 
-	type ServiceDetails {
-		position: Position
-		services: [Services]
-		householdNeeds: [HouseholdNeeds]
-	}
+// 	type Location {
+// 		address: String
+// 		city: String
+// 		province: String
+// 		postalCode: String
+// 	}
 
-	type SeniorDetails {
-		position: Position
-		id: ID
-		name: String
-		gender: Gender
-		birthdate: Date
-		relation: String
-		bio: String
-		medicalConditions: String
-		language: [String]
-		picture: String
-	}
+// 	type ServiceDetails {
+// 		position: Position
+// 		services: [Services]
+// 		householdNeeds: [HouseholdNeeds]
+// 	}
 
-	type HouseDetails {
-		position: Position
-		cigarette: Boolean
-		pets: Boolean
-		cannabis: Boolean
-	}
+// 	type SeniorDetails {
+// 		position: Position
+// 		id: ID
+// 		name: String
+// 		gender: Gender
+// 		birthdate: Date
+// 		relation: String
+// 		bio: String
+// 		medicalConditions: String
+// 		language: [String]
+// 		picture: String
+// 	}
 
-	type CaregiverPreferences {
-		position: Position
-		availability: Availability
-		genderPref: Gender
-		driversLicense: Boolean
-		additionalInformation: String
-	}
+// 	type HouseDetails {
+// 		position: Position
+// 		cigarette: Boolean
+// 		pets: Boolean
+// 		cannabis: Boolean
+// 	}
 
-	extend type Mutation {
-		changeFormPosition(input: ChangeFormPositionObject): Placeholder
-		# addSeniorToForm(input: seniorDetailsInput): Placeholder
-	}
+// 	type CaregiverPreferences {
+// 		position: Position
+// 		availability: Availability
+// 		genderPref: Gender
+// 		driversLicense: Boolean
+// 		additionalInformation: String
+// 	}
 
-	# input seniorDetailsInput {
-	# 	position: Position
-	# 	id: ID
-	# 	name: String
-	# 	gender: Gender
-	# 	birthdate: Date
-	# 	relation: String
-	# 	bio: String
-	# 	medicalConditions: String
-	# 	language: [String]
-	# 	picture: String
-	# }
+// 	extend type Mutation {
+// 		changeFormPosition(input: ChangeFormPositionObject): Placeholder
+// 		# addSeniorToForm(input: seniorDetailsInput): Placeholder
+// 	}
 
-	input ChangeFormPositionObject {
-		section: Section
-		direction: FormDirection!
-		payload: JobForm
-	}
+// 	input seniorDetailsInput {
+// 		position: Position
+// 		id: ID
+// 		name: String
+// 		gender: Gender
+// 		birthdate: Date
+// 		relation: String
+// 		bio: String
+// 		medicalConditions: String
+// 		language: [String]
+// 		picture: String
+// 	}
+
+// 	input ChangeFormPositionObject {
+// 		section: Section
+// 		direction: FormDirection!
+// 		payload: JobForm
+// 	}
 	
-	type Placeholder {
-		Message: String
-	}
-`
+// 	type Placeholder {
+// 		Message: String
+// 	}
+// `

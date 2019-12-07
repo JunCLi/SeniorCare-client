@@ -32,8 +32,6 @@ const SubmitOverview = props => {
 		const { __typename: houseTypename, ...houseDetailsInput } = houseDetails
 		const { __typename: careTypename, ...caregiverPreferencesInput } = caregiverPreferences
 
-		console.log('senior details', seniorDetails)
-
 		const result = await submitJobPost({ 
 			variables: {input: {
 				basicInformation: {

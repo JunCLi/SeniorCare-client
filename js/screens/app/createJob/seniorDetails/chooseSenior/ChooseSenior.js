@@ -15,11 +15,11 @@ const SelectSenior = props => {
 	const [ addSeniorToForm ] = useMutation(SELECT_SENIOR_JOB_FORM)
 
 	const handleSelect = senior => {
-		console.log('senior', senior)
-		const { medical_conditions, ...newSeniorObject} = senior
+		const { medical_conditions, id, ...newSeniorObject} = senior
 		addSeniorToForm({
 			variables: {input: {
 				...newSeniorObject,
+				seniorId: id,
 				medicalConditions: medical_conditions,
 			}}
 		})

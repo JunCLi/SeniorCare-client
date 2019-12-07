@@ -10,8 +10,6 @@ import { genderConv } from '../../../util/conversionTables/simpleEnums'
 import SimpleLabelValue from '../../labelValue/simple/SimpleLabelValue'
 
 const SeniorDetails = props => {
-	console.log('props', props)
-
 	return (
 		<View>
 			<View style={styles.headerContainer}>

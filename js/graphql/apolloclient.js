@@ -49,10 +49,10 @@ const link = split(
 )
 
 const apolloclient = new ApolloClient({
-  link: ApolloLink.from([errorLink, stateLink, link]),
+	link: ApolloLink.from([errorLink, stateLink, link]),
 	cache: cache,
-	resolvers,
 	typeDefs,
+	resolvers,
 })
 
 export default apolloclient

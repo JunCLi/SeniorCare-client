@@ -93,7 +93,7 @@ export const GET_JOB_FORM_SENIOR_DETAILS = gql`
 					step
 					totalSteps
 				}
-				id
+				seniorId
 				name
 				gender
 				birthdate
@@ -173,7 +173,7 @@ export const GET_JOB_FORM = gql`
 				householdNeeds
 			}
 			seniorDetails {
-				id
+				seniorId
 				name
 				gender
 				birthdate
