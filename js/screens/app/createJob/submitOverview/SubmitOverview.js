@@ -44,6 +44,8 @@ const SubmitOverview = props => {
 				caregiverPreferences: caregiverPreferencesInput,
 			}}
 		})
+
+		if (result.data.submitJobPost.message === 'success') props.navigation.navigate('JobCreated')
 	}
 
 	return (

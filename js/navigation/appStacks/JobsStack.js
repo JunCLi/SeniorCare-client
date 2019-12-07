@@ -10,6 +10,7 @@ import SeniorDetails from '../../screens/app/createJob/seniorDetails/SeniorDetai
 import HouseDetails from '../../screens/app/createJob/houseDetails/HouseDetails'
 import CaregiverPreferences from '../../screens/app/createJob/caregiverPreference/CaregiverPreferences'
 import SubmitOverview from '../../screens/app/createJob/submitOverview/SubmitOverview'
+import JobCreated from '../../screens/app/createJob/jobCreated/JobCreated'
 
 const FindStack = createStackNavigator({
 	JobBoard: {
@@ -80,7 +81,18 @@ const FindStack = createStackNavigator({
 		navigationOptions: ({ navigation }) => ({
 			title: navigation.state.params ? navigation.state.params.title : 'Job'
 		})
-	}
+	},
+
+
+	JobCreated: {
+		screen: JobCreated,
+		navigationOptions: ({ navigation }) => ({
+			header: null,
+		})
+	},
+
+
+
 }, {
 	initialRouteName: 'JobBoard',
 })

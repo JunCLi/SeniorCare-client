@@ -23,6 +23,8 @@ const SelectSenior = props => {
 				medicalConditions: medical_conditions,
 			}}
 		})
+
+		props.navigation.navigate('CreateJobOverview')
 	}
 
 	return (
