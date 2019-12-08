@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 
-import { Text, TouchableOpacity, View } from 'react-native'
-import { Icon } from 'react-native-elements'
+import { Text, View } from 'react-native'
 import { styles } from './styles'
 
+import Header from '../header/Header'
 import { serviceConversions } from '../../../util/conversionTables/services'
 
 const ServiceDetails = props => {
@@ -20,17 +20,11 @@ const ServiceDetails = props => {
 
 	return (
 		<View>
-			<TouchableOpacity 
-				onPress={handleMinimize}
-				style={styles.headerContainer}
-			>
-				<Text style={styles.headerText}>Service Details</Text>
-				<Icon
-					type='entypo'
-					name={minimize ? 'chevron-down' : 'chevron-up'}
-					iconStyle={styles.chevronIcon}
-				/>
-			</TouchableOpacity>
+			<Header
+				title='Service details'
+				minimize={minimize}
+				handleMinimize={handleMinimize}
+			/>
 
 			{ !minimize &&
 				<View style={styles.mainContainer}>

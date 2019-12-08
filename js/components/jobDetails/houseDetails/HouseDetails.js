@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 
-import { Text, TouchableOpacity, View } from 'react-native'
-import { Icon } from 'react-native-elements'
+import { View } from 'react-native'
 import { styles } from './styles'
 
 import { booleanToYesNo } from '../../../util/conversionTables/boolean'
 
+import Header from '../header/Header'
 import SimpleLabelValue from '../../labelValue/simple/SimpleLabelValue'
 
 const HouseDetails = props => {
@@ -17,17 +17,11 @@ const HouseDetails = props => {
 
 	return (
 		<View>
-			<TouchableOpacity 
-				onPress={handleMinimize}
-				style={styles.headerContainer}
-			>
-				<Text style={styles.headerText}>House Details</Text>
-				<Icon
-					type='entypo'
-					name={minimize ? 'chevron-down' : 'chevron-up'}
-					iconStyle={styles.chevronIcon}
-				/>
-			</TouchableOpacity>
+			<Header
+				title='House Details'
+				minimize={minimize}
+				handleMinimize={handleMinimize}
+			/>
 
 			{ !minimize &&
 				<View style={styles.mainContainer}>

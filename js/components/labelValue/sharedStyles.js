@@ -6,12 +6,6 @@ import { margin, baseFont, screenWidth } from '../../styleSettings/screensizeSet
 import { background, font } from '../../styleSettings/colours'
 
 export const sharedStyles = StyleSheet.create({
-	mainContainer: {
-		marginHorizontal: margin.horizontal,
-		marginVertical: margin.vertical,
-		marginBottom: margin.vertical * 2,
-	},
-
 	labelValueContainer: {
 		flexDirection: 'row',
 		justifyContent: 'flex-start',
@@ -29,14 +23,15 @@ export const sharedStyles = StyleSheet.create({
 		lineHeight: baseFont * 1.5,
 	},
 
-	valueContainer: {
-		marginHorizontal: margin.horizontal,
-	},
-
 	value: {
 		...generalStyles.basicFont,
 		color: font.dullGrey,
 		lineHeight: baseFont * 1.5,
+	},
+
+	valueContainer: {
+		marginHorizontal: margin.horizontal,
+		width: screenWidth / 2 - margin.horizontal
 	},
 
 	capitalizeValue: {

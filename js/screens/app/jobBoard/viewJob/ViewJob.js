@@ -58,7 +58,7 @@ const Jobs = props => {
 					handleSelectButton={handleSelectButton}
 				/>
 
-				<SeniorDetails {...data.getJob.seniorDetails} />
+				<SeniorDetails {...data.getJob.seniorDetails} avatarPosition={'aboveHeader'} />
 
 				<BasicInformation {...data.getJob.basicInformation} />
 

@@ -7,44 +7,40 @@ import { styles } from './styles'
 import { calcAge } from '../../../util/helperFunctions/calc'
 import { genderConv } from '../../../util/conversionTables/simpleEnums'
 
+import Header from '../header/Header'
+import SeniorAvatar from './seniorAvatar/SeniorAvatar'
 import SimpleLabelValue from '../../labelValue/simple/SimpleLabelValue'
+import StackedLabelValue from '../../labelValue/stacked/StackedLabelValue'
 
 const SeniorDetails = props => {
+	const { avatarPosition } = props
 	const [ minimize, setMinimize ] = useState(false)
 
 	const handleMinimize = () => {
 		setMinimize(!minimize)
 	}
 
+	const seniorAvatarComponent = (
+		<SeniorAvatar
+			name={props.name}
+			picture={props.picture}
+			avatarPosition={avatarPosition}
+		/>
+	)
+
 	return (
 		<View>
-			<TouchableOpacity 
-				onPress={handleMinimize}
-				style={styles.headerContainer}
-			>
-				<Text style={styles.headerText}>Senior Details</Text>
-				<Icon
-					type='entypo'
-					name={minimize ? 'chevron-down' : 'chevron-up'}
-					iconStyle={styles.chevronIcon}
-				/>
-			</TouchableOpacity>
+			{ avatarPosition === 'aboveHeader' && seniorAvatarComponent	}
+
+			<Header
+				title='Senior Details'
+				minimize={minimize}
+				handleMinimize={handleMinimize}
+			/>
 
 			{ !minimize	&&
 				<View style={styles.mainContainer}>
-					<ListItem
-						leftAvatar={
-							<Avatar
-								source={props.picture ? { uri: props.picture } : null}
-								title={props.name.substring(0, 3)}
-								placeholderStyle={styles.placeholderAvatar}
-								rounded
-							/>
-						}
-						title={props.name}
-						titleStyle={styles.name}
-						containerStyle={styles.listItemContainer}
-					/>
+					{	avatarPosition !== 'aboveHeader' && seniorAvatarComponent	}
 
 					<SimpleLabelValue label={'Gender'} value={genderConv[props.gender].title} />
 
@@ -54,23 +50,9 @@ const SeniorDetails = props => {
 
 					<SimpleLabelValue label={'Language'} value={props.language.join(', ')} capitalize={true} />
 
-					<View style={styles.stackedContainer}>
-						<View style={styles.labelContainer}>
-							<Text style={styles.label}>Bio</Text>
-						</View>
-						<View style={styles.valueContainer}>
-							<Text style={styles.value}>{props.bio}</Text>
-						</View>
-					</View>
+					<StackedLabelValue label={'Bio'} value={props.bio} />
 
-					<View style={styles.stackedContainer}>
-						<View style={styles.labelContainer}>
-							<Text style={styles.label}>Medical Condition</Text>
-						</View>
-						<View style={styles.valueContainer}>
-							<Text style={styles.value}>{props.medicalConditions}</Text>
-						</View>
-					</View>
+					<StackedLabelValue label={'Medical Condition'} value={props.medicalConditions} />
 					
 				</View>
 			}

@@ -1,14 +1,21 @@
 import React, { useState } from 'react'
 import moment from 'moment'
 
-import { Text, TouchableOpacity, View } from 'react-native'
-import { Icon } from 'react-native-elements'
+import { Text, View } from 'react-native'
 import { styles } from './styles'
 
+import Header from '../header/Header'
 import SimpleLabelValue from '../../labelValue/simple/SimpleLabelValue'
+import MultiLabelValue from '../../labelValue/multiValue/LabelValue'
 
 const BasicInformation = props => {
 	const [ minimize, setMinimize ] = useState(false)
+
+	const locationArray = [
+		props.location.address,
+		`${props.location.city}, ${props.location.province}`,
+		props.location.postalCode,
+	]
 
 	const handleMinimize = () => {
 		setMinimize(!minimize)
@@ -20,17 +27,11 @@ const BasicInformation = props => {
 
 	return (
 		<View>
-			<TouchableOpacity 
-				onPress={handleMinimize}
-				style={styles.headerContainer}
-			>
-				<Text style={styles.headerText}>Basic Information</Text>
-				<Icon
-					type='entypo'
-					name={minimize ? 'chevron-down' : 'chevron-up'}
-					iconStyle={styles.chevronIcon}
-				/>
-			</TouchableOpacity>
+			<Header
+				title='Basic Information'
+				minimize={minimize}
+				handleMinimize={handleMinimize}
+			/>
 
 			{ !minimize &&
 				<View style={styles.mainContainer}>
@@ -40,16 +41,11 @@ const BasicInformation = props => {
 					
 					<SimpleLabelValue label={'Hourly rate'} value={`$${props.hourlyRate}/hr`} />
 
-					<View style={styles.labelValueContainer}>
-						<View style={styles.labelContainer}>
-							<Text style={styles.label}>Address</Text>
-						</View>
-						<View style={styles.valueContainer}>
-							<Text style={styles.capitalizeValue}>{props.location.address}</Text>
-							<Text style={styles.value}>{props.location.city}, {props.location.province}</Text>
-							<Text style={styles.value}>{props.location.postalCode}</Text>
-						</View>
-					</View>
+					<MultiLabelValue
+						label={'Address'}
+						valueArray={locationArray}
+						capitalize
+					/>
 				</View>
 			}
 		</View>
