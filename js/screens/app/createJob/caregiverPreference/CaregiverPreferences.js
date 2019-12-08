@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { useQuery } from '@apollo/react-hooks'
-import { GET_JOB_FORM_CAREGIVER_PREFERENCE } from '../../../../graphql/queries/jobQueries'
+import { GET_JOB_FORM_CAREGIVER_PREFERENCE } from '../../../../graphql/queries/createJobQueries'
 
 import { KeyboardAvoidingView, SafeAreaView, ScrollView, StatusBar } from 'react-native'
 import { Formik } from 'formik'

@@ -1,26 +1,34 @@
 import React from 'react'
 
+import { useQuery } from '@apollo/react-hooks'
+import { GET_ALL_USER_JOBS } from '../../../graphql/queries/jobQueries'
+
 import { SafeAreaView, ScrollView, StatusBar, Text, View } from 'react-native'
 import { Button, Icon, Image } from 'react-native-elements'
 import { styles } from './styles'
 
 import OrangeArc from '../../../components/images/orangeArc/OrangeArc'
 import NoJobs from './noJobs/NoJobs'
+import Jobs from './jobs/Jobs'
 
 const JobBoard = props => {
+	const { data } = useQuery(GET_ALL_USER_JOBS)
+
 	const handleGoJobCreate = () => {
 		props.navigation.navigate('CreateJobOverview')
 	}
-	
-	// TODO remove
-	props.navigation.navigate('CreateJobOverview')
+
+	console.log('data', data)
 
 	return (
 		<SafeAreaView style={styles.backgroundBlue}>
 			<StatusBar backgroundColor={styles.statusBar.backgroundColor} barStyle='dark-content' />
 			<OrangeArc />
 			<ScrollView style={styles.mainContainer} contentContainerStyle={styles.scrollViewContainer}>
-				<NoJobs handleGoJobCreate={handleGoJobCreate} />
+				{ data && data.getAllUserJobs.length
+					? <Jobs jobs={data.getAllUserJobs}/>
+					: <NoJobs handleGoJobCreate={handleGoJobCreate} />
+				}
 			</ScrollView>
 		</SafeAreaView>
 

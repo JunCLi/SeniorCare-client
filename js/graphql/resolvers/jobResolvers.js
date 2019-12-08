@@ -1,4 +1,4 @@
-import { GET_JOB_FORM, GET_JOB_FORM_POSITION, GET_JOB_FORM_SENIOR_DETAILS } from '../queries/jobQueries'
+import { GET_JOB_FORM, GET_JOB_FORM_POSITION, GET_JOB_FORM_SENIOR_DETAILS } from '../queries/createJobQueries'
 
 // import gql from 
 

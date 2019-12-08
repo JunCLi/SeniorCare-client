@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { useQuery, useMutation } from '@apollo/react-hooks'
-import { GET_JOB_FORM, SUBMIT_JOB_POST } from '../../../../graphql/queries/jobQueries'
+import { GET_JOB_FORM, SUBMIT_JOB_POST } from '../../../../graphql/queries/createJobQueries'
 import { GET_LOGGED_USER_BASIC_WITH_AVATAR } from '../../../../graphql/queries/authQueries'
 
 import { SafeAreaView, ScrollView, StatusBar, Text, View } from 'react-native'

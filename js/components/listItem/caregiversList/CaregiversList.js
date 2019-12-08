@@ -51,7 +51,7 @@ const CaregiverList = props => {
 								name='suitcase'
 								type='font-awesome'
 								iconStyle={styles.icon}
-								/>
+							/>
 							<Text style={styles.details}>{caregiverDetails.years_experience} years experience</Text>
 						</View>
 						<View style={styles.rateContainer}>
@@ -59,7 +59,7 @@ const CaregiverList = props => {
 								name='ios-timer'
 								type='ionicon'
 								iconStyle={styles.rateIcon}
-								/>
+							/>
 							<Text style={styles.details}>From ${caregiverDetails.hourly_rate}/hour</Text>
 						</View>
 					</View>

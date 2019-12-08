@@ -2,7 +2,7 @@ import React from 'react'
 
 import { useQuery, useMutation } from '@apollo/react-hooks'
 import { GET_ALL_SENIORS } from '../../../../../graphql/queries/familyQueries'
-import { SELECT_SENIOR_JOB_FORM } from '../../../../../graphql/queries/jobQueries'
+import { SELECT_SENIOR_JOB_FORM } from '../../../../../graphql/queries/createJobQueries'
 
 import { SafeAreaView, ScrollView, StatusBar, Text, View } from 'react-native'
 import { Button } from 'react-native-elements'

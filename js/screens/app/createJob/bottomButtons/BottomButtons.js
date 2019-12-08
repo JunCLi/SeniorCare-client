@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { useMutation } from '@apollo/react-hooks'
-import { CHANGE_FORM_POSITION } from '../../../../graphql/queries/jobQueries'
+import { CHANGE_FORM_POSITION } from '../../../../graphql/queries/createJobQueries'
 
 import { Text, View } from 'react-native'
 import { Button } from 'react-native-elements'

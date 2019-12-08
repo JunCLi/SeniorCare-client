@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 
 import { useQuery } from '@apollo/react-hooks'
-import { GET_JOB_FORM_TITLE, GET_JOB_FORM_POSITION, GET_JOB_FORM } from '../../../graphql/queries/jobQueries'
+import { GET_JOB_FORM_TITLE, GET_JOB_FORM_POSITION, GET_JOB_FORM } from '../../../graphql/queries/createJobQueries'
 
 import { SafeAreaView, ScrollView, StatusBar, Text, TouchableOpacity, View } from 'react-native'
 import { Avatar, Button, Icon, Image, ListItem } from 'react-native-elements'
