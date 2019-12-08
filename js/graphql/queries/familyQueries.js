@@ -9,7 +9,7 @@ export const GET_ALL_SENIORS = gql`
 			gender
 			relation
 			language
-			medical_conditions
+			medicalConditions
 			bio
 			picture
 		}

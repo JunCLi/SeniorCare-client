@@ -18,15 +18,13 @@ const JobBoard = props => {
 		props.navigation.navigate('CreateJobOverview')
 	}
 
-	console.log('data', data)
-
 	return (
 		<SafeAreaView style={styles.backgroundBlue}>
 			<StatusBar backgroundColor={styles.statusBar.backgroundColor} barStyle='dark-content' />
 			<OrangeArc />
 			<ScrollView style={styles.mainContainer} contentContainerStyle={styles.scrollViewContainer}>
 				{ data && data.getAllUserJobs.length
-					? <Jobs jobs={data.getAllUserJobs}/>
+					? <Jobs jobs={data.getAllUserJobs} navigation={props.navigation} />
 					: <NoJobs handleGoJobCreate={handleGoJobCreate} />
 				}
 			</ScrollView>

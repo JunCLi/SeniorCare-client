@@ -4,6 +4,7 @@ import { SafeAreaView, ScrollView, StatusBar, Text, View } from 'react-native'
 import { Button, ButtonGroup, Image } from 'react-native-elements'
 import { styles } from './styles'
 
+import ButtonTab from '../../../components/buttons/buttonTabs/ButtonTab'
 import About from './about/About'
 import Experience from './experience/Experience'
 import Reviews from './reviews/Reviews'
@@ -56,21 +57,11 @@ const ViewCaregiver = props => {
 							source={{ uri: userDetails.avatar }}
 							style={styles.avatar}
 						/>
-						<View style={styles.buttonContainer}>
-							{buttonArray.map(button => (
-								<Button
-									key={button.value}
-									title={button.title}
-									onPress={() => handleSelectButton(button.value)}
-									buttonStyle={selectedButton === button.value 
-										? styles.selectedButtonStyle
-										: styles.buttonStyle}
-									titleStyle={selectedButton === button.value
-										? styles.selectedButtonText
-										: styles.buttonText}
-								/>
-							))}
-						</View>
+						<ButtonTab
+							buttonArray={buttonArray}
+							selectedButton={selectedButton}
+							handleSelectButton={handleSelectButton}
+						/>
 					</View>
 
 					{

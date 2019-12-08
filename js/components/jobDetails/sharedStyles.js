@@ -13,6 +13,8 @@ export const sharedStyles = StyleSheet.create({
 	},
 
 	headerContainer: {
+		...generalStyles.flexRowCenter,
+		justifyContent: 'space-between',
 		backgroundColor: background.blueGrey,
 		paddingHorizontal: margin.horizontal,
 		paddingVertical: margin.vertical,
@@ -22,6 +24,11 @@ export const sharedStyles = StyleSheet.create({
 		...generalStyles.weightedBasicFont,
 		color: font.dullGrey,
 		fontSize: baseFont * 1.25,
+	},
+
+	chevronIcon: {
+		color: font.dullGrey,
+		marginRight: margin.horizontal,
 	},
 
 	labelValueContainer: {
@@ -49,5 +56,12 @@ export const sharedStyles = StyleSheet.create({
 		...generalStyles.basicFont,
 		color: font.dullGrey,
 		lineHeight: baseFont * 1.5,
-	}
+	},
+
+	capitalizeValue: {
+		...generalStyles.basicFont,
+		color: font.dullGrey,
+		lineHeight: baseFont * 1.5,
+		textTransform: 'capitalize',
+	},
 })

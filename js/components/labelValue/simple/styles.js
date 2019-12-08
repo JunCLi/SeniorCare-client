@@ -32,5 +32,12 @@ export const styles = StyleSheet.create({
 		...generalStyles.basicFont,
 		color: font.dullGrey,
 		lineHeight: baseFont * 1.5,
-	}
+	},
+
+	capitalizeValue: {
+		...generalStyles.basicFont,
+		color: font.dullGrey,
+		lineHeight: baseFont * 1.5,
+		textTransform: 'capitalize',
+	},
 })

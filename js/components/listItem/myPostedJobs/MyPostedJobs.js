@@ -1,13 +1,16 @@
 import React from 'react'
 import moment from 'moment'
 
-import { Text, View } from 'react-native'
+import { Text, TouchableOpacity, View } from 'react-native'
 import { Icon } from 'react-native-elements'
 import { styles } from './styles'
 
 const MyPostedJobs = props => {
-	const { job } = props
-	console.log('props: ', props)
+	const { job, handleViewJob } = props
+
+	const handlePress = defaultPage => {
+		handleViewJob(job.id, job.basicInformation.title, defaultPage)
+	}
 
 	const formatDate = date => {
 		return moment(date).format('ll')
@@ -19,7 +22,10 @@ const MyPostedJobs = props => {
 
 	return (
 		<View style={styles.mainContainer}>
-			<View style={styles.jobDetailsContainer}>
+			<TouchableOpacity
+				style={styles.jobDetailsContainer}
+				onPress={() => handlePress('overview')}
+			>
 				<View>
 					<Text style={styles.postedDate}>Posted {formatDate(job.dateCreated)}</Text>
 					<Text style={styles.title}>{handleDisplayTitle(job.basicInformation.title)}</Text>
@@ -45,12 +51,15 @@ const MyPostedJobs = props => {
 						</View>
 					</View>
 				</View>
-			</View>
+			</TouchableOpacity>
 
-			<View style={styles.jobApplicantsContainer}>
+			<TouchableOpacity
+				style={styles.jobApplicantsContainer}
+				onPress={() => handlePress('applicant')}
+			>
 				<Text style={styles.numberApplicants}>0</Text>
 				<Text style={styles.applicantText}>Applicants</Text>
-			</View>
+			</TouchableOpacity>
 
 		</View>
 	)

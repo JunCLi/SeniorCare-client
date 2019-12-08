@@ -4,7 +4,7 @@ import { Text, View } from 'react-native'
 import { styles } from './styles'
 
 const SimpleLabelValue = props => {
-	const { label, value } = props
+	const { label, value, capitalize } = props
 
 	return (
 		<View style={styles.labelValueContainer}>
@@ -12,7 +12,10 @@ const SimpleLabelValue = props => {
 				<Text style={styles.label}>{label}</Text>
 			</View>
 			<View style={styles.valueContainer}>
-				<Text style={styles.value}>{value}</Text>
+				{ capitalize 
+					? <Text style={styles.capitalizeValue}>{value}</Text>
+					: <Text style={styles.value}>{value}</Text>
+				}
 			</View>
 		</View>
 	)

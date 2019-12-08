@@ -1,6 +1,8 @@
 import { createStackNavigator } from 'react-navigation-stack'
 
 import JobBoard from '../../screens/app/jobBoard/JobBoard'
+import ViewJob from '../../screens/app/jobBoard/viewJob/ViewJob'
+
 import Overview from '../../screens/app/createJob/Overview'
 import BasicInformation from '../../screens/app/createJob/basicInformation/BasicInformation'
 import ServiceDetails from '../../screens/app/createJob/serviceDetails/ServiceDetails'
@@ -17,6 +19,13 @@ const FindStack = createStackNavigator({
 		screen: JobBoard,
 		navigationOptions: () => ({
 			title: 'Job Board'
+		})
+	},
+
+	ViewJob: {
+		screen: ViewJob,
+		navigationOptions: ({ navigation }) => ({
+			title: navigation.state.params ? navigation.state.params.title : 'Job'
 		})
 	},
 
@@ -90,9 +99,6 @@ const FindStack = createStackNavigator({
 			header: null,
 		})
 	},
-
-
-
 }, {
 	initialRouteName: 'JobBoard',
 })

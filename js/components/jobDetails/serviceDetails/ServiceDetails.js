@@ -1,30 +1,46 @@
-import React from 'react'
+import React, { useState } from 'react'
 
-import { Text, View } from 'react-native'
+import { Text, TouchableOpacity, View } from 'react-native'
+import { Icon } from 'react-native-elements'
 import { styles } from './styles'
 
 import { serviceConversions } from '../../../util/conversionTables/services'
 
 const ServiceDetails = props => {
+	const [ minimize, setMinimize ] = useState(false)
+
+	const handleMinimize = () => {
+		setMinimize(!minimize)
+	}
 
 	const servicesArray = [
-		...props.services,
-		...props.householdNeeds,
+		...(props.services ? props.services : []),
+		...(props.householdNeeds ? props.householdNeeds : []),
 	]
 
 	return (
 		<View>
-			<View style={styles.headerContainer}>
+			<TouchableOpacity 
+				onPress={handleMinimize}
+				style={styles.headerContainer}
+			>
 				<Text style={styles.headerText}>Service Details</Text>
-			</View>
+				<Icon
+					type='entypo'
+					name={minimize ? 'chevron-down' : 'chevron-up'}
+					iconStyle={styles.chevronIcon}
+				/>
+			</TouchableOpacity>
 
-			<View style={styles.mainContainer}>
-				{servicesArray.map(service => (
-					<View key={service} style={styles.serviceContainer}>
-						<Text style={styles.service}>{serviceConversions[service].title}</Text>
-					</View>
-				))}
-			</View>
+			{ !minimize &&
+				<View style={styles.mainContainer}>
+					{servicesArray.map(service => (
+						<View key={service} style={styles.serviceContainer}>
+							<Text style={styles.service}>{serviceConversions[service].title}</Text>
+						</View>
+					))}
+				</View>
+			}
 		</View>
 	)
 }

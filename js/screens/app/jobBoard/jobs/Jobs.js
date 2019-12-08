@@ -6,8 +6,15 @@ import { styles } from './styles'
 import MyPostedJobs from '../../../../components/listItem/myPostedJobs/MyPostedJobs'
 
 const Jobs = props => {
-	console.log('props', props)
 	const { jobs } = props
+
+	const handleViewJob = (jobId, title, defaultPage) => {
+		props.navigation.navigate('ViewJob', {
+			jobId,
+			title,
+			defaultPage,
+		})
+	}
 
 	return (
 		<View style={styles.mainContainer}>
@@ -16,6 +23,7 @@ const Jobs = props => {
 				<MyPostedJobs
 					key={job.id}
 					job={job}
+					handleViewJob={handleViewJob}
 				/>
 			))}
 		</View>
