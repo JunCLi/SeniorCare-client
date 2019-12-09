@@ -67,6 +67,41 @@ export const GET_JOB_DETAILED = gql`
 	}
 `
 
+export const GET_JOB_APPLICANT_NUMBERS = gql`
+	query getApplicants($jobId: ID) {
+		getApplicants(jobId: $jobId) {
+			userId
+		}
+	}
+`
+
+export const GET_JOB_APPLICANTS = gql`
+	query getApplicants($jobId: ID) {
+		getApplicants(jobId: $jobId) {
+			userId
+			userDetails {
+				email
+				firstName
+				lastName
+				dateCreated
+				lastModified
+				phoneNumber
+				location
+				avatar
+			}
+			caregiverDetails {
+				birthdate
+				yearsExperience
+				description
+				gender
+				availability
+				averageRating
+				hourlyRate
+			}
+		}
+	}
+`
+
 export const GET_ALL_USER_JOBS_DETAILED = gql`
 	query getAllUsersJobs {
 		getAllUserJobs {

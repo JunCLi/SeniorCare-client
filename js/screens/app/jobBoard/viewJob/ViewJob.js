@@ -1,28 +1,16 @@
 import React, { useState } from 'react'
 
-import { useQuery } from '@apollo/react-hooks'
-import { GET_JOB_DETAILED } from '../../../../graphql/queries/jobQueries'
-
-import { SafeAreaView, ScrollView, StatusBar, Text, View } from 'react-native'
+import { SafeAreaView, ScrollView, StatusBar } from 'react-native'
 import { styles } from './styles'
 
+import OrangeArc from '../../../../components/images/orangeArc/OrangeArc'
 import ButtonTab from '../../../../components/buttons/buttonTabs/ButtonTab'
-import SeniorDetails from '../../../../components/jobDetails/seniorDetails/SeniorDetails'
-import BasicInformation from '../../../../components/jobDetails/basicInformation/BasicInformation'
-import ServiceDetails from '../../../../components/jobDetails/serviceDetails/ServiceDetails'
-import HouseDetails from '../../../../components/jobDetails/houseDetails/HouseDetails'
-import CaregiverPreference from '../../../../components/jobDetails/caregiverPreference/CaregiverPreference'
+import Overview from './overview/Overview'
+import Applicants from './applicants/Applicants'
 
 const Jobs = props => {
-	const { jobId, title, defaultPage } = props.navigation.state.params
+	const { jobId, defaultPage } = props.navigation.state.params
 	const [ selectedButton, setSelectedButton ] = useState(defaultPage)
-	const { loading, data } = useQuery(GET_JOB_DETAILED, {
-		variables: {
-			id: jobId
-		}
-	})
-	// console.log('state params', props.navigation.state.params)
-	console.log('data', data)
 
 	const buttonArray = [
 		{
@@ -39,17 +27,20 @@ const Jobs = props => {
 		setSelectedButton(value)
 	}
 
-	if (loading) return (
-		<SafeAreaView style={styles.background}>
-			<StatusBar backgroundColor={styles.statusBar.backgroundColor} barStyle='dark-content' />
-			<ScrollView style={styles.mainContainer} contentContainerStyle={styles.scrollViewContainer}>
-			</ScrollView>
-		</SafeAreaView>
-	)
+	const displayRoute = buttonValue => {
+		switch (buttonValue) {
+			case 'applicant':
+				return <Applicants jobId={jobId} />
+		
+			default:
+				return <Overview jobId={jobId} />
+		}
+	}
 
 	return (
-		<SafeAreaView style={styles.background}>
+		<SafeAreaView style={ selectedButton === 'applicant' ? styles.backgroundBlue : styles.background}>
 			<StatusBar backgroundColor={styles.statusBar.backgroundColor} barStyle='dark-content' />
+			<OrangeArc />
 			<ScrollView style={styles.mainContainer} contentContainerStyle={styles.scrollViewContainer}>
 				
 				<ButtonTab
@@ -58,15 +49,7 @@ const Jobs = props => {
 					handleSelectButton={handleSelectButton}
 				/>
 
-				<SeniorDetails {...data.getJob.seniorDetails} avatarPosition={'aboveHeader'} />
-
-				<BasicInformation {...data.getJob.basicInformation} />
-
-				<ServiceDetails {...data.getJob.serviceDetails} />
-
-				<HouseDetails {...data.getJob.houseDetails} />
-
-				<CaregiverPreference {...data.getJob.caregiverPreferences} />
+				{ displayRoute(selectedButton)}
 			</ScrollView>
 		</SafeAreaView>
 	)

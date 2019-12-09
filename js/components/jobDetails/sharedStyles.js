@@ -7,9 +7,10 @@ import { background, font } from '../../styleSettings/colours'
 
 export const sharedStyles = StyleSheet.create({
 	mainContainer: {
-		marginHorizontal: margin.horizontal,
-		marginVertical: margin.vertical,
-		marginBottom: margin.vertical * 2,
+		backgroundColor: background.white,
+		paddingHorizontal: margin.horizontal,
+		paddingVertical: margin.vertical,
+		paddingBottom: margin.vertical * 2,
 	},
 
 	labelValueContainer: {

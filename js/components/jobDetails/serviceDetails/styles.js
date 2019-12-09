@@ -13,7 +13,7 @@ export const styles = StyleSheet.create({
 		...sharedStyles.mainContainer,
 		flexDirection: 'row',
 		flexWrap: 'wrap',
-		marginVertical: margin.vertical * 1.5,
+		paddingVertical: margin.vertical * 1.5,
 	},
 
 	serviceContainer: {

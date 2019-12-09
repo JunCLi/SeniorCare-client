@@ -1,12 +1,24 @@
 import React from 'react'
 import moment from 'moment'
 
+import { useQuery } from '@apollo/react-hooks'
+import { GET_JOB_APPLICANT_NUMBERS } from '../../../graphql/queries/jobQueries'
+
 import { Text, TouchableOpacity, View } from 'react-native'
 import { Icon } from 'react-native-elements'
 import { styles } from './styles'
 
 const MyPostedJobs = props => {
 	const { job, handleViewJob } = props
+	const { data: applicantsData } = useQuery(GET_JOB_APPLICANT_NUMBERS, {
+		variables: {
+			jobId: job.id
+		}
+	})
+
+	const handleDisplayApplicants = () => {
+		return applicantsData ? applicantsData.getApplicants.length : 0
+	}
 
 	const handlePress = defaultPage => {
 		handleViewJob(job.id, job.basicInformation.title, defaultPage)
@@ -57,7 +69,7 @@ const MyPostedJobs = props => {
 				style={styles.jobApplicantsContainer}
 				onPress={() => handlePress('applicant')}
 			>
-				<Text style={styles.numberApplicants}>0</Text>
+				<Text style={styles.numberApplicants}>{handleDisplayApplicants()}</Text>
 				<Text style={styles.applicantText}>Applicants</Text>
 			</TouchableOpacity>
 
