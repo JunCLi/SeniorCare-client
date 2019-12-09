@@ -3,25 +3,25 @@ import gql from 'graphql-tag'
 export const FIND_ALL_CAREGIVERS = gql`
 	query getAllCaregivers($input: FilterCaregivers) {
 		getAllCaregivers(input: $input) {
-			user_id
+			userId
 			userDetails {
 				email
-				first_name
-				last_name
-				date_created
-				last_modified
+				firstName
+				lastName
+				dateCreated
+				lastModified
 				avatar
-				phone_number
+				phoneNumber
 				location
 			}
 			caregiverDetails {
 				birthdate
-				years_experience
+				yearsExperience
 				description
 				gender
 				availability
-				average_rating
-				hourly_rate
+				averageRating
+				hourlyRate
 			}
 		}
 	}

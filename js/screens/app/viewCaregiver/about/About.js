@@ -9,7 +9,7 @@ import RatingStars from '../../../../components/ratings/ratingStars/RatingStars'
 import RatingNumber from '../../../../components/ratings/ratingNumber/RatingNumber'
 
 const About = props => {
-	const { user_id, userDetails, caregiverDetails } = props
+	const { userId, userDetails, caregiverDetails } = props
 
 	const calcAge = birthdate => {
 		return moment().diff(moment(birthdate, 'YYYYMMDD'), 'years')
@@ -19,16 +19,16 @@ const About = props => {
 		<View style={styles.aboutContainer}>
 			<View style={styles.detailsContainer}>
 				<View style={styles.nameContainer}>
-					<Text style={styles.name}>{userDetails.first_name} {userDetails.last_name}</Text>
+					<Text style={styles.name}>{userDetails.firstName} {userDetails.lastName}</Text>
 				</View>
 
 				<View style={styles.ratingsLocationContainer}>
 					<View style={styles.ratingsContainer}>
 						<RatingStars 
-							averageRating={caregiverDetails.average_rating}
+							averageRating={caregiverDetails.averageRating}
 							iconStyle={styles.ratingsIcon}
 						/>
-						<RatingNumber averageRating={caregiverDetails.average_rating} />
+						<RatingNumber averageRating={caregiverDetails.averageRating} />
 					</View>
 					<View>
 						<Text style={styles.location}>{userDetails.location}</Text>
@@ -51,7 +51,7 @@ const About = props => {
 							type='font-awesome'
 							iconStyle={styles.icon}
 							/>
-						<Text style={styles.details}>{caregiverDetails.years_experience} years experience</Text>
+						<Text style={styles.details}>{caregiverDetails.yearsExperience} years experience</Text>
 					</View>
 					
 					<View style={styles.lowerDetailsInnerContainer}>
@@ -60,7 +60,7 @@ const About = props => {
 							type='ionicon'
 							iconStyle={styles.rateIcon}
 							/>
-						<Text style={styles.details}>From ${caregiverDetails.hourly_rate}/hour</Text>
+						<Text style={styles.details}>From ${caregiverDetails.hourlyRate}/hour</Text>
 					</View>
 				</View>
 			</View>

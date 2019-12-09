@@ -2,6 +2,7 @@ import { createStackNavigator } from 'react-navigation-stack'
 
 import JobBoard from '../../screens/app/jobBoard/JobBoard'
 import ViewJob from '../../screens/app/jobBoard/viewJob/ViewJob'
+import ViewCaregiver from '../../screens/app/viewCaregiver/ViewCaregiver'
 
 import Overview from '../../screens/app/createJob/Overview'
 import BasicInformation from '../../screens/app/createJob/basicInformation/BasicInformation'
@@ -26,6 +27,14 @@ const FindStack = createStackNavigator({
 		screen: ViewJob,
 		navigationOptions: ({ navigation }) => ({
 			title: navigation.state.params ? navigation.state.params.title : 'Job'
+		})
+	},
+
+	ViewCaregiver: {
+		screen: ViewCaregiver,
+		navigationOptions: ({ navigation }) => ({
+			title: `${navigation.state.params.userDetails.first_name} ${navigation.state.params.userDetails.last_name}`,
+			
 		})
 	},
 

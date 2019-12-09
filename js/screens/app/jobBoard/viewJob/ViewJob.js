@@ -1,6 +1,9 @@
 import React, { useState } from 'react'
 
-import { SafeAreaView, ScrollView, StatusBar } from 'react-native'
+import { useQuery } from '@apollo/react-hooks'
+import { GET_JOB_DETAILED, GET_JOB_APPLICANTS } from '../../../../graphql/queries/jobQueries'
+
+import { SafeAreaView, ScrollView, StatusBar, Text, View } from 'react-native'
 import { styles } from './styles'
 
 import OrangeArc from '../../../../components/images/orangeArc/OrangeArc'
@@ -11,6 +14,18 @@ import Applicants from './applicants/Applicants'
 const Jobs = props => {
 	const { jobId, defaultPage } = props.navigation.state.params
 	const [ selectedButton, setSelectedButton ] = useState(defaultPage)
+
+	const { loading: loadingJob, data: dataJob } = useQuery(GET_JOB_DETAILED, {
+		variables: {
+			id: jobId
+		}
+	})
+
+	const { loading: loadingApplicant, data: dataApplicant } = useQuery(GET_JOB_APPLICANTS, {
+		variables: {
+			jobId: jobId
+		}
+	})
 
 	const buttonArray = [
 		{
@@ -28,12 +43,24 @@ const Jobs = props => {
 	}
 
 	const displayRoute = buttonValue => {
+		if (loadingJob || loadingApplicant) return (
+			<View>
+				<Text>loading...</Text>
+			</View>
+		)
+
 		switch (buttonValue) {
 			case 'applicant':
-				return <Applicants jobId={jobId} />
+				return (
+					<Applicants
+						job={dataJob.getJob}
+						applicants={dataApplicant.getApplicants}
+						navigation={props.navigation}
+					/>
+				)
 		
 			default:
-				return <Overview jobId={jobId} />
+				return <Overview job={dataJob.getJob} navigation={props.navigation} />
 		}
 	}
 

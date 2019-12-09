@@ -11,7 +11,7 @@ import Reviews from './reviews/Reviews'
 
 const ViewCaregiver = props => {
 	const navParams = props.navigation.state.params
-	const { user_id, userDetails, caregiverDetails } = navParams
+	const { userId, userDetails, caregiverDetails } = navParams
 
 	const buttonArray = [
 		{

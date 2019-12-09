@@ -11,11 +11,11 @@ import RatingStars from '../../ratings/ratingStars/RatingStars'
 import RatingNumber from '../../ratings/ratingNumber/RatingNumber'
 
 const CaregiverList = props => {
-	const { user_id, userDetails, caregiverDetails } = props
+	const { userId, userDetails, caregiverDetails } = props
 
 	const goViewCaregiver = caregiver => {
 		props.navigation.navigate('ViewCaregiver', {
-			user_id: user_id,
+			userId: userId,
 			userDetails: userDetails,
 			caregiverDetails: caregiverDetails,
 		})
@@ -23,7 +23,7 @@ const CaregiverList = props => {
 	
 	return (
 		<TouchableOpacity
-			onPress={() => goViewCaregiver(user_id)}
+			onPress={() => goViewCaregiver(userId)}
 		>
 			<View style={styles.mainContainer}>
 				<Image
@@ -32,13 +32,13 @@ const CaregiverList = props => {
 					/>
 				<View style={styles.infoContainer}>
 					<View style={styles.nameContainer}>
-						<Text style={styles.name}>{userDetails.first_name} {userDetails.last_name}</Text>
+						<Text style={styles.name}>{userDetails.firstName} {userDetails.lastName}</Text>
 					</View>
 
 					<View style={styles.ratingsLocationContainer}>
 						<View style={styles.ratingsContainer}>
-							<RatingStars averageRating={caregiverDetails.average_rating} />
-							<RatingNumber averageRating={caregiverDetails.average_rating} />
+							<RatingStars averageRating={caregiverDetails.averageRating} />
+							<RatingNumber averageRating={caregiverDetails.averageRating} />
 						</View>
 						<View style={styles.locationContainer}>
 							<Text style={styles.location}>{userDetails.location}</Text>
@@ -52,7 +52,7 @@ const CaregiverList = props => {
 								type='font-awesome'
 								iconStyle={styles.icon}
 							/>
-							<Text style={styles.details}>{caregiverDetails.years_experience} years experience</Text>
+							<Text style={styles.details}>{caregiverDetails.yearsExperience} years experience</Text>
 						</View>
 						<View style={styles.rateContainer}>
 							<Icon
@@ -60,7 +60,7 @@ const CaregiverList = props => {
 								type='ionicon'
 								iconStyle={styles.rateIcon}
 							/>
-							<Text style={styles.details}>From ${caregiverDetails.hourly_rate}/hour</Text>
+							<Text style={styles.details}>From ${caregiverDetails.hourlyRate}/hour</Text>
 						</View>
 					</View>
 

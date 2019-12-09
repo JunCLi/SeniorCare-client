@@ -36,7 +36,7 @@ const Find = props => {
 			<OrangeArc />
 			<ScrollView style={styles.mainContainer} contentContainerStyle={styles.scrollViewContainer}>
 				{allCaregivers && allCaregivers.map(caregiver => (
-					<CaregiverList key={caregiver.user_id} {...caregiver} navigation={props.navigation} />
+					<CaregiverList key={caregiver.userId} {...caregiver} navigation={props.navigation} />
 				))}
 			</ScrollView>
 		</SafeAreaView>

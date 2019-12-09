@@ -19,8 +19,8 @@ export const GET_ALL_USER_JOBS = gql`
 `
 
 export const GET_JOB_DETAILED = gql`
-	query getAllUsersJobs($id: ID) {
-		getJob(id: $id) {
+	query getJob($id: ID) {
+		getJob(jobId: $id) {
 			id
 			familyId
 			dateCreated

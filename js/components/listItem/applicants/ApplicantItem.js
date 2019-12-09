@@ -13,7 +13,7 @@ const ApplicantItem = props => {
 	return (
 		<TouchableOpacity
 			style={styles.mainContainer}
-			onPress={() => handleViewCaregiver(userId)}
+			onPress={() => handleViewCaregiver(userId, userDetails, caregiverDetails)}
 		>
 			<View style={styles.avatarContainer}>
 				<Image
