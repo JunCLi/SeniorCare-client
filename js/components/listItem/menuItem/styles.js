@@ -35,6 +35,7 @@ export const dynamicStyles = (toggle) => StyleSheet.create({
 		borderColor: font.grey,
 
 		paddingHorizontal: 6,
+		paddingRight: toggle ? 6 : 5,
 		paddingVertical: 2,
 		
 

@@ -1,7 +1,7 @@
 import React from 'react'
 
-import { useMutation, useQuery } from '@apollo/react-hooks'
-import { LOGOUT, GET_PROFILE } from '../../../graphql/queries/authQueries'
+import { useQuery } from '@apollo/react-hooks'
+import { GET_PROFILE } from '../../../graphql/queries/authQueries'
 
 import { SafeAreaView, ScrollView, StatusBar, Text, TouchableOpacity, View } from 'react-native'
 import { Avatar, Button, Icon, Image, ListItem } from 'react-native-elements'
@@ -11,18 +11,7 @@ import OrangeArc from '../../../components/images/orangeArc/OrangeArc'
 
 const Profile = props => {
 	const { data, loading } = useQuery(GET_PROFILE)
-	const [ logout ] = useMutation(LOGOUT)
-	
-	const handleLogout = async () => {
-		try {
-			const result = await logout()
-			if (result.data.logout.message === 'success') {
-				props.navigation.navigate('AuthLoading', { loggingOut: true})
-			}
-		} catch(err) {
-			throw err
-		}
-	}
+
 
 	if (loading) return (
 		<View>
@@ -106,12 +95,7 @@ const Profile = props => {
 					))}
 				</View>
 
-				<Button
-					title='Logout'
-					onPress={handleLogout}
-					titleStyle={styles.logoutText}
-					buttonStyle={styles.logoutButton}
-				/>
+				
 			</ScrollView>
 		</SafeAreaView>
 	)

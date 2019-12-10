@@ -1,8 +1,8 @@
 import { StyleSheet } from 'react-native'
 
 import { generalStyles } from '../../../../styleSettings/generalStyles'
-import { margin } from '../../../../styleSettings/screensizeSettings'
-import { font } from '../../../../styleSettings/colours'
+import { margin, baseFont } from '../../../../styleSettings/screensizeSettings'
+import { font, background } from '../../../../styleSettings/colours'
 
 export const styles = StyleSheet.create({
 	...generalStyles,
@@ -13,7 +13,14 @@ export const styles = StyleSheet.create({
 		marginVertical: margin.vertical * 0.5,
 	},
 
-	icon: {
-		color: font.grey,
-	}
+	logoutButton: {
+		backgroundColor: background.white,
+		paddingVertical: margin.vertical * 2,
+	},
+
+	logoutText: {
+		...generalStyles.basicFontBolder,
+		color: font.dullGrey,
+		fontSize: baseFont * 1.25,
+	},
 })
