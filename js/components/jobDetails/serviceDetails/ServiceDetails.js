@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import { Text, View } from 'react-native'
 import { styles } from './styles'
 
-import Header from '../header/Header'
+import Header from '../../header/collapsable/Header'
 import { serviceConversions } from '../../../util/conversionTables/services'
 
 const ServiceDetails = props => {

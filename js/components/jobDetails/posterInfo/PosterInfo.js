@@ -13,12 +13,12 @@ const PosterInfo = props => {
 			leftAvatar={
 				<Avatar
 					source={userInfo.avatar ? { uri: userInfo.avatar } : null}
-					title={userInfo.first_name.substring(0,3)}
+					title={userInfo.firstName.substring(0,3)}
 					placeholderStyle={styles.placeholderAvatar}
 					rounded
 				/>
 			}
-			title={`${userInfo.first_name} ${userInfo.last_name.substring(0, 1).toUpperCase()}.`}
+			title={`${userInfo.firstName} ${userInfo.lastName.substring(0, 1).toUpperCase()}.`}
 			titleStyle={styles.title}
 			subtitle={`Posted ${moment().format('ll')}`}
 			subtitleStyle={styles.subTitle}

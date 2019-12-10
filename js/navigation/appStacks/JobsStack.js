@@ -33,7 +33,7 @@ const FindStack = createStackNavigator({
 	ViewCaregiver: {
 		screen: ViewCaregiver,
 		navigationOptions: ({ navigation }) => ({
-			title: `${navigation.state.params.userDetails.first_name} ${navigation.state.params.userDetails.last_name}`,
+			title: `${navigation.state.params.userDetails.firstName} ${navigation.state.params.userDetails.lastName}`,
 			
 		})
 	},

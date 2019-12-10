@@ -5,7 +5,7 @@ import { styles } from './styles'
 
 import { booleanToYesNo } from '../../../util/conversionTables/boolean'
 
-import Header from '../header/Header'
+import Header from '../../header/collapsable/Header'
 import SimpleLabelValue from '../../labelValue/simple/SimpleLabelValue'
 
 const HouseDetails = props => {

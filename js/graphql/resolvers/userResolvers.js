@@ -15,7 +15,7 @@ export default {
 						__typename: 'User'
 					},
 					getLoggedUser: {
-						user_id: "IEvenChangedTheID",
+						userId: "IEvenChangedTheID",
 						__typename: 'User'
 					}
 				}

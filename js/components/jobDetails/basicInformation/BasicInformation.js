@@ -4,7 +4,7 @@ import moment from 'moment'
 import { Text, View } from 'react-native'
 import { styles } from './styles'
 
-import Header from '../header/Header'
+import Header from '../../header/collapsable/Header'
 import SimpleLabelValue from '../../labelValue/simple/SimpleLabelValue'
 import MultiLabelValue from '../../labelValue/multiValue/LabelValue'
 

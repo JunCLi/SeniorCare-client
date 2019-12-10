@@ -8,9 +8,12 @@ const StackedLabelValue = props => {
 
 	return (
 		<View style={styles.stackedContainer}>
-			<View style={styles.labelContainer}>
-				<Text style={styles.label}>{label}</Text>
-			</View>
+			{label &&
+				<View style={styles.labelContainer}>
+					<Text style={styles.label}>{label}</Text>
+				</View>
+			}
+			
 			<View style={styles.valueContainer}>
 				<Text style={styles.value}>{value}</Text>
 			</View>

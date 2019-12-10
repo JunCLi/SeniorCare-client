@@ -5,8 +5,8 @@ import { Icon } from 'react-native-elements'
 
 import FindStack from './FindStack'
 import JobsStack from './JobsStack'
+import ProfileStack from './ProfileStack'
 import Home from '../../screens/app/home/Home'
-import Profile from '../../screens/app/profile/Profile'
 
 const AppStack = createBottomTabNavigator({
 	FindStack: {
@@ -52,8 +52,8 @@ const AppStack = createBottomTabNavigator({
       )
 		})
 	},
-	Profile: {
-		screen: Profile,
+	ProfileStack: {
+		screen: ProfileStack,
 		navigationOptions: () => ({
 			title: 'Profile',
 			tabBarIcon: ({ tintColor }) => (
@@ -67,7 +67,7 @@ const AppStack = createBottomTabNavigator({
 		})
 	},
 }, {
-	initialRouteName: 'JobsStack',
+	initialRouteName: 'ProfileStack',
 	defaultNavigationOptions: ({ navigation }) => ({
 		tabBarVisible: handleTabBarVisible(navigation.state)
 	}),

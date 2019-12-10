@@ -14,10 +14,10 @@ export const LOGIN = gql`
 			message
 			token
 			user {
-				user_id
+				userId
 				email
-				first_name
-				last_name
+				firstName
+				lastName
 				userType
 			}
 		}
@@ -27,7 +27,7 @@ export const LOGIN = gql`
 export const CHECK_AUTHENTICATION = gql`
 	query getLoggedUser {
 		getLoggedUser {
-			user_id
+			userId
 		}
 	}
 `
@@ -36,7 +36,7 @@ export const CHECK_AUTHENTICATION = gql`
 export const GET_LOGGED_USER = gql`
 	query getLoggedUser {
 		getLoggedUser {
-			user_id
+			userId
 		}
 	}
 `
@@ -44,10 +44,27 @@ export const GET_LOGGED_USER = gql`
 export const GET_LOGGED_USER_BASIC_WITH_AVATAR = gql`
 	query getLoggedUser {
 		getLoggedUser {
-			user_id
-			first_name
-			last_name
+			userId
+			firstName
+			lastName
 			avatar
+		}
+	}
+`
+
+export const GET_PROFILE = gql`
+	query getLoggedUser {
+		getLoggedUser {
+			userId
+			email
+			firstName
+			lastName
+			dateCreated
+			lastModified
+			avatar
+			phoneNumber
+			location
+			userType
 		}
 	}
 `

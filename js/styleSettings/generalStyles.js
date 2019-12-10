@@ -76,6 +76,11 @@ export const generalStyles = StyleSheet.create({
 		fontSize: baseFont,
 		fontWeight: '400',
 	},
+
+	detailsContainer: {
+		paddingHorizontal: margin.horizontal,
+		paddingVertical: margin.vertical,
+	}
 })
 
 export const submitButton = StyleSheet.create({

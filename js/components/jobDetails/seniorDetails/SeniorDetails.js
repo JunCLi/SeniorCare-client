@@ -7,7 +7,7 @@ import { styles } from './styles'
 import { calcAge } from '../../../util/helperFunctions/calc'
 import { genderConv } from '../../../util/conversionTables/simpleEnums'
 
-import Header from '../header/Header'
+import Header from '../../header/collapsable/Header'
 import SeniorAvatar from './seniorAvatar/SeniorAvatar'
 import SimpleLabelValue from '../../labelValue/simple/SimpleLabelValue'
 import StackedLabelValue from '../../labelValue/stacked/StackedLabelValue'

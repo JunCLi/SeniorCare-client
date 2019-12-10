@@ -6,7 +6,7 @@ import { styles } from './styles'
 import { booleanToYesNo } from '../../../util/conversionTables/boolean'
 import { availabilityConv, genderConv } from '../../../util/conversionTables/simpleEnums'
 
-import Header from '../header/Header'
+import Header from '../../header/collapsable/Header'
 import SimpleLabelValue from '../../labelValue/simple/SimpleLabelValue'
 
 const CaregiverPreference = props => {

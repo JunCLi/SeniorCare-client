@@ -7,7 +7,7 @@ import { icon, styles } from './styles'
 import { calcAge } from '../../../util/helperFunctions/calc'
 
 const SeniorsList = props => {
-	const { senior } = props
+	const { senior, handleSelect } = props
 
 	return (
 		<ListItem
@@ -31,7 +31,7 @@ const SeniorsList = props => {
 			subtitle={senior.relation}
 			subtitleStyle={styles.subtitle}
 			containerStyle={styles.container}
-			onPress={() => props.handleSelect(senior)}
+			onPress={() => handleSelect(senior)}
 		/>
 	)
 }
