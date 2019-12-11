@@ -25,10 +25,8 @@ export const ADD_MESSAGE = gql`
 `
 
 export const GET_MESSAGES = gql`
-	query getMessages {
-		getMessages(
-			conversationId: 2
-		) {
+	query getMessages($conversationId: ID) {
+		getMessages(conversationId: $conversationId) {
 			content
 			dateCreated
 			authorId
@@ -43,6 +41,7 @@ export const GET_CONVERSATIONS = gql`
 			familyId
 			caregiverId
 			recipient {
+				userId
 				avatar
 				firstName
 				lastName

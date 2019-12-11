@@ -39,7 +39,7 @@ const AppStack = createBottomTabNavigator({
       )
 		})
 	},
-	Messages: {
+	MessagesStack: {
 		screen: MessagesStack,
 		navigationOptions: () => ({
 			title: 'Messages',
@@ -68,7 +68,7 @@ const AppStack = createBottomTabNavigator({
 		})
 	},
 }, {
-	initialRouteName: 'ProfileStack',
+	initialRouteName: 'MessagesStack',
 	defaultNavigationOptions: ({ navigation }) => ({
 		tabBarVisible: handleTabBarVisible(navigation.state)
 	}),
@@ -105,6 +105,9 @@ const handleTabBarVisible = state => {
 			'CreateJobOverview',
 			'BasicInformation',
 			'ViewCaregiver',
+		],
+		messageStack: [
+			'Conversation',
 		]
 	}
 
@@ -112,6 +115,8 @@ const handleTabBarVisible = state => {
 		visible = checkHideTabBar(hideTabRoutes.findStack, state)
 	} else if (state.routeName === 'JobsStack') {
 		visible = checkHideTabBar(hideTabRoutes.jobsStack, state)
+	} else if (state.routeName === 'MessagesStack') {
+		visible = checkHideTabBar(hideTabRoutes.messageStack, state)
 	}
 
 	return visible

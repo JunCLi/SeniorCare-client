@@ -3,6 +3,9 @@ const orange = '#f89622'
 const white = '#FFF'
 const red = 'red'
 
+const conversationBlue = '#B1D5F6'
+const conversationGrey = '#E6E6E6'
+
 const backgroundWhite = 'rgba(255, 255, 255, 0.92)'
 const backgroundGrey = 'rgba(248, 248, 248, 0.92)'
 const backgroundLightGrey = '#F0F0F0'
@@ -28,6 +31,9 @@ export const background = {
 	disabledGrey: fontGrey,
 	blue: blue,
 	yellow: backgroundYellow,
+
+	convoBlue: conversationBlue,
+	convoGrey: conversationGrey,
 }
 
 export const font = {
