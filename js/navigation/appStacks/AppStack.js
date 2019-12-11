@@ -6,6 +6,7 @@ import { Icon } from 'react-native-elements'
 import FindStack from './FindStack'
 import JobsStack from './JobsStack'
 import ProfileStack from './ProfileStack'
+import MessagesStack from './MessagesStack'
 import Home from '../../screens/app/home/Home'
 
 const AppStack = createBottomTabNavigator({
@@ -39,7 +40,7 @@ const AppStack = createBottomTabNavigator({
 		})
 	},
 	Messages: {
-		screen: Home,
+		screen: MessagesStack,
 		navigationOptions: () => ({
 			title: 'Messages',
 			tabBarIcon: ({ tintColor }) => (

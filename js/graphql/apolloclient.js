@@ -18,7 +18,7 @@ const wsLink = new WebSocketLink({
   options: {
     reconnect: true
   }
-});
+})
 
 const cache = new InMemoryCache()
 
