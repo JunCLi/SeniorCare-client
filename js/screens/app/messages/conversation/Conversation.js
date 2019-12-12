@@ -1,10 +1,9 @@
-import React, { useState } from 'react'
+import React, { useRef } from 'react'
 
 import { useQuery, useMutation, useSubscription } from '@apollo/react-hooks'
 import { ADD_MESSAGE, GET_MESSAGES, MESSAGE_SUBSCRIPTION } from '../../../../graphql/queries/messagesQueries'
 
-import { KeyboardAvoidingView, SafeAreaView, ScrollView, StatusBar, Text, TouchableOpacity, View } from 'react-native'
-import { Icon, Input } from 'react-native-elements'
+import { KeyboardAvoidingView, ScrollView, StatusBar, View } from 'react-native'
 import { styles } from './styles'
 
 import MyMessage from '../../../../components/listItem/message/myMessage/MyMessage'
@@ -14,26 +13,32 @@ import MessageInput from '../../../../components/forms/message/MessageInput'
 const Conversation = props => {
 	const { conversationId, recipient } = props.navigation.state.params
 	const { avatar } = recipient
+	const scrollView = useRef(null)
 
 	const { data } = useQuery(GET_MESSAGES, {
-		variables: {
+		variables: {input: {
 			conversationId: conversationId,
-		}
+		}}
 	})
 
 	useSubscription(MESSAGE_SUBSCRIPTION, {
-		variables: {
+		variables: {input: {
 			conversationId: conversationId,
-		},
+		}},
 		onSubscriptionData: ({ client, subscriptionData }) => {
-			console.log('test')
 			const newMessage = subscriptionData.data.messageAdded
-			const data = client.readQuery({ query: GET_MESSAGES, variables: { conversationId } })
+			const data = client.readQuery({
+				query: GET_MESSAGES,
+				variables: {input: {
+					conversationId: conversationId
+				}},
+			})
 
-			console.log('newMessage', newMessage)
 			client.writeQuery({
 				query: GET_MESSAGES,
-				variables: { conversationId },
+				variables: {input: {
+					conversationId: conversationId
+				}},
 				data: {
 					getMessages: [...data.getMessages, newMessage]
 				}
@@ -42,7 +47,6 @@ const Conversation = props => {
 	})
 
 	const handleMessageType = message => {
-		// console.log('message', message)
 		return message.authorId === recipient.userId
 			? <CorrespondantMessage
 					key={message.id}
@@ -55,6 +59,10 @@ const Conversation = props => {
 				/>
 	}
 
+	const handleScrollToBottom = height => {
+		scrollView.current.scrollTo({y: height, animated: false})
+	}
+
 	return (
 		<KeyboardAvoidingView
 			behavior={Platform.OS === "ios" ? "padding" : null}
@@ -63,7 +71,12 @@ const Conversation = props => {
 		>
 			<View style={styles.backgroundBlue}>
 				<StatusBar backgroundColor={styles.statusBar.backgroundColor} barStyle='dark-content' />
-				<ScrollView style={styles.mainContainer} contentContainerStyle={styles.scrollViewContainer}>
+				<ScrollView
+					style={styles.mainContainer}
+					contentContainerStyle={styles.scrollViewContainer}
+					ref={scrollView}
+					onContentSizeChange={(width, height) => handleScrollToBottom(height) }
+				>
 
 					{	data && data.getMessages.map(message => (
 						handleMessageType(message)

@@ -22,8 +22,8 @@ export const ADD_MESSAGE = gql`
 `
 
 export const GET_MESSAGES = gql`
-	query getMessages($conversationId: ID!) {
-		getMessages(conversationId: $conversationId) {
+	query getMessages($input: CursorMessageInput!) {
+		getMessages(input: $input) {
 			id
 			content
 			dateCreated
@@ -49,8 +49,8 @@ export const GET_CONVERSATIONS = gql`
 `
 
 export const MESSAGE_SUBSCRIPTION = gql`
-	subscription messageAdded($conversationId: ID!) {
-		messageAdded(conversationId: $conversationId) {
+	subscription messageAdded($input: CursorMessageInput!) {
+		messageAdded(input: $input) {
 			id
 			content
 			dateCreated
