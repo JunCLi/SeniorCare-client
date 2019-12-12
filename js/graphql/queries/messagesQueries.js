@@ -13,11 +13,8 @@ export const START_CONVERSATION = gql`
 `
 
 export const ADD_MESSAGE = gql`
-	mutation addMessage {
-		addMessage(input: {
-			conversationId: 2
-			content: "wazzup"
-		}) {
+	mutation addMessage($input: AddMessageInput!) {
+		addMessage(input: $input) {
 			content
 			dateCreated
 		}
@@ -25,8 +22,9 @@ export const ADD_MESSAGE = gql`
 `
 
 export const GET_MESSAGES = gql`
-	query getMessages($conversationId: ID) {
+	query getMessages($conversationId: ID!) {
 		getMessages(conversationId: $conversationId) {
+			id
 			content
 			dateCreated
 			authorId
@@ -46,6 +44,17 @@ export const GET_CONVERSATIONS = gql`
 				firstName
 				lastName
 			}
+		}
+	}
+`
+
+export const MESSAGE_SUBSCRIPTION = gql`
+	subscription messageAdded($conversationId: ID!) {
+		messageAdded(conversationId: $conversationId) {
+			id
+			content
+			dateCreated
+			authorId
 		}
 	}
 `

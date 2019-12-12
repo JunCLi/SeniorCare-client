@@ -12,30 +12,4 @@ export const styles = StyleSheet.create({
 		...generalStyles.mainContainer,
 		paddingHorizontal: margin.horizontal * 1.5,
 	},
-
-	inputContainer: {
-		backgroundColor: 'white',
-		paddingVertical: margin.vertical * 1.2,
-		paddingHorizontal: margin.horizontal * 1.25,
-	},
-
-	inputDirectContainer: {
-		borderBottomWidth: 0,
-		paddingTop: 6
-	},
-
-	input: {
-		...generalStyles.basicFont,
-		color: font.black,
-	},
-
-	placeholder: {
-		color: font.dullGrey,
-	},
-
-	inputIcon: {
-		fontSize: baseFont * 1.2,
-		color: font.lightBlue,
-		marginBottom: 4,
-	}
 })

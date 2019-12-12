@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
 import { useQuery, useMutation, useSubscription } from '@apollo/react-hooks'
-import { START_CONVERSATION, ADD_MESSAGE, GET_MESSAGES, GET_CONVERSATIONS } from '../../../../graphql/queries/messagesQueries'
+import { ADD_MESSAGE, GET_MESSAGES, MESSAGE_SUBSCRIPTION } from '../../../../graphql/queries/messagesQueries'
 
 import { KeyboardAvoidingView, SafeAreaView, ScrollView, StatusBar, Text, TouchableOpacity, View } from 'react-native'
 import { Icon, Input } from 'react-native-elements'
@@ -9,13 +9,11 @@ import { styles } from './styles'
 
 import MyMessage from '../../../../components/listItem/message/myMessage/MyMessage'
 import CorrespondantMessage from '../../../../components/listItem/message/correspondantMessage/CorrespondantMessage'
+import MessageInput from '../../../../components/forms/message/MessageInput'
 
 const Conversation = props => {
 	const { conversationId, recipient } = props.navigation.state.params
 	const { avatar } = recipient
-	const [ inputValue, setInputValue ] = useState('')
-
-	// console.log('test', conversationId, recipient)
 
 	const { data } = useQuery(GET_MESSAGES, {
 		variables: {
@@ -23,17 +21,36 @@ const Conversation = props => {
 		}
 	})
 
-	// console.log('data', data)
+	useSubscription(MESSAGE_SUBSCRIPTION, {
+		variables: {
+			conversationId: conversationId,
+		},
+		onSubscriptionData: ({ client, subscriptionData }) => {
+			console.log('test')
+			const newMessage = subscriptionData.data.messageAdded
+			const data = client.readQuery({ query: GET_MESSAGES, variables: { conversationId } })
+
+			console.log('newMessage', newMessage)
+			client.writeQuery({
+				query: GET_MESSAGES,
+				variables: { conversationId },
+				data: {
+					getMessages: [...data.getMessages, newMessage]
+				}
+			})
+		}
+	})
 
 	const handleMessageType = message => {
+		// console.log('message', message)
 		return message.authorId === recipient.userId
 			? <CorrespondantMessage
-					key={message.dateCreated}
+					key={message.id}
 					avatar={avatar}
 					content={message.content}
 				/>
 			: <MyMessage
-					key={message.dateCreated}
+					key={message.id}
 					content={message.content}
 				/>
 	}
@@ -54,41 +71,10 @@ const Conversation = props => {
 
 				</ScrollView>
 
-
-				<Input
-					value={inputValue}
-					onChangeText={setInputValue}
-					placeholder='Send a message'
-					rightIcon={
-						<Icon
-							type='font-awesome'
-							name='send'
-							iconStyle={styles.inputIcon}
-						/>
-					}
-					placeholderTextColor={styles.placeholder.color}
-					inputStyle={styles.input}
-					containerStyle={styles.inputContainer}
-					inputContainerStyle={styles.inputDirectContainer}
-					editable
-					multiline
-				/>
+				<MessageInput conversationId={conversationId} />
 			</View>
 		</KeyboardAvoidingView>
 	)
 }
 
 export default Conversation
-
-// value={values.email}
-// 					keyboardType='email-address'
-// 					onChangeText={handleChange('email')}
-// 					label='Email'
-// 					labelStyle={styles.label}
-// 					placeholder='me@email.com'
-// 					placeholderTextColor={styles.placeholderTextColor.color}
-// 					editable={true}
-// 					autoCompleteType='email'
-// 					inputStyle={styles.input}
-// 					containerStyle={styles.inputContainer}
-// 					leftIconContainerStyle={styles.leftIconContainer}
