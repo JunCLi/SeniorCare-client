@@ -1,5 +1,8 @@
 import React, { useState } from 'react'
 
+import { useMutation } from '@apollo/react-hooks'
+import { START_CONVERSATION } from '../../../graphql/queries/messagesQueries'
+
 import { SafeAreaView, ScrollView, StatusBar, Text, View } from 'react-native'
 import { Button, ButtonGroup, Image } from 'react-native-elements'
 import { styles } from './styles'
@@ -11,7 +14,9 @@ import Reviews from './reviews/Reviews'
 
 const ViewCaregiver = props => {
 	const navParams = props.navigation.state.params
-	const { userId, userDetails, caregiverDetails } = navParams
+	const { userId, userDetails, caregiverDetails, fromJob } = navParams
+
+	const [ startConversation ] = useMutation(START_CONVERSATION)
 
 	const buttonArray = [
 		{
@@ -42,9 +47,27 @@ const ViewCaregiver = props => {
 		return <About {...navParams} /> 
 	}
 
-	const handleContactCaregiver = () => {
+	const handleContactCaregiver = async () => {
 		// TODO
-		console.log('to be implemented')
+		const result = await startConversation({
+			variables: {
+				recipientId: userId
+			}
+		})
+
+		const destination = fromJob ? 'InJobConversation' : 'InFindConversation'
+
+		if (result.data.startConversation.caregiverId === userId) {
+			props.navigation.navigate(destination, {
+				conversationId: result.data.startConversation.id,
+				recipient: {
+					userId: userId,
+					avatar: userDetails.avatar,
+					firstName: userDetails.firstName,
+					lastName: userDetails.lastName,
+				},
+			})
+		}
 	}
 
 	return (

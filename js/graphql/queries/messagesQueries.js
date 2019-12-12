@@ -1,13 +1,27 @@
 import gql from 'graphql-tag'
 
 export const START_CONVERSATION = gql`
-	mutation startConversation {
-		startConversation(
-			recipientId: "kc-vdu-bRbEFAdRpPihA47EZ4kL"
-		) {
+	mutation startConversation($recipientId: ID!) {
+		startConversation(recipientId: $recipientId) {
 			id
 			familyId
 			caregiverId
+		}
+	}
+`
+
+export const GET_CONVERSATIONS = gql`
+	query getConversations {
+		getConversations {
+			id
+			familyId
+			caregiverId
+			recipient {
+				userId
+				avatar
+				firstName
+				lastName
+			}
 		}
 	}
 `
@@ -32,9 +46,20 @@ export const GET_MESSAGES = gql`
 	}
 `
 
-export const GET_CONVERSATIONS = gql`
-	query getConversations {
-		getConversations {
+export const MESSAGE_SUBSCRIPTION = gql`
+	subscription messageAdded($input: CursorMessageInput!) {
+		messageAdded(input: $input) {
+			id
+			content
+			dateCreated
+			authorId
+		}
+	}
+`
+
+export const CONVERSATION_SUBSCRIPTION = gql`
+	subscription conversationAdded {
+		conversationAdded {
 			id
 			familyId
 			caregiverId
@@ -44,17 +69,6 @@ export const GET_CONVERSATIONS = gql`
 				firstName
 				lastName
 			}
-		}
-	}
-`
-
-export const MESSAGE_SUBSCRIPTION = gql`
-	subscription messageAdded($input: CursorMessageInput!) {
-		messageAdded(input: $input) {
-			id
-			content
-			dateCreated
-			authorId
 		}
 	}
 `

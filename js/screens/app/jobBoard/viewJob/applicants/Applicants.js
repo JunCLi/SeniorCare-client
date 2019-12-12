@@ -10,10 +10,11 @@ const Applicants = props => {
 	}
 
 	const handleViewCaregiver = (caregiverId, userDetails, caregiverDetails) => {
-		props.navigation.navigate('ViewCaregiver', {
+		props.navigation.navigate('InJobViewCaregiver', {
 			userId: caregiverId,
 			userDetails,
 			caregiverDetails,
+			fromJob: true,
 		})
 	}
 

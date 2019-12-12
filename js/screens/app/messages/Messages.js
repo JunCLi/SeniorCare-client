@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { useQuery, useMutation, useSubscription } from '@apollo/react-hooks'
-import { START_CONVERSATION, ADD_MESSAGE, GET_MESSAGES, GET_CONVERSATIONS } from '../../../graphql/queries/messagesQueries'
+import { GET_MESSAGES, GET_CONVERSATIONS, CONVERSATION_SUBSCRIPTION } from '../../../graphql/queries/messagesQueries'
 
 import { KeyboardAvoidingView, SafeAreaView, ScrollView, StatusBar, Text, TouchableOpacity, View } from 'react-native'
 import { Button } from 'react-native-elements'
@@ -18,6 +18,22 @@ const Messages = props => {
 			recipient,
 		})
 	}
+
+	useSubscription(CONVERSATION_SUBSCRIPTION, {
+		onSubscriptionData: ({ client, subscriptionData }) => {
+			const newConversation = subscriptionData.data.conversationAdded
+			const data = client.readQuery({
+				query: GET_CONVERSATIONS,
+			})
+
+			client.writeQuery({
+				query: GET_CONVERSATIONS,
+				data: {
+					getConversations: [...data.getConversations, newConversation]
+				}
+			})
+		}
+	})
 
 	return (
 		<KeyboardAvoidingView

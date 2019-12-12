@@ -104,7 +104,7 @@ const handleTabBarVisible = state => {
 		jobsStack: [
 			'CreateJobOverview',
 			'BasicInformation',
-			'ViewCaregiver',
+			'InJobViewCaregiver',
 		],
 		messageStack: [
 			'Conversation',

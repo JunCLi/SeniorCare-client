@@ -3,6 +3,7 @@ import { createStackNavigator } from 'react-navigation-stack'
 import JobBoard from '../../screens/app/jobBoard/JobBoard'
 import ViewJob from '../../screens/app/jobBoard/viewJob/ViewJob'
 import ViewCaregiver from '../../screens/app/viewCaregiver/ViewCaregiver'
+import Conversation from '../../screens/app/messages/conversation/Conversation'
 
 import Overview from '../../screens/app/createJob/Overview'
 import BasicInformation from '../../screens/app/createJob/basicInformation/BasicInformation'
@@ -30,11 +31,20 @@ const FindStack = createStackNavigator({
 		})
 	},
 
-	ViewCaregiver: {
+	InJobViewCaregiver: {
 		screen: ViewCaregiver,
 		navigationOptions: ({ navigation }) => ({
 			title: `${navigation.state.params.userDetails.firstName} ${navigation.state.params.userDetails.lastName}`,
 			
+		})
+	},
+
+	InJobConversation: {
+		screen: Conversation,
+		navigationOptions: ({ navigation }) => ({
+			title: navigation.state.params
+				? `${navigation.state.params.recipient.firstName} ${navigation.state.params.recipient.lastName}`
+				: 'Chat',
 		})
 	},
 
@@ -100,7 +110,6 @@ const FindStack = createStackNavigator({
 			title: navigation.state.params ? navigation.state.params.title : 'Job'
 		})
 	},
-
 
 	JobCreated: {
 		screen: JobCreated,
