@@ -20,7 +20,8 @@ const AuthLoading = props => {
 	}
 
 	const handleGoApp = () => {
-		props.navigation.navigate('App')
+		const appStack = data.getLoggedUser.userType === 'caregiver' ? 'CaregiverApp' : 'FamilyApp'
+		props.navigation.navigate(appStack)
 	}
 
 	const checkNav = () => {
@@ -28,7 +29,7 @@ const AuthLoading = props => {
 		const loggingOut = navParams && navParams.loggingOut
 		const loggingIn = navParams && navParams.loggingIn
 
-		setTimeout(() => handleAppRouting(), 300)
+		setTimeout(() => handleAppRouting(loggingIn, loggingOut), 300)
 	}
 
 	const handleAppRouting = (loggingIn, loggingOut) => {

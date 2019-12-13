@@ -42,7 +42,6 @@ const Messages = props => {
 						recipient: conversationObject.family,
 						__typename: 'Caregiver',
 					}
-			console.log('new convo', newConversation)
 			const data = client.readQuery({
 				query: GET_CONVERSATIONS,
 			})

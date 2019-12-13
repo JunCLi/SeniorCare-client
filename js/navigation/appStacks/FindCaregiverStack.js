@@ -1,13 +1,13 @@
 import { createStackNavigator } from 'react-navigation-stack'
 
-import Find from '../../screens/app/find/Find'
+import FindCaregiver from '../../screens/app/find/findCaregiver/FindCaregiver'
 import Filter from '../../screens/app/find/filter/FilterFind'
 import ViewCaregiver from '../../screens/app/viewCaregiver/ViewCaregiver'
 import Conversation from '../../screens/app/messages/conversation/Conversation'
 
-const FindStack = createStackNavigator({
+const FindCaregiverStack = createStackNavigator({
 	Find: {
-		screen: Find,
+		screen: FindCaregiver,
 		navigationOptions: () => ({
 			title: 'Find'
 		})
@@ -40,4 +40,4 @@ const FindStack = createStackNavigator({
 	initialRouteName: 'Find',
 })
 
-export default FindStack
+export default FindCaregiverStack

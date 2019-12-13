@@ -28,6 +28,10 @@ export const CHECK_AUTHENTICATION = gql`
 	query getLoggedUser {
 		getLoggedUser {
 			userId
+			firstName
+			lastName
+			avatar
+			userType
 		}
 	}
 `

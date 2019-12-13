@@ -1,8 +1,7 @@
 import { StyleSheet } from 'react-native'
 
-import { screenWidth, screenHeight, margin, baseFont } from '../../../styleSettings/screensizeSettings'
-import { background, font } from '../../../styleSettings/colours'
-import { fontType } from '../../../styleSettings/fonts'
+import { margin, baseFont } from '../../../styleSettings/screensizeSettings'
+import { font } from '../../../styleSettings/colours'
 
 import { generalStyles } from '../../../styleSettings/generalStyles'
 
@@ -17,7 +16,7 @@ const filterIcon = StyleSheet.create({
 	},
 })
 
-export const styles = StyleSheet.create({
+export const sharedStyles = StyleSheet.create({
 	...generalStyles,
 	...filterIcon,
 	

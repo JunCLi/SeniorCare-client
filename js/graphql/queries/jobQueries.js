@@ -149,3 +149,21 @@ export const GET_ALL_USER_JOBS_DETAILED = gql`
 		}
 	}
 `
+
+export const MY_JOB_SUBSCRIPTION = gql`
+	subscription myJobAdded($familyId: ID!) {
+		myJobAdded(familyId: $familyId) {
+			id
+			dateCreated
+			basicInformation {
+				title
+				startDate
+				hourlyRate
+			}
+			seniorDetails {
+				id
+				name
+			}
+		}
+	}
+`

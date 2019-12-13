@@ -1,14 +1,16 @@
 import { createAppContainer, createSwitchNavigator } from 'react-navigation'
 
-import AuthStack from './authStacks/AuthStack'
-import AppStack from './appStacks/AppStack'
 import AuthLoading from '../screens/authloading/AuthLoading'
+import AuthStack from './authStacks/AuthStack'
+import FamilyAppStack from './appStacks/FamilyAppStack'
+import CaregiverAppStack from './appStacks/CaregiverAppStack'
 
 const AppNavigator = createAppContainer(
 	createSwitchNavigator({
 		AuthLoading: AuthLoading,
 		Auth: AuthStack,
-		App: AppStack,
+		FamilyApp: FamilyAppStack,
+		CaregiverApp: CaregiverAppStack,
 	}, {
 		initialRouteName: 'AuthLoading'
 	})

@@ -3,15 +3,15 @@ import React from 'react'
 import { createBottomTabNavigator } from 'react-navigation-tabs'
 import { Icon } from 'react-native-elements'
 
-import FindStack from './FindStack'
+import FindCaregiverStack from './FindCaregiverStack'
 import JobsStack from './JobsStack'
 import ProfileStack from './ProfileStack'
 import MessagesStack from './MessagesStack'
 import Home from '../../screens/app/home/Home'
 
-const AppStack = createBottomTabNavigator({
+const FamilyAppStack = createBottomTabNavigator({
 	FindStack: {
-		screen: FindStack,
+		screen: FindCaregiverStack,
 		navigationOptions: () => ({
 			title: 'Find',
 			tabBarIcon: ({ tintColor }) => (
@@ -68,7 +68,7 @@ const AppStack = createBottomTabNavigator({
 		})
 	},
 }, {
-	initialRouteName: 'MessagesStack',
+	initialRouteName: 'JobsStack',
 	defaultNavigationOptions: ({ navigation }) => ({
 		tabBarVisible: handleTabBarVisible(navigation.state)
 	}),
@@ -122,4 +122,4 @@ const handleTabBarVisible = state => {
 	return visible
 }
 
-export default AppStack
+export default FamilyAppStack
