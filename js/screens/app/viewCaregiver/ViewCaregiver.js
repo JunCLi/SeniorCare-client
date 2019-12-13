@@ -40,11 +40,14 @@ const ViewCaregiver = props => {
 	}
 
 	const displaySelectedSection = () => {
-		const selectedSection = buttonArray.filter(section => section.value === selectedButton)
-		if (selectedButton === 'experience') return <Experience {...navParams}>experience</Experience> 
-		else if (selectedButton === 'reviews') return <Reviews {...navParams}>review</Reviews> 
-		
-		return <About {...navParams} /> 
+		switch (selectedButton) {
+			case 'experience':
+				return <Experience {...navParams}>experience</Experience> 
+			case 'reviews':
+				return <Reviews {...navParams}>review</Reviews> 
+			default:
+				return <About {...navParams} /> 
+		}
 	}
 
 	const handleContactCaregiver = async () => {

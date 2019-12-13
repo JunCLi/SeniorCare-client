@@ -1,7 +1,8 @@
 import React from 'react'
 
 import { useQuery, useMutation, useSubscription } from '@apollo/react-hooks'
-import { GET_MESSAGES, GET_CONVERSATIONS, CONVERSATION_SUBSCRIPTION } from '../../../graphql/queries/messagesQueries'
+import { GET_LOGGED_USER_CACHE } from '../../../graphql/queries/authQueries'
+import { GET_CONVERSATIONS, CONVERSATION_SUBSCRIPTION } from '../../../graphql/queries/messagesQueries'
 
 import { KeyboardAvoidingView, SafeAreaView, ScrollView, StatusBar, Text, TouchableOpacity, View } from 'react-native'
 import { Button } from 'react-native-elements'
@@ -11,6 +12,7 @@ import ConversationItem from '../../../components/listItem/conversation/Conversa
 
 const Messages = props => {
 	const { data } = useQuery(GET_CONVERSATIONS)
+	const { data: userData } = useQuery(GET_LOGGED_USER_CACHE)
 
 	const goToConversation = (conversationId, recipient) => {
 		props.navigation.navigate('Conversation', {
@@ -20,8 +22,27 @@ const Messages = props => {
 	}
 
 	useSubscription(CONVERSATION_SUBSCRIPTION, {
+		variables: {
+			userId: userData.getLoggedUser.userId
+		},
 		onSubscriptionData: ({ client, subscriptionData }) => {
-			const newConversation = subscriptionData.data.conversationAdded
+			const conversationObject = subscriptionData.data.conversationAdded
+			const newConversation = conversationObject.familyId === userData.getLoggedUser.userId
+				? {
+						id: conversationObject.id,
+						familyId: conversationObject.familyId,
+						caregiverId: conversationObject.caregiverId,
+						recipient: conversationObject.caregiver,
+						__typename: 'Caregiver',
+					}
+				: {
+						id: conversationObject.id,
+						familyId: conversationObject.familyId,
+						caregiverId: conversationObject.caregiverId,
+						recipient: conversationObject.family,
+						__typename: 'Caregiver',
+					}
+			console.log('new convo', newConversation)
 			const data = client.readQuery({
 				query: GET_CONVERSATIONS,
 			})

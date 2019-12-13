@@ -77,6 +77,14 @@ export const LOGOUT = gql`
 	}
 `
 
+export const GET_LOGGED_USER_CACHE = gql`
+	query getLoggedUser @client {
+		getLoggedUser @client {
+			userId
+		}
+	}
+`
+
 // export const DOING_STUFF_TO_CACHE = gql`
 // 	mutation updateUser {
 // 		updateUser(id: "ca-tay-bYXQsXs0EJY4VZzsmJGM") @client {

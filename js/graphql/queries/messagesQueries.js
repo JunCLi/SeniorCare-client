@@ -58,12 +58,18 @@ export const MESSAGE_SUBSCRIPTION = gql`
 `
 
 export const CONVERSATION_SUBSCRIPTION = gql`
-	subscription conversationAdded {
-		conversationAdded {
+	subscription conversationAdded($userId: ID!) {
+		conversationAdded(userId: $userId) {
 			id
 			familyId
 			caregiverId
-			recipient {
+			family {
+				userId
+				avatar
+				firstName
+				lastName
+			}
+			caregiver {
 				userId
 				avatar
 				firstName

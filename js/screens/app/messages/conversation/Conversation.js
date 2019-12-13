@@ -1,7 +1,7 @@
 import React, { useRef } from 'react'
 
-import { useQuery, useMutation, useSubscription } from '@apollo/react-hooks'
-import { ADD_MESSAGE, GET_MESSAGES, MESSAGE_SUBSCRIPTION } from '../../../../graphql/queries/messagesQueries'
+import { useQuery, useSubscription } from '@apollo/react-hooks'
+import { GET_MESSAGES, MESSAGE_SUBSCRIPTION } from '../../../../graphql/queries/messagesQueries'
 
 import { KeyboardAvoidingView, ScrollView, StatusBar, View } from 'react-native'
 import { styles } from './styles'
