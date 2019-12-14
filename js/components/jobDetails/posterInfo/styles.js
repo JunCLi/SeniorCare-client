@@ -3,13 +3,14 @@ import { StyleSheet } from 'react-native'
 import { generalStyles } from '../../../styleSettings/generalStyles'
 
 import { margin, baseFont } from '../../../styleSettings/screensizeSettings'
-import { font } from '../../../styleSettings/colours'
+import { font, background } from '../../../styleSettings/colours'
 import { fontType } from '../../../styleSettings/fonts'
 
 export const styles = StyleSheet.create({
 	mainContainer: {
-		marginHorizontal: margin.horizontal,
-		marginBottom: margin.vertical * 2,
+		backgroundColor: background.white,
+		paddingHorizontal: margin.horizontal,
+		paddingBottom: margin.vertical * 2,
 	},
 
 	listItemContainer: {

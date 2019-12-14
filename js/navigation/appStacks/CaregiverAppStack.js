@@ -10,7 +10,7 @@ import MessagesStack from './MessagesStack'
 import Home from '../../screens/app/home/Home'
 
 const CaregiverAppStack = createBottomTabNavigator({
-	FindStack: {
+	FindJobStack: {
 		screen: FindJobStack,
 		navigationOptions: () => ({
 			title: 'Find',
@@ -26,7 +26,7 @@ const CaregiverAppStack = createBottomTabNavigator({
 	},
 
 	JobsStack: {
-		screen: JobsStack,
+		screen: Home,
 		navigationOptions: () => ({
 			title: 'Jobs',
 			tabBarIcon: ({ tintColor }) => (
@@ -68,7 +68,7 @@ const CaregiverAppStack = createBottomTabNavigator({
 		})
 	},
 }, {
-	initialRouteName: 'JobsStack',
+	initialRouteName: 'FindJobStack',
 	defaultNavigationOptions: ({ navigation }) => ({
 		tabBarVisible: handleTabBarVisible(navigation.state)
 	}),
@@ -85,42 +85,42 @@ const CaregiverAppStack = createBottomTabNavigator({
 })
 
 const checkHideTabBar = (hideRouteArray, state) => {
-	// const isHide = state.routes.filter(route => (
-	// 	hideRouteArray.filter(hideRoute => (
-	// 		route.routeName === hideRoute
-	// 	)).length
-	// ))
-	// return isHide.length ? false : true
+	const isHide = state.routes.filter(route => (
+		hideRouteArray.filter(hideRoute => (
+			route.routeName === hideRoute
+		)).length
+	))
+	return isHide.length ? false : true
 }
 
 const handleTabBarVisible = state => {
-	// let visible = true
+	let visible = true
 
-	// const hideTabRoutes = {
-	// 	findStack: [
-	// 		'Filter',
-	// 		'ViewCaregiver',
-	// 	],
-	// 	jobsStack: [
-	// 		'CreateJobOverview',
-	// 		'BasicInformation',
-	// 		'InJobViewCaregiver',
-	// 	],
-	// 	messageStack: [
-	// 		'Conversation',
-	// 	]
-	// }
+	const hideTabRoutes = {
+		findJobStack: [
+			'ViewJob',
+			'JobAppliedScreen'
+		],
+		jobsStack: [
+			'CreateJobOverview',
+			'BasicInformation',
+			'InJobViewCaregiver',
+		],
+		messageStack: [
+			'Conversation',
+		]
+	}
 
-	// if (state.routeName === 'FindStack') {
-	// 	visible = checkHideTabBar(hideTabRoutes.findStack, state)
-	// } else if (state.routeName === 'JobsStack') {
+	if (state.routeName === 'FindJobStack') {
+		visible = checkHideTabBar(hideTabRoutes.findJobStack, state)
+	} 
+	// else if (state.routeName === 'JobsStack') {
 	// 	visible = checkHideTabBar(hideTabRoutes.jobsStack, state)
 	// } else if (state.routeName === 'MessagesStack') {
 	// 	visible = checkHideTabBar(hideTabRoutes.messageStack, state)
 	// }
 
-	// return visible
-	return true
+	return visible
 }
 
 export default CaregiverAppStack

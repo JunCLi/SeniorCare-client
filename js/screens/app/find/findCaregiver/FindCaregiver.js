@@ -39,6 +39,8 @@ const FindCaregiver = props => {
 				{allCaregivers && allCaregivers.map(caregiver => (
 					<CaregiverList key={caregiver.userId} {...caregiver} navigation={props.navigation} />
 				))}
+
+				<View style={styles.extraSpace}></View>
 			</ScrollView>
 		</SafeAreaView>
 	)

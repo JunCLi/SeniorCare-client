@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native'
 
-import { margin, baseFont } from '../../../styleSettings/screensizeSettings'
+import { margin, baseFont, screenHeight } from '../../../styleSettings/screensizeSettings'
 import { font } from '../../../styleSettings/colours'
 
 import { generalStyles } from '../../../styleSettings/generalStyles'
@@ -28,5 +28,9 @@ export const sharedStyles = StyleSheet.create({
 	mainContainer: {
 		...generalStyles.mainContainer,
 		paddingTop: margin.vertical,
+	},
+
+	extraSpace: {
+		height: screenHeight / 24,
 	}
 })

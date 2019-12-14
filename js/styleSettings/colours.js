@@ -5,6 +5,7 @@ const red = 'red'
 
 const conversationBlue = '#B1D5F6'
 const conversationGrey = '#E6E6E6'
+const modalGrey = '#F0F0F0'
 
 const backgroundWhite = 'rgba(255, 255, 255, 0.92)'
 const backgroundGrey = 'rgba(248, 248, 248, 0.92)'
@@ -34,6 +35,8 @@ export const background = {
 
 	convoBlue: conversationBlue,
 	convoGrey: conversationGrey,
+
+	modalGrey: modalGrey,
 }
 
 export const font = {

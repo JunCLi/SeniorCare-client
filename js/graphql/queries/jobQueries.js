@@ -167,3 +167,38 @@ export const MY_JOB_SUBSCRIPTION = gql`
 		}
 	}
 `
+
+export const GET_ALL_JOBS = gql`
+	query getAllJobs {
+		getAllJobs {
+			family {
+				userId
+				firstName
+				lastName
+				avatar
+			}
+			jobDetails {
+				id
+				dateCreated
+				basicInformation {
+					title
+					location {
+						city
+					}
+					hourlyRate
+				}
+				serviceDetails {
+					services
+				}
+			}
+		}
+	}
+`
+
+export const APPLY_JOB = gql`
+	mutation applyJob($input: ApplyJobInput!) {
+		applyJob(input: $input) {
+			message
+		}
+	}
+`

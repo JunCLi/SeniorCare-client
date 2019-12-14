@@ -1,15 +1,31 @@
 import { createStackNavigator } from 'react-navigation-stack'
 
 import FindJob from '../../screens/app/find/findJob/FindJob'
+import ViewJob from '../../screens/app/find/findJob/viewJob/ViewJob'
+import JobApplied from '../../screens/app/find/findJob/jobApplied/JobApplied'
 import Filter from '../../screens/app/find/filter/FilterFind'
 import ViewCaregiver from '../../screens/app/viewCaregiver/ViewCaregiver'
 import Conversation from '../../screens/app/messages/conversation/Conversation'
 
 const FindJobStack = createStackNavigator({
-	Find: {
+	FindJobs: {
 		screen: FindJob,
 		navigationOptions: () => ({
 			title: 'Find'
+		})
+	},
+
+	ViewJob: {
+		screen: ViewJob,
+		navigationOptions: ({ navigation }) => ({
+			title: navigation.state.params.name
+		})
+	},
+
+	ApplicationSentScreen: {
+		screen: JobApplied,
+		navigationOptions: () => ({
+			header: 'none',
 		})
 	},
 
@@ -37,7 +53,7 @@ const FindJobStack = createStackNavigator({
 	// 	})
 	// }
 }, {
-	initialRouteName: 'Find',
+	initialRouteName: 'FindJobs',
 })
 
 export default FindJobStack
