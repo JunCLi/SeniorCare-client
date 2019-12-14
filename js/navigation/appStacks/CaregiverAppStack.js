@@ -99,7 +99,7 @@ const handleTabBarVisible = state => {
 	const hideTabRoutes = {
 		findJobStack: [
 			'ViewJob',
-			'JobAppliedScreen'
+			'ApplicationSentScreen',
 		],
 		jobsStack: [
 			'CreateJobOverview',

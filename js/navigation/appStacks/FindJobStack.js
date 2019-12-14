@@ -25,7 +25,7 @@ const FindJobStack = createStackNavigator({
 	ApplicationSentScreen: {
 		screen: JobApplied,
 		navigationOptions: () => ({
-			header: 'none',
+			header: null,
 		})
 	},
 
