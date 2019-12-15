@@ -89,6 +89,17 @@ export const GET_LOGGED_USER_CACHE = gql`
 	}
 `
 
+export const GET_USER = gql`
+	query getUser($userId: ID!) {
+		getUser(userId: $userId) {
+			userId
+			firstName
+			lastName
+			avatar
+		}
+	}
+`
+
 // export const DOING_STUFF_TO_CACHE = gql`
 // 	mutation updateUser {
 // 		updateUser(id: "ca-tay-bYXQsXs0EJY4VZzsmJGM") @client {

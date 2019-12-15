@@ -202,3 +202,60 @@ export const APPLY_JOB = gql`
 		}
 	}
 `
+
+export const MY_JOB_APPS = gql`
+	query getMyAppplications {
+		getMyApplications {
+			id
+			jobId
+			dateCreated
+			status
+		}
+	}
+`
+
+export const GET_APPLIED_JOB = gql`
+	query getAppliedJob($jobId: ID) {
+		getAppliedJob(jobId: $jobId) {
+			family {
+				userId
+				firstName
+				lastName
+				avatar
+			}
+			jobDetails {
+				id
+				dateCreated
+				basicInformation {
+					title
+					location {
+						city
+					}
+					hourlyRate
+				}
+				serviceDetails {
+					services
+				}
+			}
+		}
+	}
+`
+
+// export const GET_JOB_BASIC = gql`
+// 	query getJob($jobId: ID) {
+// 		getJob(jobId: $jobId) {
+// 			id
+// 			dateCreated
+// 			basicInformation {
+// 				title
+// 				location {
+// 					city
+// 				}
+// 				hourlyRate
+// 			}
+// 			serviceDetails {
+// 				services
+// 			}
+// 		}
+// 	}
+// `

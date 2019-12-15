@@ -4,8 +4,8 @@ import { createBottomTabNavigator } from 'react-navigation-tabs'
 import { Icon } from 'react-native-elements'
 
 import FindJobStack from './FindJobStack'
-import JobsStack from './JobsStack'
-import ProfileStack from './ProfileStack'
+import JobStack from './caregiver/JobStack'
+import ProfileStack from './caregiver/ProfileStack'
 import MessagesStack from './MessagesStack'
 import Home from '../../screens/app/home/Home'
 
@@ -25,8 +25,8 @@ const CaregiverAppStack = createBottomTabNavigator({
 		})
 	},
 
-	JobsStack: {
-		screen: Home,
+	JobStack: {
+		screen: JobStack,
 		navigationOptions: () => ({
 			title: 'Jobs',
 			tabBarIcon: ({ tintColor }) => (
@@ -40,7 +40,7 @@ const CaregiverAppStack = createBottomTabNavigator({
 		})
 	},
 	MessagesStack: {
-		screen: Home,
+		screen: MessagesStack,
 		navigationOptions: () => ({
 			title: 'Messages',
 			tabBarIcon: ({ tintColor }) => (
@@ -98,13 +98,13 @@ const handleTabBarVisible = state => {
 
 	const hideTabRoutes = {
 		findJobStack: [
-			'ViewJob',
+			'ApplyJob',
 			'ApplicationSentScreen',
 		],
-		jobsStack: [
-			'CreateJobOverview',
-			'BasicInformation',
-			'InJobViewCaregiver',
+		jobStack: [
+			'ViewJob',
+			// 'BasicInformation',
+			// 'InJobViewCaregiver',
 		],
 		messageStack: [
 			'Conversation',
@@ -113,10 +113,10 @@ const handleTabBarVisible = state => {
 
 	if (state.routeName === 'FindJobStack') {
 		visible = checkHideTabBar(hideTabRoutes.findJobStack, state)
+	} else if (state.routeName === 'JobStack') {
+		visible = checkHideTabBar(hideTabRoutes.jobStack, state)
 	} 
-	// else if (state.routeName === 'JobsStack') {
-	// 	visible = checkHideTabBar(hideTabRoutes.jobsStack, state)
-	// } else if (state.routeName === 'MessagesStack') {
+	// else if (state.routeName === 'MessagesStack') {
 	// 	visible = checkHideTabBar(hideTabRoutes.messageStack, state)
 	// }
 

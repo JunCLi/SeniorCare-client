@@ -6,7 +6,7 @@ import { Avatar, Icon, ListItem } from 'react-native-elements'
 import { styles } from './styles'
 
 const AllJobs = props => {
-	const { family, jobDetails, handlePress } = props
+	const { family, jobDetails, handlePress, showServices = true } = props
 
 	return (
 		<TouchableOpacity
@@ -50,13 +50,15 @@ const AllJobs = props => {
 					<Text style={styles.hourlyRate}>${jobDetails.basicInformation.hourlyRate}/hr</Text>
 				</View>
 			</View>
-			<View style={styles.servicesContainer}>
-				{jobDetails.serviceDetails.services.map(service => (
-					<View key={service} style={styles.serviceBubble} >
-						<Text style={styles.serviceText}>{service}</Text>
-					</View>
-				))}
-			</View>
+			{ showServices &&
+				<View style={styles.servicesContainer}>
+					{jobDetails.serviceDetails.services.map(service => (
+						<View key={service} style={styles.serviceBubble} >
+							<Text style={styles.serviceText}>{service}</Text>
+						</View>
+					))}
+				</View>
+			}
 		</TouchableOpacity>
 	)
 }

@@ -1,7 +1,7 @@
 import { createStackNavigator } from 'react-navigation-stack'
 
 import FindJob from '../../screens/app/find/findJob/FindJob'
-import ViewJob from '../../screens/app/find/findJob/viewJob/ViewJob'
+import ApplyJob from '../../screens/app/find/findJob/viewJob/ApplyToJob'
 import JobApplied from '../../screens/app/find/findJob/jobApplied/JobApplied'
 import Filter from '../../screens/app/find/filter/FilterFind'
 import ViewCaregiver from '../../screens/app/viewCaregiver/ViewCaregiver'
@@ -15,8 +15,8 @@ const FindJobStack = createStackNavigator({
 		})
 	},
 
-	ViewJob: {
-		screen: ViewJob,
+	ApplyJob: {
+		screen: ApplyJob,
 		navigationOptions: ({ navigation }) => ({
 			title: navigation.state.params.name
 		})
@@ -28,30 +28,6 @@ const FindJobStack = createStackNavigator({
 			header: null,
 		})
 	},
-
-	// Filter: {
-	// 	screen: Filter,
-	// 	navigationOptions: () => ({
-	// 		title: 'Filter'
-	// 	})
-	// },
-
-	// ViewCaregiver: {
-	// 	screen: ViewCaregiver,
-	// 	navigationOptions: ({ navigation }) => ({
-	// 		title: `${navigation.state.params.userDetails.firstName} ${navigation.state.params.userDetails.lastName}`,
-			
-	// 	})
-	// },
-
-	// InFindConversation: {
-	// 	screen: Conversation,
-	// 	navigationOptions: ({ navigation }) => ({
-	// 		title: navigation.state.params
-	// 			? `${navigation.state.params.recipient.firstName} ${navigation.state.params.recipient.lastName}`
-	// 			: 'Chat',
-	// 	})
-	// }
 }, {
 	initialRouteName: 'FindJobs',
 })

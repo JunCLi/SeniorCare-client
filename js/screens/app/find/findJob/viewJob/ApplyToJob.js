@@ -11,15 +11,9 @@ import { styles } from './styles'
 
 import OrangeArc from '../../../../../components/images/orangeArc/OrangeArc'
 import ApplyJob from '../../../../../components/modal/applyJob/ApplyJob'
+import JobDetails from '../../../../../components/jobDetails/JobDetails'
 
-import PosterInfo from '../../../../../components/jobDetails/posterInfo/PosterInfo'
-import SeniorDetails from '../../../../../components/jobDetails/seniorDetails/SeniorDetails'
-import BasicInformation from '../../../../../components/jobDetails/basicInformation/BasicInformation'
-import ServiceDetails from '../../../../../components/jobDetails/serviceDetails/ServiceDetails'
-import HouseDetails from '../../../../../components/jobDetails/houseDetails/HouseDetails'
-import CaregiverPreference from '../../../../../components/jobDetails/caregiverPreference/CaregiverPreference'
-
-const ViewJob = props => {
+const ApplyToJob = props => {
 	const { jobId, user, name } = props.navigation.state.params
 	const { loading, data: jobData } = useQuery(GET_JOB_DETAILED, {
 		variables: {
@@ -71,17 +65,12 @@ const ViewJob = props => {
 					handlePress={handleApplyJob}
 				/>
 
-				<PosterInfo jobTitle={name} user={user} />
+				<JobDetails
+					job={jobData.getJob}
+					user={user}
+					name={name}
+				/>
 
-				<SeniorDetails {...jobData.getJob.seniorDetails} />
-
-				<BasicInformation {...jobData.getJob.basicInformation} />
-
-				<ServiceDetails {...jobData.getJob.serviceDetails} />
-
-				<HouseDetails {...jobData.getJob.houseDetails} />
-
-				<CaregiverPreference {...jobData.getJob.caregiverPreferences} />
 			</ScrollView>
 
 			<Button
@@ -95,4 +84,4 @@ const ViewJob = props => {
 	)
 }
 
-export default ViewJob
+export default ApplyToJob

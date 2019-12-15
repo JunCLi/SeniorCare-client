@@ -16,7 +16,7 @@ const FindJob = props => {
 	const handleViewJob = (jobId, jobName, user) => {
 		jobName = jobName ? jobName : 'Job Post'
 		jobName = jobName.length > 25 ? `${jobName.substring(0, 20)}...` : jobName
-		props.navigation.navigate('ViewJob', {
+		props.navigation.navigate('ApplyJob', {
 			jobId,
 			name: jobName,
 			user,
